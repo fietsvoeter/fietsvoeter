@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#F7F7F7"/>
+  <rect x="0" y="0" width="8" height="630" fill="#E2001A"/>
+  
+  <text x="60" y="110" font-family="Helvetica Neue,Arial,sans-serif" font-size="42" font-weight="900" fill="#111">Beste fietsbroek</text>
+  <text x="60" y="160" font-family="Helvetica Neue,Arial,sans-serif" font-size="42" font-weight="900" fill="#E2001A">2026</text>
+  <text x="60" y="210" font-family="Helvetica Neue,Arial,sans-serif" font-size="20" fill="#555">Top 5 bib shorts getest</text>
+  <text x="60" y="245" font-family="Helvetica Neue,Arial,sans-serif" font-size="16" fill="#999">Fietsvoeter.nl — Onafhankelijk getest</text>
+  <rect x="60" y="275" width="110" height="38" rx="4" fill="#E2001A"/>
+  <text x="115" y="300" font-family="Helvetica Neue,Arial,sans-serif" font-size="17" font-weight="700" fill="white" text-anchor="middle">9.0/10</text>
+  <text x="60" y="340" font-family="Helvetica Neue,Arial,sans-serif" font-size="14" fill="#888">Padding</text>
+  <text x="60" y="368" font-family="Helvetica Neue,Arial,sans-serif" font-size="28" font-weight="900" fill="#111">Progetto X2</text>
+  <text x="60" y="415" font-family="Helvetica Neue,Arial,sans-serif" font-size="14" fill="#888">Stof</text>
+  <text x="60" y="443" font-family="Helvetica Neue,Arial,sans-serif" font-size="28" font-weight="900" fill="#111">Premium Lycra</text>
+  
+  <path d="M660 180 L700 180 L740 420 L800 420 L820 280 L840 420 L900 420 L940 180 L980 180 L960 440 L900 440 L860 300 L820 440 L760 440 Z" fill="#E2001A"/>
+  <path d="M700 180 L940 180 L960 220 L680 220 Z" fill="#C50016"/>
+  <path d="M660 180 L700 180 L680 220 L640 220 Z" fill="#B50015"/>
+  <path d="M980 180 L940 180 L960 220 L1000 220 Z" fill="#B50015"/>
+  <line x1="820" y1="180" x2="820" y2="440" stroke="#B50015" stroke-width="2" stroke-dasharray="6,4"/>
+  <path d="M720 380 Q760 400 800 380" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="3"/>
+  <path d="M840 380 Q880 400 920 380" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="3"/>
+  <rect x="700" y="455" width="240" height="32" rx="4" fill="#111"/>
+  <rect x="703" y="458" width="120" height="26" rx="3" fill="#E2001A" opacity="0.8"/>
+  <text x="820" y="477" font-family="Helvetica Neue,Arial,sans-serif" font-size="12" fill="white" text-anchor="middle">Padding kwaliteit</text>
+  <text x="820" y="530" font-family="Helvetica Neue,Arial,sans-serif" font-size="14" fill="#888" text-anchor="middle">Castelli Free Aero RC — Progetto X2 Air padding</text>
+  <text x="820" y="560" font-family="Helvetica Neue,Arial,sans-serif" font-size="12" fill="#aaa" text-anchor="middle">Premium Lycra — antibacterieel — 200km+ comfort</text>
+
+  <rect x="0" y="590" width="1200" height="40" fill="#E2001A" opacity="0.9"/>
+  <text x="62" y="617" font-family="Helvetica Neue,Arial,sans-serif" font-size="14" fill="white">fietsvoeter.nl</text>
+  <text x="600" y="617" font-family="Helvetica Neue,Arial,sans-serif" font-size="14" fill="white" text-anchor="middle">Onafhankelijk getest op eigen ritten</text>
+</svg>
