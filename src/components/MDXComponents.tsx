@@ -1,10 +1,11 @@
+'use client'
 import Link from 'next/link'
-import { bolLink, YEAR, PARTNER_ID } from '@/lib/mdx'
+import { bolLink, YEAR, PARTNER_ID } from '@/lib/categories'
 
 export function BolBtn({ search, label, partner = PARTNER_ID }: { search: string; label: string; partner?: string }) {
   return (
     <a href={bolLink(search, partner)} target="_blank" rel="noopener sponsored nofollow" className="bol-btn my-3">
-      <span className="bol-dot">●</span>{label} op bol.com
+      <span className="bol-dot">●</span> {label} op bol.com
     </a>
   )
 }
@@ -12,7 +13,7 @@ export function BolBtn({ search, label, partner = PARTNER_ID }: { search: string
 export function Disclaimer() {
   return (
     <div className="disclaimer">
-      <strong>✓ Transparantie:</strong> Wij testen producten onafhankelijk in {YEAR}. Via onze bol.com-links ontvangen wij een kleine commissie — zonder extra kosten voor jou.{' '}
+      <strong>✓ Transparantie:</strong> Wij testen producten onafhankelijk in {YEAR}. Via bol.com-links ontvangen wij commissie — zonder extra kosten.{' '}
       <Link href="/affiliate-disclosure/" className="text-brand-red">Meer info</Link>.
     </div>
   )
@@ -35,14 +36,15 @@ export function ExpertQuote({ quote, name, role }: { quote: string; name: string
   )
 }
 
-export function FAQ({ items }: { items: { question: string; answer: string }[] }) {
+export function FAQ({ items }: { items?: { question: string; answer: string }[] }) {
+  if (!items || !Array.isArray(items)) return null
   return (
     <div className="my-8">
       <h2>Veelgestelde vragen</h2>
-      {items.map(({ question, answer }) => (
-        <div key={question} className="mb-4">
-          <h3 className="mt-5 mb-2">{question}</h3>
-          <p className="text-gray-600 leading-relaxed">{answer}</p>
+      {items.map((item, i) => (
+        <div key={i} className="mb-4">
+          <h3 className="mt-5 mb-2">{item.question}</h3>
+          <p className="text-gray-600 leading-relaxed">{item.answer}</p>
         </div>
       ))}
     </div>
@@ -53,18 +55,28 @@ export function Score({ value }: { value: number }) {
   return <span className="score-badge">{value}/10</span>
 }
 
-export function CompareTable({ headers, rows, scoreCol }: { headers: string[]; rows: (string|number)[][]; scoreCol?: number }) {
+export function CompareTable({ headers, rows, scoreCol }: { headers?: string[]; rows?: (string|number)[][]; scoreCol?: number }) {
+  if (!Array.isArray(headers) || !Array.isArray(rows)) return null
   return (
     <div className="overflow-x-auto my-6">
       <table className="compare-table">
-        <thead><tr>{headers.map(h=><th key={h}>{h}</th>)}</tr></thead>
-        <tbody>{rows.map((row,i)=><tr key={i}>{row.map((cell,j)=><td key={j} className={j===scoreCol?'font-bold':''}>{cell}</td>)}</tr>)}</tbody>
+        <thead><tr>{headers.map((h,i) => <th key={i}>{h}</th>)}</tr></thead>
+        <tbody>
+          {rows.map((row, i) => (
+            <tr key={i}>
+              {Array.isArray(row) && row.map((cell, j) => (
+                <td key={j} className={j === scoreCol ? 'font-bold' : ''}>{cell}</td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
       </table>
     </div>
   )
 }
 
-export function RelatedLinks({ pairs }: { pairs: { slug: string; label: string }[] }) {
+export function RelatedLinks({ pairs }: { pairs?: { slug: string; label: string }[] }) {
+  if (!Array.isArray(pairs)) return null
   return (
     <div className="bg-gray-50 rounded p-4 text-sm my-7">
       <strong>Lees ook:</strong>{' '}
@@ -76,9 +88,10 @@ export function RelatedLinks({ pairs }: { pairs: { slug: string; label: string }
 }
 
 export function PostImage({ src, alt, caption, width = 1200, height = 630 }: { src: string; alt: string; caption?: string; width?: number; height?: number }) {
+  if (!src) return null
   return (
     <figure className="my-7">
-      <img src={src} alt={alt} title={alt} width={width} height={height} loading="lazy" decoding="async" className="w-full h-auto rounded-md"/>
+      <img src={src} alt={alt||''} title={alt||''} width={width} height={height} loading="lazy" decoding="async" className="w-full h-auto rounded-md" />
       {caption && <figcaption className="text-xs text-gray-400 mt-2 italic">{caption}</figcaption>}
     </figure>
   )
