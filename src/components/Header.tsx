@@ -23,8 +23,7 @@ export function Header() {
             <Link
               key={href}
               href={href}
-              className="text-xs font-medium uppercase tracking-wide text-gray-500
-                         px-3 py-1 rounded hover:text-gray-900 transition-colors no-underline"
+              className="text-xs font-medium uppercase tracking-wide text-gray-500 px-3 py-1 rounded hover:text-gray-900 transition-colors no-underline"
             >
               {label}
             </Link>
@@ -33,8 +32,7 @@ export function Header() {
 
         <Link
           href="/blog/"
-          className="hidden md:block text-xs font-semibold uppercase tracking-wide
-                     bg-brand-red text-white px-4 py-2 rounded no-underline hover:opacity-90"
+          className="hidden md:block text-xs font-semibold uppercase tracking-wide bg-brand-red text-white px-4 py-2 rounded no-underline hover:opacity-90"
         >
           Alle reviews
         </Link>
@@ -60,8 +58,7 @@ export function Header() {
               key={href}
               href={href}
               onClick={() => setOpen(false)}
-              className="text-sm font-medium text-gray-700 py-2 border-b border-gray-100
-                         no-underline hover:text-brand-red transition-colors"
+              className="text-sm font-medium text-gray-700 py-2 border-b border-gray-100 no-underline hover:text-brand-red"
             >
               {label}
             </Link>
@@ -69,8 +66,7 @@ export function Header() {
           <Link
             href="/blog/"
             onClick={() => setOpen(false)}
-            className="mt-2 text-center text-sm font-semibold bg-brand-red text-white
-                       py-2 rounded no-underline"
+            className="mt-2 text-center text-sm font-semibold bg-brand-red text-white py-2 rounded no-underline"
           >
             Alle reviews
           </Link>
