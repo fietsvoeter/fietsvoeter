@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#F7F7F7"/>
+  <rect x="0" y="0" width="8" height="630" fill="#E2001A"/>
+  
+  <text x="60" y="110" font-family="Helvetica Neue,Arial,sans-serif" font-size="42" font-weight="900" fill="#111">Beste MTB helm</text>
+  <text x="60" y="160" font-family="Helvetica Neue,Arial,sans-serif" font-size="42" font-weight="900" fill="#E2001A">2026</text>
+  <text x="60" y="210" font-family="Helvetica Neue,Arial,sans-serif" font-size="20" fill="#555">Top 5 trail en enduro</text>
+  <text x="60" y="245" font-family="Helvetica Neue,Arial,sans-serif" font-size="16" fill="#999">Fietsvoeter.nl — Onafhankelijk getest</text>
+  <rect x="60" y="275" width="110" height="38" rx="4" fill="#E2001A"/>
+  <text x="115" y="300" font-family="Helvetica Neue,Arial,sans-serif" font-size="17" font-weight="700" fill="white" text-anchor="middle">9.1/10</text>
+  <text x="60" y="340" font-family="Helvetica Neue,Arial,sans-serif" font-size="14" fill="#888">Type</text>
+  <text x="60" y="368" font-family="Helvetica Neue,Arial,sans-serif" font-size="28" font-weight="900" fill="#111">Trail helm</text>
+  <text x="60" y="415" font-family="Helvetica Neue,Arial,sans-serif" font-size="14" fill="#888">Ventil.</text>
+  <text x="60" y="443" font-family="Helvetica Neue,Arial,sans-serif" font-size="28" font-weight="900" fill="#111">18 kan.</text>
+  
+  <ellipse cx="840" cy="320" rx="230" ry="150" fill="#222"/>
+  <ellipse cx="840" cy="220" rx="210" ry="145" fill="#222"/>
+  <ellipse cx="840" cy="215" rx="200" ry="132" fill="#2a2a2a"/>
+  <ellipse cx="800" cy="185" rx="58" ry="28" fill="rgba(255,255,255,0.08)" transform="rotate(-15,800,185)"/>
+  <rect x="720" y="195" width="14" height="50" rx="7" fill="#111"/>
+  <rect x="752" y="184" width="14" height="62" rx="7" fill="#111"/>
+  <rect x="784" y="179" width="14" height="67" rx="7" fill="#111"/>
+  <rect x="816" y="177" width="14" height="70" rx="7" fill="#111"/>
+  <rect x="848" y="179" width="14" height="67" rx="7" fill="#111"/>
+  <rect x="880" y="184" width="14" height="62" rx="7" fill="#111"/>
+  <rect x="912" y="195" width="14" height="50" rx="7" fill="#111"/>
+  <path d="M620 320 Q840 290 1060 320 L1060 295 Q840 262 620 295 Z" fill="#E2001A"/>
+  <path d="M640 365 Q840 430 1040 365 L1040 388 Q840 458 640 388 Z" fill="#111"/>
+  <path d="M840 230 L840 420" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+  <rect x="760" y="478" width="160" height="32" rx="16" fill="#E2001A" opacity="0.9"/>
+  <text x="840" y="499" font-family="Helvetica Neue,Arial,sans-serif" font-size="13" font-weight="700" fill="white" text-anchor="middle">MIPS bescherming</text>
+  <text x="840" y="550" font-family="Helvetica Neue,Arial,sans-serif" font-size="14" fill="#888" text-anchor="middle">Fox Speedframe Pro — Trail helm — 18 ventilatieopeningen</text>
+
+  <rect x="0" y="590" width="1200" height="40" fill="#E2001A" opacity="0.9"/>
+  <text x="62" y="617" font-family="Helvetica Neue,Arial,sans-serif" font-size="14" fill="white">fietsvoeter.nl</text>
+  <text x="600" y="617" font-family="Helvetica Neue,Arial,sans-serif" font-size="14" fill="white" text-anchor="middle">Onafhankelijk getest op eigen ritten</text>
+</svg>
