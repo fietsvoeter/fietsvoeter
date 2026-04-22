@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#F7F7F7"/>
+  <rect x="0" y="0" width="8" height="630" fill="#E2001A"/>
+  
+  <text x="60" y="110" font-family="Helvetica Neue,Arial,sans-serif" font-size="42" font-weight="900" fill="#111">Beste mountainbike</text>
+  <text x="60" y="160" font-family="Helvetica Neue,Arial,sans-serif" font-size="42" font-weight="900" fill="#E2001A">2026</text>
+  <text x="60" y="210" font-family="Helvetica Neue,Arial,sans-serif" font-size="20" fill="#555">Top 5 trail MTB onder €3000</text>
+  <text x="60" y="245" font-family="Helvetica Neue,Arial,sans-serif" font-size="16" fill="#999">Fietsvoeter.nl — Onafhankelijk getest</text>
+  <rect x="60" y="275" width="110" height="38" rx="4" fill="#E2001A"/>
+  <text x="115" y="300" font-family="Helvetica Neue,Arial,sans-serif" font-size="17" font-weight="700" fill="white" text-anchor="middle">9.0/10</text>
+  <text x="60" y="340" font-family="Helvetica Neue,Arial,sans-serif" font-size="14" fill="#888">Wielmaat</text>
+  <text x="60" y="368" font-family="Helvetica Neue,Arial,sans-serif" font-size="28" font-weight="900" fill="#111">29 inch</text>
+  <text x="60" y="415" font-family="Helvetica Neue,Arial,sans-serif" font-size="14" fill="#888">Reisweg</text>
+  <text x="60" y="443" font-family="Helvetica Neue,Arial,sans-serif" font-size="28" font-weight="900" fill="#111">100mm</text>
+  
+  <circle cx="720" cy="400" r="120" fill="none" stroke="#E2001A" stroke-width="12"/>
+  <circle cx="720" cy="400" r="6" fill="#E2001A"/>
+  <circle cx="720" cy="400" r="95" fill="none" stroke="#333" stroke-width="2" stroke-dasharray="5,4"/>
+  <circle cx="980" cy="400" r="120" fill="none" stroke="#E2001A" stroke-width="12"/>
+  <circle cx="980" cy="400" r="6" fill="#E2001A"/>
+  <circle cx="980" cy="400" r="95" fill="none" stroke="#333" stroke-width="2" stroke-dasharray="5,4"/>
+  <line x1="720" y1="280" x2="870" y2="240" stroke="#E2001A" stroke-width="9" stroke-linecap="round"/>
+  <line x1="870" y1="240" x2="980" y2="280" stroke="#E2001A" stroke-width="9" stroke-linecap="round"/>
+  <line x1="870" y1="240" x2="855" y2="400" stroke="#E2001A" stroke-width="8" stroke-linecap="round"/>
+  <line x1="855" y1="400" x2="720" y2="400" stroke="#E2001A" stroke-width="8" stroke-linecap="round"/>
+  <line x1="855" y1="400" x2="980" y2="400" stroke="#E2001A" stroke-width="8" stroke-linecap="round"/>
+  <line x1="720" y1="400" x2="770" y2="310" stroke="#888" stroke-width="5"/>
+  <line x1="720" y1="400" x2="800" y2="360" stroke="#888" stroke-width="5"/>
+  <line x1="720" y1="400" x2="670" y2="360" stroke="#888" stroke-width="5"/>
+  <line x1="720" y1="400" x2="670" y2="440" stroke="#888" stroke-width="5"/>
+  <line x1="980" y1="400" x2="1030" y2="360" stroke="#888" stroke-width="5"/>
+  <line x1="980" y1="400" x2="930" y2="360" stroke="#888" stroke-width="5"/>
+  <line x1="980" y1="400" x2="1030" y2="440" stroke="#888" stroke-width="5"/>
+  <line x1="980" y1="400" x2="930" y2="440" stroke="#888" stroke-width="5"/>
+  <path d="M830 310 L870 240 L910 260 L890 320 Z" fill="#E2001A"/>
+  <rect x="830" y="218" width="88" height="26" rx="4" fill="#222"/>
+  <path d="M780 290 Q775 258 840 255" fill="none" stroke="#666" stroke-width="7" stroke-linecap="round"/>
+  <rect x="840" y="350" width="30" height="22" rx="3" fill="#333"/>
+  <circle cx="855" cy="390" r="22" fill="none" stroke="#444" stroke-width="4"/>
+  <rect x="670" y="530" width="380" height="1" fill="#ddd"/>
+  <text x="860" y="560" font-family="Helvetica Neue,Arial,sans-serif" font-size="14" fill="#888" text-anchor="middle">Trek Marlin 7 — Shimano Deore — 29" — Hardtail</text>
+
+  <rect x="0" y="590" width="1200" height="40" fill="#E2001A" opacity="0.9"/>
+  <text x="62" y="617" font-family="Helvetica Neue,Arial,sans-serif" font-size="14" fill="white">fietsvoeter.nl</text>
+  <text x="600" y="617" font-family="Helvetica Neue,Arial,sans-serif" font-size="14" fill="white" text-anchor="middle">Onafhankelijk getest op eigen ritten</text>
+</svg>
