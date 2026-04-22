@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#F7F7F7"/>
+  <rect x="0" y="0" width="8" height="630" fill="#E2001A"/>
+  
+  <text x="60" y="110" font-family="Helvetica Neue,Arial,sans-serif" font-size="42" font-weight="900" fill="#111">Beste fietshelm</text>
+  <text x="60" y="160" font-family="Helvetica Neue,Arial,sans-serif" font-size="42" font-weight="900" fill="#E2001A">2026</text>
+  <text x="60" y="210" font-family="Helvetica Neue,Arial,sans-serif" font-size="20" fill="#555">Top 7 getest op 2.000+ km</text>
+  <text x="60" y="245" font-family="Helvetica Neue,Arial,sans-serif" font-size="16" fill="#999">Fietsvoeter.nl — Onafhankelijk getest</text>
+  <rect x="60" y="275" width="110" height="38" rx="4" fill="#E2001A"/>
+  <text x="115" y="300" font-family="Helvetica Neue,Arial,sans-serif" font-size="17" font-weight="700" fill="white" text-anchor="middle">9.3/10</text>
+  <text x="60" y="340" font-family="Helvetica Neue,Arial,sans-serif" font-size="14" fill="#888">Gewicht</text>
+  <text x="60" y="368" font-family="Helvetica Neue,Arial,sans-serif" font-size="28" font-weight="900" fill="#111">232g</text>
+  <text x="60" y="415" font-family="Helvetica Neue,Arial,sans-serif" font-size="14" fill="#888">Ventilatie</text>
+  <text x="60" y="443" font-family="Helvetica Neue,Arial,sans-serif" font-size="28" font-weight="900" fill="#111">17 kan.</text>
+  
+  <ellipse cx="830" cy="330" rx="225" ry="155" fill="#E2001A"/>
+  <ellipse cx="830" cy="230" rx="205" ry="140" fill="#E2001A"/>
+  <ellipse cx="790" cy="200" rx="62" ry="32" fill="rgba(255,255,255,0.22)" transform="rotate(-20,790,200)"/>
+  <rect x="710" y="215" width="16" height="46" rx="8" fill="#B50015"/>
+  <rect x="745" y="205" width="16" height="56" rx="8" fill="#B50015"/>
+  <rect x="780" y="200" width="16" height="61" rx="8" fill="#B50015"/>
+  <rect x="815" y="200" width="16" height="61" rx="8" fill="#B50015"/>
+  <rect x="850" y="205" width="16" height="56" rx="8" fill="#B50015"/>
+  <rect x="885" y="215" width="16" height="46" rx="8" fill="#B50015"/>
+  <path d="M640 365 Q830 425 1020 365 L1020 390 Q830 455 640 390 Z" fill="#222"/>
+  <ellipse cx="830" cy="367" rx="218" ry="28" fill="rgba(0,0,0,0.12)"/>
+  <ellipse cx="830" cy="305" rx="198" ry="128" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="3" stroke-dasharray="10,7"/>
+  <path d="M710 408 Q830 448 950 408" fill="none" stroke="#222" stroke-width="11" stroke-linecap="round"/>
+  <rect x="740" y="478" width="182" height="34" rx="17" fill="white" opacity="0.88"/>
+  <text x="831" y="501" font-family="Helvetica Neue,Arial,sans-serif" font-size="13" font-weight="700" fill="#E2001A" text-anchor="middle">MIPS bescherming</text>
+  <text x="1020" y="290" font-family="Helvetica Neue,Arial,sans-serif" font-size="13" fill="#888" text-anchor="end">★★★★★ Virginia Tech</text>
+
+  <rect x="0" y="590" width="1200" height="40" fill="#E2001A" opacity="0.9"/>
+  <text x="62" y="617" font-family="Helvetica Neue,Arial,sans-serif" font-size="14" fill="white">fietsvoeter.nl</text>
+  <text x="600" y="617" font-family="Helvetica Neue,Arial,sans-serif" font-size="14" fill="white" text-anchor="middle">Onafhankelijk getest op eigen ritten</text>
+</svg>
