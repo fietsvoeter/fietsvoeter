@@ -21,7 +21,10 @@ export function Footer() {
             <ul className="space-y-2">
               {Object.entries(CATEGORIES).map(([slug, { label }]) => (
                 <li key={slug}>
-                  <Link href={`/categorie/${slug}/`} className="text-sm text-gray-500 hover:text-white no-underline transition-colors">
+                  <Link
+                    href={`/categorie/${slug}/`}
+                    className="text-sm text-gray-500 hover:text-white no-underline transition-colors"
+                  >
                     {label}
                   </Link>
                 </li>
@@ -32,39 +35,23 @@ export function Footer() {
           <div>
             <h4 className="text-xs font-bold uppercase tracking-widest text-gray-500 mb-4">Over ons</h4>
             <ul className="space-y-2">
-              {[
-                { href: '/over-ons/', label: 'Wie zijn wij' },
-                { href: '/contact/', label: 'Contact' },
-                { href: '/blog/', label: 'Alle artikelen' },
-              ].map(({ href, label }) => (
-                <li key={href}>
-                  <Link href={href} className="text-sm text-gray-500 hover:text-white no-underline transition-colors">
-                    {label}
-                  </Link>
-                </li>
-              ))}
+              <li><Link href="/over-ons/" className="text-sm text-gray-500 hover:text-white no-underline transition-colors">Wie zijn wij</Link></li>
+              <li><Link href="/contact/" className="text-sm text-gray-500 hover:text-white no-underline transition-colors">Contact</Link></li>
+              <li><Link href="/blog/" className="text-sm text-gray-500 hover:text-white no-underline transition-colors">Alle artikelen</Link></li>
             </ul>
           </div>
 
           <div>
             <h4 className="text-xs font-bold uppercase tracking-widest text-gray-500 mb-4">Juridisch</h4>
             <ul className="space-y-2">
-              {[
-                { href: '/privacybeleid/', label: 'Privacybeleid' },
-                { href: '/affiliate-disclosure/', label: 'Affiliate disclosure' },
-              ].map(({ href, label }) => (
-                <li key={href}>
-                  <Link href={href} className="text-sm text-gray-500 hover:text-white no-underline transition-colors">
-                    {label}
-                  </Link>
-                </li>
-              ))}
+              <li><Link href="/privacybeleid/" className="text-sm text-gray-500 hover:text-white no-underline transition-colors">Privacybeleid</Link></li>
+              <li><Link href="/affiliate-disclosure/" className="text-sm text-gray-500 hover:text-white no-underline transition-colors">Affiliate disclosure</Link></li>
             </ul>
           </div>
         </div>
 
         <div className="border-t border-gray-800 pt-6 flex flex-col md:flex-row justify-between gap-3">
-          <p className="text-xs text-gray-600">© {YEAR} {SITE_NAME}</p>
+          <p className="text-xs text-gray-600">© {YEAR} {SITE_NAME} — Alle rechten voorbehouden</p>
           <p className="text-xs text-gray-600">Affiliate disclosure: commissie via bol.com partner links</p>
         </div>
         <p className="text-xs text-gray-700 mt-4 leading-relaxed border-t border-gray-800 pt-4">
