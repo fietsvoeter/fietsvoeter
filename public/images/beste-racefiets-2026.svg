@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#F7F7F7"/>
+  <rect x="0" y="0" width="8" height="630" fill="#E2001A"/>
+  
+  <text x="60" y="110" font-family="Helvetica Neue,Arial,sans-serif" font-size="42" font-weight="900" fill="#111">Beste racefiets</text>
+  <text x="60" y="160" font-family="Helvetica Neue,Arial,sans-serif" font-size="42" font-weight="900" fill="#E2001A">2026</text>
+  <text x="60" y="210" font-family="Helvetica Neue,Arial,sans-serif" font-size="20" fill="#555">Top 5 onder €3000 getest</text>
+  <text x="60" y="245" font-family="Helvetica Neue,Arial,sans-serif" font-size="16" fill="#999">Fietsvoeter.nl — Onafhankelijk getest</text>
+  <rect x="60" y="275" width="110" height="38" rx="4" fill="#E2001A"/>
+  <text x="115" y="300" font-family="Helvetica Neue,Arial,sans-serif" font-size="17" font-weight="700" fill="white" text-anchor="middle">9.2/10</text>
+  <text x="60" y="340" font-family="Helvetica Neue,Arial,sans-serif" font-size="14" fill="#888">Gewicht</text>
+  <text x="60" y="368" font-family="Helvetica Neue,Arial,sans-serif" font-size="28" font-weight="900" fill="#111">8.1 kg</text>
+  <text x="60" y="415" font-family="Helvetica Neue,Arial,sans-serif" font-size="14" fill="#888">Frame</text>
+  <text x="60" y="443" font-family="Helvetica Neue,Arial,sans-serif" font-size="28" font-weight="900" fill="#111">Aluminium</text>
+  
+  <circle cx="730" cy="420" r="110" fill="none" stroke="#E2001A" stroke-width="10"/>
+  <circle cx="730" cy="420" r="8" fill="#E2001A"/>
+  <circle cx="730" cy="420" r="85" fill="none" stroke="#ccc" stroke-width="2" stroke-dasharray="6,4"/>
+  <circle cx="990" cy="420" r="110" fill="none" stroke="#E2001A" stroke-width="10"/>
+  <circle cx="990" cy="420" r="8" fill="#E2001A"/>
+  <circle cx="990" cy="420" r="85" fill="none" stroke="#ccc" stroke-width="2" stroke-dasharray="6,4"/>
+  <line x1="730" y1="310" x2="870" y2="280" stroke="#E2001A" stroke-width="7" stroke-linecap="round"/>
+  <line x1="870" y1="280" x2="990" y2="310" stroke="#E2001A" stroke-width="7" stroke-linecap="round"/>
+  <line x1="870" y1="280" x2="860" y2="420" stroke="#E2001A" stroke-width="7" stroke-linecap="round"/>
+  <line x1="860" y1="420" x2="730" y2="420" stroke="#E2001A" stroke-width="7" stroke-linecap="round"/>
+  <line x1="860" y1="420" x2="990" y2="420" stroke="#E2001A" stroke-width="7" stroke-linecap="round"/>
+  <line x1="730" y1="420" x2="780" y2="330" stroke="#aaa" stroke-width="4"/>
+  <line x1="730" y1="420" x2="820" y2="360" stroke="#aaa" stroke-width="4"/>
+  <line x1="730" y1="420" x2="680" y2="360" stroke="#aaa" stroke-width="4"/>
+  <line x1="730" y1="420" x2="680" y2="480" stroke="#aaa" stroke-width="4"/>
+  <line x1="990" y1="420" x2="1040" y2="360" stroke="#aaa" stroke-width="4"/>
+  <line x1="990" y1="420" x2="940" y2="360" stroke="#aaa" stroke-width="4"/>
+  <line x1="990" y1="420" x2="1040" y2="480" stroke="#aaa" stroke-width="4"/>
+  <line x1="990" y1="420" x2="940" y2="480" stroke="#aaa" stroke-width="4"/>
+  <path d="M840 350 L870 280 L900 290 L880 350 Z" fill="#E2001A"/>
+  <rect x="825" y="255" width="90" height="28" rx="4" fill="#222"/>
+  <path d="M790 310 Q790 270 840 270" fill="none" stroke="#666" stroke-width="6" stroke-linecap="round"/>
+  <circle cx="860" cy="400" r="24" fill="none" stroke="#555" stroke-width="4"/>
+  <text x="860" y="407" font-family="Helvetica Neue,Arial,sans-serif" font-size="11" fill="#555" text-anchor="middle">Shimano</text>
+  <text x="860" y="560" font-family="Helvetica Neue,Arial,sans-serif" font-size="14" fill="#888" text-anchor="middle">Trek Emonda ALR 5 — Shimano 105 — Schijfrem</text>
+
+  <rect x="0" y="590" width="1200" height="40" fill="#E2001A" opacity="0.9"/>
+  <text x="62" y="617" font-family="Helvetica Neue,Arial,sans-serif" font-size="14" fill="white">fietsvoeter.nl</text>
+  <text x="600" y="617" font-family="Helvetica Neue,Arial,sans-serif" font-size="14" fill="white" text-anchor="middle">Onafhankelijk getest op eigen ritten</text>
+</svg>
