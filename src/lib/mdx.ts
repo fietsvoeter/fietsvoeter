@@ -42,20 +42,14 @@ export interface Post extends PostMeta { content: string }
 
 export function getAllPosts(): PostMeta[] {
   if (!fs.existsSync(BLOG_DIR)) return []
-  return fs.readdirSync(BLOG_DIR)
-    .filter(f => f.endsWith('.mdx'))
-    .map(filename => {
-      const slug = filename.replace('.mdx', '')
-      const raw  = fs.readFileSync(path.join(BLOG_DIR, filename), 'utf8')
-      const { data } = matter(raw)
-      const rt = readingTime(raw)
-      return {
-        ...data,
-        slug,
-        readingTime: `${Math.ceil(rt.minutes)} min lezen`,
-        published: data.published !== false,
-      } as PostMeta
-    })
+return {
+  ...data,
+  slug,
+  affiliate: data.affiliate || [],
+  keywords: data.keywords || [],
+  readingTime: `${Math.ceil(rt.minutes)} min lezen`,
+  published: data.published !== false,
+} as PostMeta
     .filter(p => p.published)
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
 }
@@ -67,7 +61,11 @@ export function getPostBySlug(slug: string): Post | null {
   const { data, content } = matter(raw)
   const rt = readingTime(raw)
   return {
-    ...data, slug, content,
+    ...data,
+    slug,
+    content,
+    affiliate: data.affiliate || [],
+    keywords: data.keywords || [],
     readingTime: `${Math.ceil(rt.minutes)} min lezen`,
     published: data.published !== false,
   } as Post
