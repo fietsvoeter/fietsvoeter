@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#F7F7F7"/>
+  <rect x="0" y="0" width="8" height="630" fill="#E2001A"/>
+  
+  <text x="60" y="110" font-family="Helvetica Neue,Arial,sans-serif" font-size="42" font-weight="900" fill="#111">Beste MTB banden</text>
+  <text x="60" y="160" font-family="Helvetica Neue,Arial,sans-serif" font-size="42" font-weight="900" fill="#E2001A">2026</text>
+  <text x="60" y="210" font-family="Helvetica Neue,Arial,sans-serif" font-size="20" fill="#555">Top 6 voor trail en enduro</text>
+  <text x="60" y="245" font-family="Helvetica Neue,Arial,sans-serif" font-size="16" fill="#999">Fietsvoeter.nl — Onafhankelijk getest</text>
+  <rect x="60" y="275" width="110" height="38" rx="4" fill="#E2001A"/>
+  <text x="115" y="300" font-family="Helvetica Neue,Arial,sans-serif" font-size="17" font-weight="700" fill="white" text-anchor="middle">9.1/10</text>
+  <text x="60" y="340" font-family="Helvetica Neue,Arial,sans-serif" font-size="14" fill="#888">Profiel</text>
+  <text x="60" y="368" font-family="Helvetica Neue,Arial,sans-serif" font-size="28" font-weight="900" fill="#111">Asymmetrisch</text>
+  <text x="60" y="415" font-family="Helvetica Neue,Arial,sans-serif" font-size="14" fill="#888">Compound</text>
+  <text x="60" y="443" font-family="Helvetica Neue,Arial,sans-serif" font-size="28" font-weight="900" fill="#111">3C MaxGrip</text>
+  
+  <circle cx="860" cy="330" r="200" fill="none" stroke="#222" stroke-width="28"/>
+  <circle cx="860" cy="330" r="170" fill="none" stroke="#E2001A" stroke-width="6"/>
+  <circle cx="860" cy="330" r="80" fill="none" stroke="#333" stroke-width="12"/>
+  <circle cx="860" cy="330" r="12" fill="#333"/>
+  <g transform="rotate(0,860,330)">
+    <rect x="648" y="318" width="40" height="24" rx="3" fill="#111"/>
+    <rect x="648" y="318" width="40" height="24" rx="3" fill="none" stroke="#555" stroke-width="1"/>
+  </g>
+  <g transform="rotate(30,860,330)">
+    <rect x="648" y="318" width="40" height="24" rx="3" fill="#111"/>
+  </g>
+  <g transform="rotate(60,860,330)">
+    <rect x="648" y="318" width="40" height="24" rx="3" fill="#111"/>
+  </g>
+  <g transform="rotate(90,860,330)">
+    <rect x="648" y="318" width="40" height="24" rx="3" fill="#111"/>
+  </g>
+  <g transform="rotate(120,860,330)">
+    <rect x="648" y="318" width="40" height="24" rx="3" fill="#111"/>
+  </g>
+  <g transform="rotate(150,860,330)">
+    <rect x="648" y="318" width="40" height="24" rx="3" fill="#111"/>
+  </g>
+  <g transform="rotate(180,860,330)">
+    <rect x="648" y="318" width="40" height="24" rx="3" fill="#111"/>
+  </g>
+  <g transform="rotate(210,860,330)">
+    <rect x="648" y="318" width="40" height="24" rx="3" fill="#111"/>
+  </g>
+  <g transform="rotate(240,860,330)">
+    <rect x="648" y="318" width="40" height="24" rx="3" fill="#111"/>
+  </g>
+  <g transform="rotate(270,860,330)">
+    <rect x="648" y="318" width="40" height="24" rx="3" fill="#111"/>
+  </g>
+  <g transform="rotate(300,860,330)">
+    <rect x="648" y="318" width="40" height="24" rx="3" fill="#111"/>
+  </g>
+  <g transform="rotate(330,860,330)">
+    <rect x="648" y="318" width="40" height="24" rx="3" fill="#111"/>
+  </g>
+  <text x="860" y="320" font-family="Helvetica Neue,Arial,sans-serif" font-size="13" fill="#E2001A" text-anchor="middle" font-weight="700">MAXXIS</text>
+  <text x="860" y="338" font-family="Helvetica Neue,Arial,sans-serif" font-size="11" fill="#888" text-anchor="middle">Minion DHF</text>
+  <text x="860" y="565" font-family="Helvetica Neue,Arial,sans-serif" font-size="14" fill="#888" text-anchor="middle">3C MaxGrip — EXO+ casing — Tubeless Ready</text>
+
+  <rect x="0" y="590" width="1200" height="40" fill="#E2001A" opacity="0.9"/>
+  <text x="62" y="617" font-family="Helvetica Neue,Arial,sans-serif" font-size="14" fill="white">fietsvoeter.nl</text>
+  <text x="600" y="617" font-family="Helvetica Neue,Arial,sans-serif" font-size="14" fill="white" text-anchor="middle">Onafhankelijk getest op eigen ritten</text>
+</svg>
