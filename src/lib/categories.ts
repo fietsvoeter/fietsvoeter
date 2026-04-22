@@ -2,6 +2,7 @@
 // Dit bestand gebruikt GEEN 'fs' of andere Node.js modules
 
 export type Category = 'wielrennen' | 'mtb' | 'gravel' | 'e-bike' | 'training' | 'kleding' | 'voeding'
+export type ContentType = 'review' | 'comparison' | 'guide' | 'listicle' | 'free-tool'
 
 export const CATEGORIES: Record<Category, { label: string; description: string; color: string }> = {
   wielrennen: {
