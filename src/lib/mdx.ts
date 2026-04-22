@@ -1,6 +1,3 @@
-// SERVER-ONLY — dit bestand mag alleen in Server Components gebruikt worden
-// Client components (zoals Header) moeten @/lib/categories importeren
-
 import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
@@ -38,18 +35,40 @@ export interface PostMeta {
   published:       boolean
 }
 
-export interface Post extends PostMeta { content: string }
+export interface Post extends PostMeta {
+  content: string
+}
 
 export function getAllPosts(): PostMeta[] {
   if (!fs.existsSync(BLOG_DIR)) return []
-return {
-  ...data,
-  slug,
-  affiliate: data.affiliate || [],
-  keywords: data.keywords || [],
-  readingTime: `${Math.ceil(rt.minutes)} min lezen`,
-  published: data.published !== false,
-} as PostMeta
+  return fs
+    .readdirSync(BLOG_DIR)
+    .filter(f => f.endsWith('.mdx'))
+    .map(filename => {
+      const slug = filename.replace('.mdx', '')
+      const raw  = fs.readFileSync(path.join(BLOG_DIR, filename), 'utf8')
+      const { data } = matter(raw)
+      const rt = readingTime(raw)
+      return {
+        title:           data.title           || '',
+        slug,
+        date:            data.date            || '',
+        lastmod:         data.lastmod         || data.date || '',
+        category:        data.category        || 'wielrennen',
+        contentType:     data.contentType     || 'guide',
+        keywords:        data.keywords        || [],
+        metaTitle:       data.metaTitle       || data.title || '',
+        metaDescription: data.metaDescription || '',
+        featuredImage:   data.featuredImage   || '',
+        imageAlt:        data.imageAlt        || '',
+        excerpt:         data.excerpt         || '',
+        affiliate:       data.affiliate       || [],
+        schema:          data.schema          || 'article',
+        rating:          data.rating,
+        readingTime:     `${Math.ceil(rt.minutes)} min lezen`,
+        published:       data.published !== false,
+      } as PostMeta
+    })
     .filter(p => p.published)
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
 }
@@ -61,13 +80,24 @@ export function getPostBySlug(slug: string): Post | null {
   const { data, content } = matter(raw)
   const rt = readingTime(raw)
   return {
-    ...data,
+    title:           data.title           || '',
     slug,
+    date:            data.date            || '',
+    lastmod:         data.lastmod         || data.date || '',
+    category:        data.category        || 'wielrennen',
+    contentType:     data.contentType     || 'guide',
+    keywords:        data.keywords        || [],
+    metaTitle:       data.metaTitle       || data.title || '',
+    metaDescription: data.metaDescription || '',
+    featuredImage:   data.featuredImage   || '',
+    imageAlt:        data.imageAlt        || '',
+    excerpt:         data.excerpt         || '',
+    affiliate:       data.affiliate       || [],
+    schema:          data.schema          || 'article',
+    rating:          data.rating,
+    readingTime:     `${Math.ceil(rt.minutes)} min lezen`,
+    published:       data.published !== false,
     content,
-    affiliate: data.affiliate || [],
-    keywords: data.keywords || [],
-    readingTime: `${Math.ceil(rt.minutes)} min lezen`,
-    published: data.published !== false,
   } as Post
 }
 
@@ -76,10 +106,15 @@ export function getPostsByCategory(category: Category): PostMeta[] {
 }
 
 export function getRelatedPosts(slug: string, category: Category, limit = 3): PostMeta[] {
-  return getAllPosts().filter(p => p.slug !== slug && p.category === category).slice(0, limit)
+  return getAllPosts()
+    .filter(p => p.slug !== slug && p.category === category)
+    .slice(0, limit)
 }
 
 export function getAllSlugs(): string[] {
   if (!fs.existsSync(BLOG_DIR)) return []
-  return fs.readdirSync(BLOG_DIR).filter(f => f.endsWith('.mdx')).map(f => f.replace('.mdx', ''))
+  return fs
+    .readdirSync(BLOG_DIR)
+    .filter(f => f.endsWith('.mdx'))
+    .map(f => f.replace('.mdx', ''))
 }
