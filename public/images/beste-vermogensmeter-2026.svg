@@ -1,11 +1,33 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
   <rect width="1200" height="630" fill="#F7F7F7"/>
   <rect x="0" y="0" width="8" height="630" fill="#E2001A"/>
-  <rect x="0" y="580" width="1200" height="50" fill="#E2001A" opacity="0.9"/>
-  <text x="60" y="240" font-family="Helvetica Neue,Helvetica,Arial,sans-serif" font-size="52" font-weight="900" fill="#111111">Beste vermogensmeter 2026</text>
-  <text x="60" y="310" font-family="Helvetica Neue,Helvetica,Arial,sans-serif" font-size="30" fill="#555">Favero vs Garmin vs Stages</text>
-  <text x="60" y="370" font-family="Helvetica Neue,Helvetica,Arial,sans-serif" font-size="20" fill="#999">Fietsvoeter.nl &#x2014; 2026 &#x2014; Onafhankelijk getest</text>
-  <text x="62" y="616" font-family="Helvetica Neue,Helvetica,Arial,sans-serif" font-size="14" fill="#fff">fietsvoeter.nl</text>
-  <circle cx="1060" cy="290" r="160" fill="none" stroke="#E2001A" stroke-width="3" opacity="0.12"/>
-  <circle cx="1060" cy="290" r="100" fill="none" stroke="#E2001A" stroke-width="2" opacity="0.08"/>
+  
+  <text x="60" y="110" font-family="Helvetica Neue,Arial,sans-serif" font-size="42" font-weight="900" fill="#111">Beste vermogensmeter</text>
+  <text x="60" y="160" font-family="Helvetica Neue,Arial,sans-serif" font-size="42" font-weight="900" fill="#E2001A">2026</text>
+  <text x="60" y="210" font-family="Helvetica Neue,Arial,sans-serif" font-size="20" fill="#555">Favero vs Garmin vs Stages</text>
+  <text x="60" y="245" font-family="Helvetica Neue,Arial,sans-serif" font-size="16" fill="#999">Fietsvoeter.nl — Onafhankelijk getest</text>
+  <rect x="60" y="275" width="110" height="38" rx="4" fill="#E2001A"/>
+  <text x="115" y="300" font-family="Helvetica Neue,Arial,sans-serif" font-size="17" font-weight="700" fill="white" text-anchor="middle">9.2/10</text>
+  <text x="60" y="340" font-family="Helvetica Neue,Arial,sans-serif" font-size="14" fill="#888">Nauwkeurig</text>
+  <text x="60" y="368" font-family="Helvetica Neue,Arial,sans-serif" font-size="28" font-weight="900" fill="#111">±1%</text>
+  <text x="60" y="415" font-family="Helvetica Neue,Arial,sans-serif" font-size="14" fill="#888">Batterij</text>
+  <text x="60" y="443" font-family="Helvetica Neue,Arial,sans-serif" font-size="28" font-weight="900" fill="#111">50 uur</text>
+  
+  <circle cx="850" cy="310" r="160" fill="none" stroke="#333" stroke-width="3"/>
+  <circle cx="850" cy="310" r="155" fill="#1a1a1a"/>
+  <path d="M850 310 m-130 0 a130,130 0 0,1 260,0" fill="none" stroke="#333" stroke-width="20" stroke-linecap="round"/>
+  <path d="M850 310 m-130 0 a130,130 0 0,1 208,65" fill="none" stroke="#E2001A" stroke-width="20" stroke-linecap="round"/>
+  <text x="850" y="285" font-family="Helvetica Neue,Arial,sans-serif" font-size="54" font-weight="900" fill="white" text-anchor="middle">287</text>
+  <text x="850" y="320" font-family="Helvetica Neue,Arial,sans-serif" font-size="20" fill="#888" text-anchor="middle">WATT</text>
+  <text x="850" y="355" font-family="Helvetica Neue,Arial,sans-serif" font-size="14" fill="#E2001A" text-anchor="middle">±1% nauwkeurigheid</text>
+  <text x="720" y="395" font-family="Helvetica Neue,Arial,sans-serif" font-size="12" fill="#666" text-anchor="middle">MIN</text>
+  <text x="980" y="395" font-family="Helvetica Neue,Arial,sans-serif" font-size="12" fill="#666" text-anchor="middle">MAX</text>
+  <text x="720" y="412" font-family="Helvetica Neue,Arial,sans-serif" font-size="14" fill="#aaa" text-anchor="middle">0W</text>
+  <text x="980" y="412" font-family="Helvetica Neue,Arial,sans-serif" font-size="14" fill="#aaa" text-anchor="middle">600W</text>
+  <text x="850" y="490" font-family="Helvetica Neue,Arial,sans-serif" font-size="13" fill="#888" text-anchor="middle">Favero Assioma DUO — Pedaal vermogensmeter</text>
+  <text x="850" y="515" font-family="Helvetica Neue,Arial,sans-serif" font-size="12" fill="#666" text-anchor="middle">Look KEO compatibel — 50u batterij — ANT+ & Bluetooth</text>
+
+  <rect x="0" y="590" width="1200" height="40" fill="#E2001A" opacity="0.9"/>
+  <text x="62" y="617" font-family="Helvetica Neue,Arial,sans-serif" font-size="14" fill="white">fietsvoeter.nl</text>
+  <text x="600" y="617" font-family="Helvetica Neue,Arial,sans-serif" font-size="14" fill="white" text-anchor="middle">Onafhankelijk getest op eigen ritten</text>
 </svg>
