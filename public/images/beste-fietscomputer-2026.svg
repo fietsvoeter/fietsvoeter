@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#F7F7F7"/>
+  <rect x="0" y="0" width="8" height="630" fill="#E2001A"/>
+  
+  <text x="60" y="110" font-family="Helvetica Neue,Arial,sans-serif" font-size="42" font-weight="900" fill="#111">Beste fietscomputer</text>
+  <text x="60" y="160" font-family="Helvetica Neue,Arial,sans-serif" font-size="42" font-weight="900" fill="#E2001A">2026</text>
+  <text x="60" y="210" font-family="Helvetica Neue,Arial,sans-serif" font-size="20" fill="#555">Garmin vs Wahoo vs Bryton</text>
+  <text x="60" y="245" font-family="Helvetica Neue,Arial,sans-serif" font-size="16" fill="#999">Fietsvoeter.nl — Onafhankelijk getest</text>
+  <rect x="60" y="275" width="110" height="38" rx="4" fill="#E2001A"/>
+  <text x="115" y="300" font-family="Helvetica Neue,Arial,sans-serif" font-size="17" font-weight="700" fill="white" text-anchor="middle">9.1/10</text>
+  <text x="60" y="340" font-family="Helvetica Neue,Arial,sans-serif" font-size="14" fill="#888">Batterij</text>
+  <text x="60" y="368" font-family="Helvetica Neue,Arial,sans-serif" font-size="28" font-weight="900" fill="#111">26 uur</text>
+  <text x="60" y="415" font-family="Helvetica Neue,Arial,sans-serif" font-size="14" fill="#888">GPS</text>
+  <text x="60" y="443" font-family="Helvetica Neue,Arial,sans-serif" font-size="28" font-weight="900" fill="#111">Multi-band</text>
+  
+  <rect x="640" y="170" width="420" height="280" rx="20" fill="#1a1a1a"/>
+  <rect x="660" y="190" width="380" height="220" rx="12" fill="#0d0d0d"/>
+  <rect x="670" y="200" width="360" height="200" rx="8" fill="#001a00"/>
+  <text x="850" y="268" font-family="Courier New,monospace" font-size="52" font-weight="700" fill="#00ff41" text-anchor="middle">287W</text>
+  <text x="850" y="300" font-family="Courier New,monospace" font-size="18" fill="#00cc33" text-anchor="middle">VERMOGEN</text>
+  <line x1="680" y1="320" x2="1020" y2="320" stroke="#003300" stroke-width="1"/>
+  <text x="730" y="348" font-family="Courier New,monospace" font-size="14" fill="#00aa22">33.2km/h</text>
+  <text x="850" y="348" font-family="Courier New,monospace" font-size="14" fill="#00aa22" text-anchor="middle">158bpm</text>
+  <text x="1010" y="348" font-family="Courier New,monospace" font-size="14" fill="#00aa22" text-anchor="end">94rpm</text>
+  <rect x="770" y="450" width="160" height="18" rx="3" fill="#333"/>
+  <rect x="770" y="450" width="104" height="18" rx="3" fill="#E2001A"/>
+  <text x="850" y="493" font-family="Helvetica Neue,Arial,sans-serif" font-size="13" fill="#888" text-anchor="middle">Garmin Edge 540 Solar</text>
+  <rect x="640" y="456" width="30" height="8" rx="4" fill="#555"/>
+  <rect x="990" y="456" width="30" height="8" rx="4" fill="#555"/>
+  <rect x="810" y="168" width="80" height="6" rx="3" fill="#555"/>
+
+  <rect x="0" y="590" width="1200" height="40" fill="#E2001A" opacity="0.9"/>
+  <text x="62" y="617" font-family="Helvetica Neue,Arial,sans-serif" font-size="14" fill="white">fietsvoeter.nl</text>
+  <text x="600" y="617" font-family="Helvetica Neue,Arial,sans-serif" font-size="14" fill="white" text-anchor="middle">Onafhankelijk getest op eigen ritten</text>
+</svg>
