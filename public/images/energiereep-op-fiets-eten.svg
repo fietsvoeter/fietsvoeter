@@ -1,11 +1,14 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
   <rect width="1200" height="630" fill="#F7F7F7"/>
   <rect x="0" y="0" width="8" height="630" fill="#E2001A"/>
-  <rect x="0" y="580" width="1200" height="50" fill="#E2001A" opacity="0.9"/>
-  <text x="60" y="240" font-family="Helvetica Neue,Helvetica,Arial,sans-serif" font-size="52" font-weight="900" fill="#111111">Energiereep op fiets</text>
-  <text x="60" y="310" font-family="Helvetica Neue,Helvetica,Arial,sans-serif" font-size="30" fill="#555555">Voedingstactiek groepsrit</text>
-  <text x="60" y="370" font-family="Helvetica Neue,Helvetica,Arial,sans-serif" font-size="20" fill="#999999">Fietsvoeter.nl &#x2014; 2026 &#x2014; Onafhankelijk getest</text>
-  <text x="62" y="616" font-family="Helvetica Neue,Helvetica,Arial,sans-serif" font-size="14" fill="#ffffff">fietsvoeter.nl</text>
-  <circle cx="1060" cy="290" r="160" fill="none" stroke="#E2001A" stroke-width="3" opacity="0.12"/>
-  <circle cx="1060" cy="290" r="100" fill="none" stroke="#E2001A" stroke-width="2" opacity="0.08"/>
+  <text x="60" y="120" font-family="Helvetica Neue,Arial,sans-serif" font-size="44" font-weight="900" fill="#111">Energiereep eten tijdens rit</text>
+  <text x="60" y="172" font-family="Helvetica Neue,Arial,sans-serif" font-size="22" fill="#555">Voedingstactiek groepsrit</text>
+  <text x="60" y="210" font-family="Helvetica Neue,Arial,sans-serif" font-size="15" fill="#999">Fietsvoeter.nl — 2026 — Onafhankelijk getest</text>
+  <text x="60" y="310" font-family="Helvetica Neue,Arial,sans-serif" font-size="17" fill="#333">Begin na 45 minuten — niet pas als je honger krijgt</text>
+  <circle cx="950" cy="310" r="200" fill="none" stroke="#E2001A" stroke-width="3" opacity="0.1"/>
+  <circle cx="950" cy="310" r="130" fill="none" stroke="#E2001A" stroke-width="2" opacity="0.08"/>
+  <circle cx="950" cy="310" r="70" fill="#E2001A" opacity="0.07"/>
+  <rect x="0" y="590" width="1200" height="40" fill="#E2001A" opacity="0.9"/>
+  <text x="62" y="617" font-family="Helvetica Neue,Arial,sans-serif" font-size="14" fill="white">fietsvoeter.nl</text>
+  <text x="600" y="617" font-family="Helvetica Neue,Arial,sans-serif" font-size="14" fill="white" text-anchor="middle">Onafhankelijk getest op eigen ritten in 2026</text>
 </svg>
