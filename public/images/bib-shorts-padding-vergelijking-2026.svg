@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#F7F7F7"/>
+  <rect x="0" y="0" width="8" height="630" fill="#E2001A"/>
+  <text x="60" y="110" font-family="Helvetica Neue,Arial,sans-serif" font-size="40" font-weight="900" fill="#111">Bib shorts padding</text>
+  <text x="60" y="158" font-family="Helvetica Neue,Arial,sans-serif" font-size="40" font-weight="900" fill="#E2001A">2026</text>
+  <text x="60" y="202" font-family="Helvetica Neue,Arial,sans-serif" font-size="19" fill="#555">Castelli vs Rapha vergelijking</text>
+  <text x="60" y="234" font-family="Helvetica Neue,Arial,sans-serif" font-size="15" fill="#999">Fietsvoeter.nl — Onafhankelijk getest</text>
+  <rect x="60" y="262" width="108" height="36" rx="4" fill="#E2001A"/>
+  <text x="114" y="286" font-family="Helvetica Neue,Arial,sans-serif" font-size="16" font-weight="700" fill="white" text-anchor="middle">Vergelijking</text>
+  <text x="60" y="346" font-family="Helvetica Neue,Arial,sans-serif" font-size="13" fill="#888">Castelli</text>
+  <text x="60" y="374" font-family="Helvetica Neue,Arial,sans-serif" font-size="26" font-weight="900" fill="#111">Progetto X2</text>
+  <text x="60" y="420" font-family="Helvetica Neue,Arial,sans-serif" font-size="13" fill="#888">Rapha</text>
+  <text x="60" y="448" font-family="Helvetica Neue,Arial,sans-serif" font-size="26" font-weight="900" fill="#111">Elastic IF</text>
+  
+  <ellipse cx="740" cy="320" rx="110" ry="140" fill="#E2001A" opacity="0.15" stroke="#E2001A" stroke-width="2"/>
+  <ellipse cx="740" cy="300" rx="70" ry="80" fill="#E2001A" opacity="0.25"/>
+  <ellipse cx="740" cy="290" rx="50" ry="55" fill="#E2001A" opacity="0.35"/>
+  <text x="740" y="296" font-family="Helvetica Neue,Arial,sans-serif" font-size="11" fill="#E2001A" text-anchor="middle" font-weight="700">Dunner</text>
+  <text x="740" y="312" font-family="Helvetica Neue,Arial,sans-serif" font-size="11" fill="#E2001A" text-anchor="middle">Aerodynamisch</text>
+  <text x="740" y="460" font-family="Helvetica Neue,Arial,sans-serif" font-size="13" fill="#888" text-anchor="middle">Castelli Progetto X2 Air</text>
+  <ellipse cx="1000" cy="320" rx="110" ry="140" fill="#333" opacity="0.1" stroke="#333" stroke-width="2"/>
+  <ellipse cx="1000" cy="310" rx="80" ry="100" fill="#333" opacity="0.12"/>
+  <ellipse cx="1000" cy="300" rx="55" ry="70" fill="#333" opacity="0.15"/>
+  <text x="1000" y="296" font-family="Helvetica Neue,Arial,sans-serif" font-size="11" fill="#333" text-anchor="middle" font-weight="700">Dikker</text>
+  <text x="1000" y="312" font-family="Helvetica Neue,Arial,sans-serif" font-size="11" fill="#333" text-anchor="middle">Ultra-lange ritten</text>
+  <text x="1000" y="460" font-family="Helvetica Neue,Arial,sans-serif" font-size="13" fill="#888" text-anchor="middle">Rapha Elastic Interface</text>
+  <line x1="870" y1="180" x2="870" y2="490" stroke="#ddd" stroke-width="1" stroke-dasharray="5,4"/>
+
+  <rect x="0" y="590" width="1200" height="40" fill="#E2001A" opacity="0.9"/>
+  <text x="62" y="617" font-family="Helvetica Neue,Arial,sans-serif" font-size="14" fill="white">fietsvoeter.nl</text>
+  <text x="600" y="617" font-family="Helvetica Neue,Arial,sans-serif" font-size="14" fill="white" text-anchor="middle">Onafhankelijk getest op eigen ritten</text>
+</svg>
