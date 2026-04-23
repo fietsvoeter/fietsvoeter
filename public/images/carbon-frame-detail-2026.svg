@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#F7F7F7"/>
+  <rect x="0" y="0" width="8" height="630" fill="#E2001A"/>
+  <text x="60" y="110" font-family="Helvetica Neue,Arial,sans-serif" font-size="40" font-weight="900" fill="#111">Carbon frame</text>
+  <text x="60" y="158" font-family="Helvetica Neue,Arial,sans-serif" font-size="40" font-weight="900" fill="#E2001A">2026</text>
+  <text x="60" y="202" font-family="Helvetica Neue,Arial,sans-serif" font-size="19" fill="#555">Koolstofvezel structuur</text>
+  <text x="60" y="234" font-family="Helvetica Neue,Arial,sans-serif" font-size="15" fill="#999">Fietsvoeter.nl — Onafhankelijk getest</text>
+  <rect x="60" y="262" width="108" height="36" rx="4" fill="#E2001A"/>
+  <text x="114" y="286" font-family="Helvetica Neue,Arial,sans-serif" font-size="16" font-weight="700" fill="white" text-anchor="middle">Materiaal</text>
+  <text x="60" y="346" font-family="Helvetica Neue,Arial,sans-serif" font-size="13" fill="#888">Gewicht</text>
+  <text x="60" y="374" font-family="Helvetica Neue,Arial,sans-serif" font-size="26" font-weight="900" fill="#111">400-700g lichter</text>
+  <text x="60" y="420" font-family="Helvetica Neue,Arial,sans-serif" font-size="13" fill="#888">Prijs</text>
+  <text x="60" y="448" font-family="Helvetica Neue,Arial,sans-serif" font-size="26" font-weight="900" fill="#111">€800-1500 meer</text>
+  
+  <rect x="640" y="180" width="500" height="280" rx="6" fill="#1a1a1a"/>
+  <rect x="655" y="195" width="470" height="250" rx="4" fill="#111"/>
+  <line x1="655" y1="220" x2="1125" y2="220" stroke="#222" stroke-width="1"/>
+  <line x1="655" y1="245" x2="1125" y2="245" stroke="#222" stroke-width="1"/>
+  <line x1="655" y1="270" x2="1125" y2="270" stroke="#222" stroke-width="1"/>
+  <line x1="655" y1="295" x2="1125" y2="295" stroke="#222" stroke-width="1"/>
+  <line x1="655" y1="320" x2="1125" y2="320" stroke="#222" stroke-width="1"/>
+  <line x1="655" y1="345" x2="1125" y2="345" stroke="#222" stroke-width="1"/>
+  <line x1="655" y1="370" x2="1125" y2="370" stroke="#222" stroke-width="1"/>
+  <line x1="655" y1="395" x2="1125" y2="395" stroke="#222" stroke-width="1"/>
+  <line x1="680" y1="195" x2="680" y2="445" stroke="#222" stroke-width="1"/>
+  <line x1="705" y1="195" x2="705" y2="445" stroke="#222" stroke-width="1"/>
+  <line x1="730" y1="195" x2="730" y2="445" stroke="#222" stroke-width="1"/>
+  <line x1="755" y1="195" x2="755" y2="445" stroke="#222" stroke-width="1"/>
+  <line x1="668" y1="195" x2="718" y2="445" stroke="#E2001A" stroke-width="1.5" opacity="0.6"/>
+  <line x1="693" y1="195" x2="743" y2="445" stroke="#E2001A" stroke-width="1.5" opacity="0.6"/>
+  <line x1="718" y1="195" x2="768" y2="445" stroke="#E2001A" stroke-width="1.5" opacity="0.6"/>
+  <line x1="743" y1="195" x2="793" y2="445" stroke="#E2001A" stroke-width="1.5" opacity="0.6"/>
+  <line x1="668" y1="445" x2="718" y2="195" stroke="#E2001A" stroke-width="1.5" opacity="0.4"/>
+  <line x1="693" y1="445" x2="743" y2="195" stroke="#E2001A" stroke-width="1.5" opacity="0.4"/>
+  <rect x="820" y="210" width="290" height="210" rx="4" fill="#1a1a1a"/>
+  <text x="965" y="270" font-family="Helvetica Neue,Arial,sans-serif" font-size="22" font-weight="700" fill="white" text-anchor="middle">Koolstofvezel</text>
+  <text x="965" y="300" font-family="Helvetica Neue,Arial,sans-serif" font-size="14" fill="#888" text-anchor="middle">Georiënteerde vezels</text>
+  <text x="965" y="330" font-family="Helvetica Neue,Arial,sans-serif" font-size="14" fill="#E2001A" text-anchor="middle">Stijf waar nodig</text>
+  <text x="965" y="355" font-family="Helvetica Neue,Arial,sans-serif" font-size="14" fill="#E2001A" text-anchor="middle">Flexibel voor comfort</text>
+  <text x="900" y="540" font-family="Helvetica Neue,Arial,sans-serif" font-size="13" fill="#888" text-anchor="middle">Carbon vezelstructuur — unidirectioneel en woven</text>
+
+  <rect x="0" y="590" width="1200" height="40" fill="#E2001A" opacity="0.9"/>
+  <text x="62" y="617" font-family="Helvetica Neue,Arial,sans-serif" font-size="14" fill="white">fietsvoeter.nl</text>
+  <text x="600" y="617" font-family="Helvetica Neue,Arial,sans-serif" font-size="14" fill="white" text-anchor="middle">Onafhankelijk getest op eigen ritten</text>
+</svg>
