@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#F7F7F7"/>
+  <rect x="0" y="0" width="8" height="630" fill="#E2001A"/>
+  <text x="60" y="110" font-family="Helvetica Neue,Arial,sans-serif" font-size="40" font-weight="900" fill="#111">Trail rijden</text>
+  <text x="60" y="158" font-family="Helvetica Neue,Arial,sans-serif" font-size="40" font-weight="900" fill="#E2001A">2026</text>
+  <text x="60" y="202" font-family="Helvetica Neue,Arial,sans-serif" font-size="19" fill="#555">Posbank — wortels en technisch</text>
+  <text x="60" y="234" font-family="Helvetica Neue,Arial,sans-serif" font-size="15" fill="#999">Fietsvoeter.nl — Onafhankelijk getest</text>
+  <rect x="60" y="262" width="108" height="36" rx="4" fill="#E2001A"/>
+  <text x="114" y="286" font-family="Helvetica Neue,Arial,sans-serif" font-size="16" font-weight="700" fill="white" text-anchor="middle">Test locatie</text>
+  <text x="60" y="346" font-family="Helvetica Neue,Arial,sans-serif" font-size="13" fill="#888">Terrein</text>
+  <text x="60" y="374" font-family="Helvetica Neue,Arial,sans-serif" font-size="26" font-weight="900" fill="#111">Trail / roots</text>
+  <text x="60" y="420" font-family="Helvetica Neue,Arial,sans-serif" font-size="13" fill="#888">Niveau</text>
+  <text x="60" y="448" font-family="Helvetica Neue,Arial,sans-serif" font-size="26" font-weight="900" fill="#111">Gemiddeld</text>
+  
+  <rect x="620" y="160" width="560" height="380" fill="#2d5a1b" rx="4"/>
+  <path d="M620 440 Q750 400 900 420 Q1050 440 1180 410 L1180 540 L620 540 Z" fill="#1a3a0a"/>
+  <path d="M620 480 Q750 450 920 470 Q1080 490 1180 460 L1180 540 L620 540 Z" fill="#0d2005"/>
+  <path d="M700 440 Q720 380 780 390 Q800 350 760 320 Q800 310 820 360 Q870 340 850 390 Q910 380 900 440" fill="none" stroke="#5a3a1a" stroke-width="6" stroke-linecap="round"/>
+  <path d="M900 450 Q940 390 980 400 Q1000 360 970 330 Q1010 325 1020 370 Q1060 355 1040 410" fill="none" stroke="#5a3a1a" stroke-width="5" stroke-linecap="round"/>
+  <ellipse cx="800" cy="470" rx="30" ry="15" fill="#888" opacity="0.8"/>
+  <ellipse cx="950" cy="455" rx="25" ry="12" fill="#777" opacity="0.7"/>
+  <ellipse cx="1050" cy="475" rx="20" ry="10" fill="#888" opacity="0.6"/>
+  <text x="900" y="590" font-family="Helvetica Neue,Arial,sans-serif" font-size="13" fill="#888" text-anchor="middle">Posbank bij Rheden — meest gevarieerde testlocatie NL</text>
+
+  <rect x="0" y="590" width="1200" height="40" fill="#E2001A" opacity="0.9"/>
+  <text x="62" y="617" font-family="Helvetica Neue,Arial,sans-serif" font-size="14" fill="white">fietsvoeter.nl</text>
+  <text x="600" y="617" font-family="Helvetica Neue,Arial,sans-serif" font-size="14" fill="white" text-anchor="middle">Onafhankelijk getest op eigen ritten</text>
+</svg>
