@@ -29,6 +29,8 @@ published: true
 
 <Disclaimer />
 
+<GeoBlock region="Nederland — indoor training winter" text="In de Nederlandse winter is indoor training op een smart trainer ideaal voor nauwkeurige FTP-tests. Geen wind, geen verkeer, perfecte gecontroleerde omstandigheden voor betrouwbare metingen." />
+
 <UpdateBadge date="april 2026" changes="Ramp test protocol bijgewerkt. Trainingszones aangepast aan nieuwste wetenschappelijke inzichten. Calculator herzien." />
 
 Als je serieus aan wielrennen doet en echt sterker wilt worden, ontkom je er niet aan: **de FTP-test**. Functional Threshold Power — het gemiddelde wattage dat je één uur lang vol kunt houden — is de basis van alle effectieve vermogenstraining. Zonder FTP train je op gevoel. Met FTP train je op data.
@@ -64,6 +66,10 @@ Ja, voor een nauwkeurige FTP-test heb je een **vermogensmeter** nodig. Dat kan z
 De meest populaire instap-vermogensmeter voor Nederlandse wielrenners is de **Favero Assioma DUO** — pedaal-gebaseerd, eenvoudig te wisselen tussen fietsen en nauwkeurig tot ±1%.
 
 <BolBtn search="favero assioma duo vermogensmeter pedaal" label="Favero Assioma DUO vermogensmeter" />
+<BolBtn search="favero assioma uno vermogensmeter enkel" label="Favero Assioma UNO — instap vermogensmeter" />
+<BolBtn search="garmin hrm pro hartslagmeter borstband" label="Garmin HRM Pro hartslagmeter" />
+<BolBtn search="wahoo kickr snap indoor trainer" label="Wahoo KICKR Snap indoor trainer" />
+<BolBtn search="elite direto indoor fietstrainer" label="Elite Direto smart trainer" />
 
 Je vermogensmeter koppel je vervolgens aan je fietscomputer om de data te zien tijdens de test:
 
@@ -165,6 +171,21 @@ Bij een FTP van 285W:
 
 Voer de test altijd na een **herstelweek** — nooit na een zware trainingsblok.
 
+## Trainingszones op basis van FTP
+
+<CompareTable
+  headers={["Zone", "Naam", "% van FTP", "Gevoel", "Gebruik"]}
+  rows={[
+    ["Z1", "Actief herstel", "< 55%", "Zeer makkelijk", "Herstelritten"],
+    ["Z2", "Uithoudingsvermogen", "55-75%", "Comfortabel", "Lange duurtraining"],
+    ["Z3", "Tempo", "76-90%", "Geconcentreerd", "Tempotraining"],
+    ["Z4", "Drempelzone", "91-105%", "Zwaar", "FTP-intervallen"],
+    ["Z5", "VO2max", "106-120%", "Zeer zwaar", "Korte intervallen"],
+    ["Z6", "Anaëroob", "121-150%", "Explosief", "Sprint-intervallen"],
+    ["Z7", "Neuromusculair", "> 150%", "Maximaal", "Sprints"],
+  ]}
+/>
+
 <FAQ items={[
   {
     question: "Wat is een goede FTP voor een amateur-wielrenner?",
@@ -183,6 +204,12 @@ Voer de test altijd na een **herstelweek** — nooit na een zware trainingsblok.
     answer: "FTP is het vermogen dat je uur lang kunt volhouden — een aërobe drempelwaarde. VO2max is je maximale zuurstofopname-capaciteit en bepaalt je absolute plafond. Beide zijn traineerbaar, maar FTP reageert sneller op training dan VO2max."
   }
 ]} />
+
+<PostImage
+  src="/images/ftp-zones-grafiek-2026.svg"
+  alt="FTP trainingszones grafiek zone 1 tot 7 — vermogenstraining wielrennen zones berekenen 2026 Fietsvoeter.nl"
+  caption="De zeven FTP-trainingszones. Zone 2 bouw je basisuithoudingsvermogen, Zone 4 verhoogt je drempelvermogen het meest direct."
+/>
 
 <RelatedLinks pairs={[
   { slug: "beste-fietscomputer", label: "Beste fietscomputer 2026" },
