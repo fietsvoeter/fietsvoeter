@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#F7F7F7"/>
+  <rect x="0" y="0" width="8" height="630" fill="#E2001A"/>
+  <text x="60" y="110" font-family="Helvetica Neue,Arial,sans-serif" font-size="40" font-weight="900" fill="#111">Beste speed pedelec</text>
+  <text x="60" y="158" font-family="Helvetica Neue,Arial,sans-serif" font-size="40" font-weight="900" fill="#E2001A">2026</text>
+  <text x="60" y="202" font-family="Helvetica Neue,Arial,sans-serif" font-size="19" fill="#555">Top 5 getest op actieradius</text>
+  <text x="60" y="234" font-family="Helvetica Neue,Arial,sans-serif" font-size="15" fill="#999">Fietsvoeter.nl — Onafhankelijk getest</text>
+  <rect x="60" y="262" width="108" height="36" rx="4" fill="#E2001A"/>
+  <text x="114" y="286" font-family="Helvetica Neue,Arial,sans-serif" font-size="16" font-weight="700" fill="white" text-anchor="middle">9.0/10</text>
+  <text x="60" y="346" font-family="Helvetica Neue,Arial,sans-serif" font-size="13" fill="#888">Motor</text>
+  <text x="60" y="374" font-family="Helvetica Neue,Arial,sans-serif" font-size="26" font-weight="900" fill="#111">Bosch CX</text>
+  <text x="60" y="420" font-family="Helvetica Neue,Arial,sans-serif" font-size="13" fill="#888">Accu</text>
+  <text x="60" y="448" font-family="Helvetica Neue,Arial,sans-serif" font-size="26" font-weight="900" fill="#111">500Wh</text>
+  
+  <ellipse cx="860" cy="340" rx="130" ry="130" fill="none" stroke="#333" stroke-width="10"/>
+  <ellipse cx="860" cy="340" rx="8" fill="#333"/>
+  <ellipse cx="860" cy="340" rx="100" fill="none" stroke="#999" stroke-width="2" stroke-dasharray="5,4"/>
+  <line x1="760" y1="340" x2="800" y2="260" stroke="#888" stroke-width="4"/>
+  <line x1="760" y1="340" x2="800" y2="420" stroke="#888" stroke-width="4"/>
+  <line x1="960" y1="340" x2="920" y2="260" stroke="#888" stroke-width="4"/>
+  <line x1="960" y1="340" x2="920" y2="420" stroke="#888" stroke-width="4"/>
+  <line x1="860" y1="210" x2="860" y2="340" stroke="#888" stroke-width="4"/>
+  <line x1="860" y1="470" x2="860" y2="340" stroke="#888" stroke-width="4"/>
+  <ellipse cx="1070" cy="340" rx="130" ry="130" fill="none" stroke="#333" stroke-width="10"/>
+  <ellipse cx="1070" cy="340" rx="8" fill="#333"/>
+  <line x1="860" y1="210" x2="1000" y2="190" stroke="#E2001A" stroke-width="8" stroke-linecap="round"/>
+  <line x1="1000" y1="190" x2="1070" y2="210" stroke="#E2001A" stroke-width="8" stroke-linecap="round"/>
+  <line x1="970" y1="200" x2="960" y2="340" stroke="#E2001A" stroke-width="7" stroke-linecap="round"/>
+  <line x1="960" y1="340" x2="860" y2="340" stroke="#E2001A" stroke-width="7" stroke-linecap="round"/>
+  <line x1="960" y1="340" x2="1070" y2="340" stroke="#E2001A" stroke-width="7" stroke-linecap="round"/>
+  <rect x="950" y="168" width="80" height="26" rx="4" fill="#222"/>
+  <rect x="930" y="290" width="60" height="42" rx="4" fill="#E2001A" opacity="0.9"/>
+  <text x="960" y="317" font-family="Helvetica Neue,Arial,sans-serif" font-size="12" fill="white" text-anchor="middle">Motor</text>
+  <text x="700" y="490" font-family="Helvetica Neue,Arial,sans-serif" font-size="13" fill="#888" text-anchor="middle">Gazelle Ultimate C380 — 45km/u ondersteuning</text>
+
+  <rect x="0" y="590" width="1200" height="40" fill="#E2001A" opacity="0.9"/>
+  <text x="62" y="617" font-family="Helvetica Neue,Arial,sans-serif" font-size="14" fill="white">fietsvoeter.nl</text>
+  <text x="600" y="617" font-family="Helvetica Neue,Arial,sans-serif" font-size="14" fill="white" text-anchor="middle">Onafhankelijk getest op eigen ritten</text>
+</svg>
