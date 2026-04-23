@@ -1,11 +1,30 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
   <rect width="1200" height="630" fill="#F7F7F7"/>
   <rect x="0" y="0" width="8" height="630" fill="#E2001A"/>
-  <rect x="0" y="580" width="1200" height="50" fill="#E2001A" opacity="0.9"/>
-  <text x="60" y="240" font-family="Helvetica Neue,Helvetica,Arial,sans-serif" font-size="52" font-weight="900" fill="#111111">Fietsbril lens vergelijking</text>
-  <text x="60" y="310" font-family="Helvetica Neue,Helvetica,Arial,sans-serif" font-size="30" fill="#555">Oakley vs Rudy Project</text>
-  <text x="60" y="370" font-family="Helvetica Neue,Helvetica,Arial,sans-serif" font-size="20" fill="#999">Fietsvoeter.nl &#x2014; 2026 &#x2014; Onafhankelijk getest</text>
-  <text x="62" y="616" font-family="Helvetica Neue,Helvetica,Arial,sans-serif" font-size="14" fill="#fff">fietsvoeter.nl</text>
-  <circle cx="1060" cy="290" r="160" fill="none" stroke="#E2001A" stroke-width="3" opacity="0.12"/>
-  <circle cx="1060" cy="290" r="100" fill="none" stroke="#E2001A" stroke-width="2" opacity="0.08"/>
+  <text x="60" y="110" font-family="Helvetica Neue,Arial,sans-serif" font-size="40" font-weight="900" fill="#111">Fietsbril lens</text>
+  <text x="60" y="158" font-family="Helvetica Neue,Arial,sans-serif" font-size="40" font-weight="900" fill="#E2001A">2026</text>
+  <text x="60" y="202" font-family="Helvetica Neue,Arial,sans-serif" font-size="19" fill="#555">Oakley Prizm vs fotochromisch</text>
+  <text x="60" y="234" font-family="Helvetica Neue,Arial,sans-serif" font-size="15" fill="#999">Fietsvoeter.nl — Onafhankelijk getest</text>
+  <rect x="60" y="262" width="108" height="36" rx="4" fill="#E2001A"/>
+  <text x="114" y="286" font-family="Helvetica Neue,Arial,sans-serif" font-size="16" font-weight="700" fill="white" text-anchor="middle">Vergelijking</text>
+  <text x="60" y="346" font-family="Helvetica Neue,Arial,sans-serif" font-size="13" fill="#888">Oakley</text>
+  <text x="60" y="374" font-family="Helvetica Neue,Arial,sans-serif" font-size="26" font-weight="900" fill="#111">Prizm Road</text>
+  <text x="60" y="420" font-family="Helvetica Neue,Arial,sans-serif" font-size="13" fill="#888">Rudy</text>
+  <text x="60" y="448" font-family="Helvetica Neue,Arial,sans-serif" font-size="26" font-weight="900" fill="#111">ImpactX 2</text>
+  
+  <rect x="640" y="200" width="220" height="120" rx="60" fill="rgba(180,80,40,0.45)"/>
+  <ellipse cx="750" cy="245" rx="80" ry="35" fill="rgba(255,140,60,0.25)"/>
+  <text x="750" y="360" font-family="Helvetica Neue,Arial,sans-serif" font-size="13" fill="#888" text-anchor="middle">Prizm Road</text>
+  <text x="750" y="380" font-family="Helvetica Neue,Arial,sans-serif" font-size="11" fill="#aaa" text-anchor="middle">Optimaal asfalt contrast</text>
+  <rect x="900" y="200" width="220" height="120" rx="60" fill="rgba(60,90,140,0.55)"/>
+  <ellipse cx="1010" cy="245" rx="80" ry="35" fill="rgba(100,140,200,0.2)"/>
+  <text x="1010" y="360" font-family="Helvetica Neue,Arial,sans-serif" font-size="13" fill="#888" text-anchor="middle">ImpactX Fotochromisch</text>
+  <text x="1010" y="380" font-family="Helvetica Neue,Arial,sans-serif" font-size="11" fill="#aaa" text-anchor="middle">Cat 1-3 automatisch</text>
+  <line x1="880" y1="180" x2="880" y2="420" stroke="#ddd" stroke-width="2" stroke-dasharray="6,4"/>
+  <text x="880" y="450" font-family="Helvetica Neue,Arial,sans-serif" font-size="13" fill="#999" text-anchor="middle">VS</text>
+  <text x="880" y="530" font-family="Helvetica Neue,Arial,sans-serif" font-size="13" fill="#888" text-anchor="middle">Beide bieden UV400 bescherming</text>
+
+  <rect x="0" y="590" width="1200" height="40" fill="#E2001A" opacity="0.9"/>
+  <text x="62" y="617" font-family="Helvetica Neue,Arial,sans-serif" font-size="14" fill="white">fietsvoeter.nl</text>
+  <text x="600" y="617" font-family="Helvetica Neue,Arial,sans-serif" font-size="14" fill="white" text-anchor="middle">Onafhankelijk getest op eigen ritten</text>
 </svg>
