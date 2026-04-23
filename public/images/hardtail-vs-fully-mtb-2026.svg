@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#F7F7F7"/>
+  <rect x="0" y="0" width="8" height="630" fill="#E2001A"/>
+  <text x="60" y="110" font-family="Helvetica Neue,Arial,sans-serif" font-size="40" font-weight="900" fill="#111">Hardtail vs Fully MTB</text>
+  <text x="60" y="158" font-family="Helvetica Neue,Arial,sans-serif" font-size="40" font-weight="900" fill="#E2001A">2026</text>
+  <text x="60" y="202" font-family="Helvetica Neue,Arial,sans-serif" font-size="19" fill="#555">Veringssysteem vergelijking 2026</text>
+  <text x="60" y="234" font-family="Helvetica Neue,Arial,sans-serif" font-size="15" fill="#999">Fietsvoeter.nl — Onafhankelijk getest</text>
+  <rect x="60" y="262" width="108" height="36" rx="4" fill="#E2001A"/>
+  <text x="114" y="286" font-family="Helvetica Neue,Arial,sans-serif" font-size="16" font-weight="700" fill="white" text-anchor="middle">Vergelijking</text>
+  <text x="60" y="346" font-family="Helvetica Neue,Arial,sans-serif" font-size="13" fill="#888">Hardtail</text>
+  <text x="60" y="374" font-family="Helvetica Neue,Arial,sans-serif" font-size="26" font-weight="900" fill="#111">Lichter + goedkoper</text>
+  <text x="60" y="420" font-family="Helvetica Neue,Arial,sans-serif" font-size="13" fill="#888">Fully</text>
+  <text x="60" y="448" font-family="Helvetica Neue,Arial,sans-serif" font-size="26" font-weight="900" fill="#111">Meer comfort</text>
+  
+  <line x1="640" y1="230" x2="800" y2="200" stroke="#E2001A" stroke-width="7" stroke-linecap="round"/>
+  <line x1="800" y1="200" x2="850" y2="340" stroke="#E2001A" stroke-width="7" stroke-linecap="round"/>
+  <line x1="850" y1="340" x2="680" y2="340" stroke="#E2001A" stroke-width="7" stroke-linecap="round"/>
+  <line x1="850" y1="340" x2="960" y2="340" stroke="#E2001A" stroke-width="7" stroke-linecap="round"/>
+  <circle cx="680" cy="340" r="80" fill="none" stroke="#E2001A" stroke-width="8"/>
+  <circle cx="680" cy="340" r="5" fill="#E2001A"/>
+  <circle cx="960" cy="340" r="80" fill="none" stroke="#E2001A" stroke-width="8"/>
+  <circle cx="960" cy="340" r="5" fill="#E2001A"/>
+  <path d="M755 295 Q775 265 795 290" fill="none" stroke="#888" stroke-width="5" stroke-linecap="round"/>
+  <text x="780" y="540" font-family="Helvetica Neue,Arial,sans-serif" font-size="13" fill="#888" text-anchor="middle">Hardtail — geen achtervering</text>
+  <line x1="980" y1="230" x2="1120" y2="200" stroke="#666" stroke-width="7" stroke-linecap="round"/>
+  <line x1="1120" y1="200" x2="1160" y2="340" stroke="#666" stroke-width="7" stroke-linecap="round"/>
+  <line x1="1055" y1="340" x2="910" y2="340" stroke="#666" stroke-width="7" stroke-linecap="round"/>
+  <line x1="1055" y1="340" x2="1160" y2="340" stroke="#666" stroke-width="7" stroke-linecap="round"/>
+  <circle cx="910" cy="340" r="80" fill="none" stroke="#666" stroke-width="8"/>
+  <circle cx="910" cy="340" r="5" fill="#666"/>
+  <circle cx="1160" cy="340" r="80" fill="none" stroke="#666" stroke-width="8"/>
+  <circle cx="1160" cy="340" r="5" fill="#666"/>
+  <path d="M1100 295 Q1120 255 1140 290" fill="none" stroke="#888" stroke-width="5" stroke-linecap="round"/>
+  <rect x="1055" y="290" width="14" height="50" rx="7" fill="#888"/>
+  <ellipse cx="1062" cy="275" rx="14" ry="20" fill="none" stroke="#666" stroke-width="3"/>
+  <text x="1070" y="540" font-family="Helvetica Neue,Arial,sans-serif" font-size="13" fill="#888" text-anchor="middle">Fully — met achtervering (demper)</text>
+
+  <rect x="0" y="590" width="1200" height="40" fill="#E2001A" opacity="0.9"/>
+  <text x="62" y="617" font-family="Helvetica Neue,Arial,sans-serif" font-size="14" fill="white">fietsvoeter.nl</text>
+  <text x="600" y="617" font-family="Helvetica Neue,Arial,sans-serif" font-size="14" fill="white" text-anchor="middle">Onafhankelijk getest op eigen ritten</text>
+</svg>
