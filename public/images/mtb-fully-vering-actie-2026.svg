@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#F7F7F7"/>
+  <rect x="0" y="0" width="8" height="630" fill="#E2001A"/>
+  <text x="60" y="110" font-family="Helvetica Neue,Arial,sans-serif" font-size="40" font-weight="900" fill="#111">Fully MTB vering</text>
+  <text x="60" y="158" font-family="Helvetica Neue,Arial,sans-serif" font-size="40" font-weight="900" fill="#E2001A">2026</text>
+  <text x="60" y="202" font-family="Helvetica Neue,Arial,sans-serif" font-size="19" fill="#555">Achtervering tractie in actie</text>
+  <text x="60" y="234" font-family="Helvetica Neue,Arial,sans-serif" font-size="15" fill="#999">Fietsvoeter.nl — Onafhankelijk getest</text>
+  <rect x="60" y="262" width="108" height="36" rx="4" fill="#E2001A"/>
+  <text x="114" y="286" font-family="Helvetica Neue,Arial,sans-serif" font-size="16" font-weight="700" fill="white" text-anchor="middle">Voordeel</text>
+  <text x="60" y="346" font-family="Helvetica Neue,Arial,sans-serif" font-size="13" fill="#888">Tractie</text>
+  <text x="60" y="374" font-family="Helvetica Neue,Arial,sans-serif" font-size="26" font-weight="900" fill="#111">Maximaal</text>
+  <text x="60" y="420" font-family="Helvetica Neue,Arial,sans-serif" font-size="13" fill="#888">Comfort</text>
+  <text x="60" y="448" font-family="Helvetica Neue,Arial,sans-serif" font-size="26" font-weight="900" fill="#111">Significant beter</text>
+  
+  <rect x="630" y="200" width="540" height="280" rx="6" fill="#1a1a1a"/>
+  <path d="M630 420 Q760 380 940 400 Q1080 415 1170 395 L1170 480 L630 480 Z" fill="#111"/>
+  <path d="M700 400 Q730 360 800 370 Q780 330 750 310 Q800 300 820 340 Q860 320 840 370 Q890 360 870 400" fill="none" stroke="#3a2a0a" stroke-width="6" stroke-linecap="round"/>
+  <ellipse cx="810" cy="415" rx="28" ry="14" fill="#555" opacity="0.7"/>
+  <ellipse cx="980" cy="405" rx="22" ry="11" fill="#444" opacity="0.6"/>
+  <path d="M940 380 Q960 340 980 380" fill="none" stroke="#E2001A" stroke-width="4" stroke-linecap="round"/>
+  <line x1="960" y1="380" x2="960" y2="340" stroke="#E2001A" stroke-width="4" stroke-linecap="round"/>
+  <ellipse cx="960" cy="328" rx="12" ry="18" fill="none" stroke="#E2001A" stroke-width="3"/>
+  <text x="960" y="310" font-family="Helvetica Neue,Arial,sans-serif" font-size="11" fill="#E2001A" text-anchor="middle">Demper</text>
+  <path d="M750" fill="none"/>
+  <text x="900" y="540" font-family="Helvetica Neue,Arial,sans-serif" font-size="13" fill="#888" text-anchor="middle">Fully MTB achtervering absorbeert wortels en stenen</text>
+
+  <rect x="0" y="590" width="1200" height="40" fill="#E2001A" opacity="0.9"/>
+  <text x="62" y="617" font-family="Helvetica Neue,Arial,sans-serif" font-size="14" fill="white">fietsvoeter.nl</text>
+  <text x="600" y="617" font-family="Helvetica Neue,Arial,sans-serif" font-size="14" fill="white" text-anchor="middle">Onafhankelijk getest op eigen ritten</text>
+</svg>
