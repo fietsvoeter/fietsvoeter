@@ -36,7 +36,7 @@ jobs:
           git config --local user.email "affiliate-bot@fietsvoeter.nl"
           git config --local user.name "Fietsvoeter Affiliate Bot"
           git add content/blog/*.mdx scripts/affiliate-cache.json
-          git diff --staged --quiet && echo "Geen wijzigingen" && exit 0
+          git diff --staged --quiet && echo "Geen wijzigingen — klaar" && exit 0
           git commit -m "Auto: bol.com affiliate links bijgewerkt [skip ci]"
           git pull --rebase origin main
-          git push origin main
+          git push --force-with-lease origin main
