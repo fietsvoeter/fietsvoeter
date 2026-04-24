@@ -1,11 +1,7 @@
 'use client'
 import Link from 'next/link'
-import { YEAR } from '@/lib/mdx'
-import { bolLink, PARTNER_ID } from '@/lib/categories'
+import { bolLink, PARTNER_ID, YEAR } from '@/lib/categories'
 
-// ─── BolBtn ─────────────────────────────────────────────────────────────────
-// url prop wordt ingevuld door de GitHub Action via de Marketing API
-// Als url ontbreekt (nieuwe blog nog niet verwerkt): fallback naar zoeklink
 export function BolBtn({
   search,
   label,
@@ -34,7 +30,6 @@ export function BolBtn({
   )
 }
 
-// ─── Disclaimer ─────────────────────────────────────────────────────────────
 export function Disclaimer() {
   return (
     <div className="disclaimer">
@@ -45,7 +40,6 @@ export function Disclaimer() {
   )
 }
 
-// ─── UpdateBadge ─────────────────────────────────────────────────────────────
 export function UpdateBadge({ date, changes }: { date: string; changes: string }) {
   return (
     <div className="update-badge">
@@ -54,7 +48,6 @@ export function UpdateBadge({ date, changes }: { date: string; changes: string }
   )
 }
 
-// ─── GeoBlock ────────────────────────────────────────────────────────────────
 export function GeoBlock({ region, text }: { region: string; text: string }) {
   return (
     <div className="geo-block">
@@ -63,11 +56,8 @@ export function GeoBlock({ region, text }: { region: string; text: string }) {
   )
 }
 
-// ─── ExpertQuote ─────────────────────────────────────────────────────────────
 export function ExpertQuote({ quote, name, role }: {
-  quote: string
-  name: string
-  role: string
+  quote: string; name: string; role: string
 }) {
   return (
     <blockquote className="expert-quote">
@@ -77,7 +67,6 @@ export function ExpertQuote({ quote, name, role }: {
   )
 }
 
-// ─── FAQ ─────────────────────────────────────────────────────────────────────
 export function FAQ({ items }: { items?: { question: string; answer: string }[] }) {
   if (!items || !Array.isArray(items)) return null
   return (
@@ -93,16 +82,12 @@ export function FAQ({ items }: { items?: { question: string; answer: string }[] 
   )
 }
 
-// ─── Score ───────────────────────────────────────────────────────────────────
 export function Score({ value }: { value: number }) {
   return <span className="score-badge">{value}/10</span>
 }
 
-// ─── CompareTable ─────────────────────────────────────────────────────────────
 export function CompareTable({
-  headers,
-  rows,
-  scoreCol,
+  headers, rows, scoreCol,
 }: {
   headers?: string[]
   rows?: (string | number)[][]
@@ -113,17 +98,13 @@ export function CompareTable({
     <div className="compare-table-wrap">
       <table className="compare-table">
         <thead>
-          <tr>
-            {headers.map((h, i) => <th key={i}>{h}</th>)}
-          </tr>
+          <tr>{headers.map((h, i) => <th key={i}>{h}</th>)}</tr>
         </thead>
         <tbody>
           {rows.map((row, i) => (
             <tr key={i}>
               {Array.isArray(row) && row.map((cell, j) => (
-                <td key={j} className={j === scoreCol ? 'font-bold' : ''}>
-                  {cell}
-                </td>
+                <td key={j} className={j === scoreCol ? 'font-bold' : ''}>{cell}</td>
               ))}
             </tr>
           ))}
@@ -133,7 +114,6 @@ export function CompareTable({
   )
 }
 
-// ─── RelatedLinks ─────────────────────────────────────────────────────────────
 export function RelatedLinks({ pairs }: { pairs?: { slug: string; label: string }[] }) {
   if (!Array.isArray(pairs)) return null
   return (
@@ -142,10 +122,7 @@ export function RelatedLinks({ pairs }: { pairs?: { slug: string; label: string 
       {pairs.map(({ slug, label }, i) => (
         <span key={slug}>
           {i > 0 && ' · '}
-          <Link
-            href={`/blog/${slug}/`}
-            className="text-brand-red font-medium no-underline hover:underline"
-          >
+          <Link href={`/blog/${slug}/`} className="text-brand-red font-medium no-underline hover:underline">
             {label}
           </Link>
         </span>
@@ -154,39 +131,22 @@ export function RelatedLinks({ pairs }: { pairs?: { slug: string; label: string 
   )
 }
 
-// ─── PostImage ────────────────────────────────────────────────────────────────
 export function PostImage({
-  src,
-  alt,
-  caption,
-  width = 1200,
-  height = 630,
+  src, alt, caption, width = 1200, height = 630,
 }: {
-  src: string
-  alt: string
-  caption?: string
-  width?: number
-  height?: number
+  src: string; alt: string; caption?: string; width?: number; height?: number
 }) {
   if (!src) return null
   return (
     <figure className="my-7">
       <img
-        src={src}
-        alt={alt || ''}
-        title={alt || ''}
-        width={width}
-        height={height}
-        loading="lazy"
-        decoding="async"
+        src={src} alt={alt || ''} title={alt || ''}
+        width={width} height={height}
+        loading="lazy" decoding="async"
         className="w-full h-auto rounded-md"
         style={{ aspectRatio: `${width}/${height}` }}
       />
-      {caption && (
-        <figcaption className="text-xs text-gray-400 mt-2 italic">
-          {caption}
-        </figcaption>
-      )}
+      {caption && <figcaption className="text-xs text-gray-400 mt-2 italic">{caption}</figcaption>}
     </figure>
   )
 }
