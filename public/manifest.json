@@ -1,0 +1,15 @@
+{
+  "name": "Fietsvoeter.nl",
+  "short_name": "Fietsvoeter",
+  "description": "Eerlijke fietsreviews voor Nederland",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#ffffff",
+  "theme_color": "#E2001A",
+  "lang": "nl",
+  "icons": [
+    { "src": "/favicon-32.png", "sizes": "32x32", "type": "image/png" },
+    { "src": "/favicon-64.png", "sizes": "64x64", "type": "image/png" },
+    { "src": "/apple-touch-icon.png", "sizes": "180x180", "type": "image/png" }
+  ]
+}
