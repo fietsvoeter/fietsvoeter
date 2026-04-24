@@ -1,31 +1,23 @@
 'use client'
 import Link from 'next/link'
-import { bolLink, PARTNER_ID, YEAR } from '@/lib/categories'
+
+const PARTNER_ID = '1361557'
+const YEAR = new Date().getFullYear()
+
+function bolLink(search: string, partnerId = PARTNER_ID): string {
+  const productUrl = `https://www.bol.com/nl/nl/s/?searchtext=${encodeURIComponent(search)}`
+  return `https://partner.bol.com/click/click?p=2&t=url&s=${partnerId}&f=TXL&url=${encodeURIComponent(productUrl)}`
+}
 
 export function BolBtn({
-  search,
-  label,
-  url,
-  partner = PARTNER_ID,
+  search, label, url, partner = PARTNER_ID,
 }: {
-  search: string
-  label: string
-  url?: string
-  partner?: string
+  search: string; label: string; url?: string; partner?: string
 }) {
-  const href = url && url.startsWith('https://partner.bol.com')
-    ? url
-    : bolLink(search, partner)
-
+  const href = url && url.startsWith('https://partner.bol.com') ? url : bolLink(search, partner)
   return (
-    <a
-      href={href}
-      target="_blank"
-      rel="noopener sponsored nofollow"
-      className="bol-btn"
-    >
-      <span className="bol-dot">●</span>
-      {label} op bol.com
+    <a href={href} target="_blank" rel="noopener sponsored nofollow" className="bol-btn">
+      <span className="bol-dot">●</span>{label} op bol.com
     </a>
   )
 }
@@ -41,24 +33,14 @@ export function Disclaimer() {
 }
 
 export function UpdateBadge({ date, changes }: { date: string; changes: string }) {
-  return (
-    <div className="update-badge">
-      <strong>🔄 Bijgewerkt {date}:</strong> {changes}
-    </div>
-  )
+  return <div className="update-badge"><strong>🔄 Bijgewerkt {date}:</strong> {changes}</div>
 }
 
 export function GeoBlock({ region, text }: { region: string; text: string }) {
-  return (
-    <div className="geo-block">
-      <strong>📍 In {region}?</strong> {text}
-    </div>
-  )
+  return <div className="geo-block"><strong>📍 In {region}?</strong> {text}</div>
 }
 
-export function ExpertQuote({ quote, name, role }: {
-  quote: string; name: string; role: string
-}) {
+export function ExpertQuote({ quote, name, role }: { quote: string; name: string; role: string }) {
   return (
     <blockquote className="expert-quote">
       <p>"{quote}"</p>
@@ -86,20 +68,14 @@ export function Score({ value }: { value: number }) {
   return <span className="score-badge">{value}/10</span>
 }
 
-export function CompareTable({
-  headers, rows, scoreCol,
-}: {
-  headers?: string[]
-  rows?: (string | number)[][]
-  scoreCol?: number
+export function CompareTable({ headers, rows, scoreCol }: {
+  headers?: string[]; rows?: (string | number)[][]; scoreCol?: number
 }) {
   if (!Array.isArray(headers) || !Array.isArray(rows)) return null
   return (
     <div className="compare-table-wrap">
       <table className="compare-table">
-        <thead>
-          <tr>{headers.map((h, i) => <th key={i}>{h}</th>)}</tr>
-        </thead>
+        <thead><tr>{headers.map((h, i) => <th key={i}>{h}</th>)}</tr></thead>
         <tbody>
           {rows.map((row, i) => (
             <tr key={i}>
@@ -120,32 +96,23 @@ export function RelatedLinks({ pairs }: { pairs?: { slug: string; label: string 
     <div className="bg-gray-50 rounded p-4 text-sm my-7">
       <strong>Lees ook:</strong>{' '}
       {pairs.map(({ slug, label }, i) => (
-        <span key={slug}>
-          {i > 0 && ' · '}
-          <Link href={`/blog/${slug}/`} className="text-brand-red font-medium no-underline hover:underline">
-            {label}
-          </Link>
+        <span key={slug}>{i > 0 && ' · '}
+          <Link href={`/blog/${slug}/`} className="text-brand-red font-medium no-underline hover:underline">{label}</Link>
         </span>
       ))}
     </div>
   )
 }
 
-export function PostImage({
-  src, alt, caption, width = 1200, height = 630,
-}: {
+export function PostImage({ src, alt, caption, width = 1200, height = 630 }: {
   src: string; alt: string; caption?: string; width?: number; height?: number
 }) {
   if (!src) return null
   return (
     <figure className="my-7">
-      <img
-        src={src} alt={alt || ''} title={alt || ''}
-        width={width} height={height}
-        loading="lazy" decoding="async"
-        className="w-full h-auto rounded-md"
-        style={{ aspectRatio: `${width}/${height}` }}
-      />
+      <img src={src} alt={alt || ''} width={width} height={height}
+        loading="lazy" decoding="async" className="w-full h-auto rounded-md"
+        style={{ aspectRatio: `${width}/${height}` }} />
       {caption && <figcaption className="text-xs text-gray-400 mt-2 italic">{caption}</figcaption>}
     </figure>
   )
