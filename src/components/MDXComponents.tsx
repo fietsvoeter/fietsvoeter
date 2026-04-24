@@ -2,10 +2,20 @@
 import Link from 'next/link'
 import { bolLink, YEAR, PARTNER_ID } from '@/lib/categories'
 
-export function BolBtn({ search, label, partner = PARTNER_ID }: { search: string; label: string; partner?: string }) {
+export function BolBtn({ search, label, partner = PARTNER_ID }: {
+  search: string
+  label: string
+  partner?: string
+}) {
   return (
-    <a href={bolLink(search, partner)} target="_blank" rel="noopener sponsored nofollow" className="bol-btn my-3">
-      <span className="bol-dot">●</span> {label} op bol.com
+    <a
+      href={bolLink(search, partner)}
+      target="_blank"
+      rel="noopener sponsored nofollow"
+      className="bol-btn"
+    >
+      <span className="bol-dot">●</span>
+      {label} op bol.com
     </a>
   )
 }
@@ -13,7 +23,8 @@ export function BolBtn({ search, label, partner = PARTNER_ID }: { search: string
 export function Disclaimer() {
   return (
     <div className="disclaimer">
-      <strong>✓ Transparantie:</strong> Wij testen producten onafhankelijk op basis van eigen rijervaring in {YEAR}. Via onze bol.com-links ontvangen wij een kleine commissie — zonder extra kosten voor jou.{' '}
+      <strong>✓ Transparantie:</strong> Wij testen producten onafhankelijk in {YEAR}.
+      Via bol.com-links ontvangen wij commissie — zonder extra kosten voor jou.{' '}
       <Link href="/affiliate-disclosure/" className="text-brand-red">Meer info</Link>.
     </div>
   )
@@ -35,7 +46,11 @@ export function GeoBlock({ region, text }: { region: string; text: string }) {
   )
 }
 
-export function ExpertQuote({ quote, name, role }: { quote: string; name: string; role: string }) {
+export function ExpertQuote({ quote, name, role }: {
+  quote: string
+  name: string
+  role: string
+}) {
   return (
     <blockquote className="expert-quote">
       <p>"{quote}"</p>
@@ -45,7 +60,7 @@ export function ExpertQuote({ quote, name, role }: { quote: string; name: string
 }
 
 export function FAQ({ items }: { items?: { question: string; answer: string }[] }) {
-  if (!items || !Array.isArray(items) || items.length === 0) return null
+  if (!items || !Array.isArray(items)) return null
   return (
     <div className="my-8">
       <h2>Veelgestelde vragen</h2>
@@ -72,19 +87,22 @@ export function CompareTable({
   rows?: (string | number)[][]
   scoreCol?: number
 }) {
-  if (!headers || !Array.isArray(headers)) return null
-  if (!rows || !Array.isArray(rows)) return null
+  if (!Array.isArray(headers) || !Array.isArray(rows)) return null
   return (
-    <div className="overflow-x-auto my-6">
+    <div className="compare-table-wrap">
       <table className="compare-table">
         <thead>
-          <tr>{headers.map((h, i) => <th key={i}>{h}</th>)}</tr>
+          <tr>
+            {headers.map((h, i) => <th key={i}>{h}</th>)}
+          </tr>
         </thead>
         <tbody>
           {rows.map((row, i) => (
             <tr key={i}>
               {Array.isArray(row) && row.map((cell, j) => (
-                <td key={j} className={j === scoreCol ? 'font-bold' : ''}>{cell}</td>
+                <td key={j} className={j === scoreCol ? 'font-bold' : ''}>
+                  {cell}
+                </td>
               ))}
             </tr>
           ))}
@@ -95,14 +113,17 @@ export function CompareTable({
 }
 
 export function RelatedLinks({ pairs }: { pairs?: { slug: string; label: string }[] }) {
-  if (!pairs || !Array.isArray(pairs) || pairs.length === 0) return null
+  if (!Array.isArray(pairs)) return null
   return (
     <div className="bg-gray-50 rounded p-4 text-sm my-7">
       <strong>Lees ook:</strong>{' '}
       {pairs.map(({ slug, label }, i) => (
         <span key={slug}>
           {i > 0 && ' · '}
-          <Link href={`/blog/${slug}/`} className="text-brand-red font-medium no-underline hover:underline">
+          <Link
+            href={`/blog/${slug}/`}
+            className="text-brand-red font-medium no-underline hover:underline"
+          >
             {label}
           </Link>
         </span>
@@ -127,7 +148,6 @@ export function PostImage({
   if (!src) return null
   return (
     <figure className="my-7">
-      {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src={src}
         alt={alt || ''}
@@ -137,10 +157,12 @@ export function PostImage({
         loading="lazy"
         decoding="async"
         className="w-full h-auto rounded-md"
-        style={{ display: 'block' }}
+        style={{ aspectRatio: `${width}/${height}` }}
       />
       {caption && (
-        <figcaption className="text-xs text-gray-400 mt-2 italic">{caption}</figcaption>
+        <figcaption className="text-xs text-gray-400 mt-2 italic">
+          {caption}
+        </figcaption>
       )}
     </figure>
   )
