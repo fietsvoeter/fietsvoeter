@@ -2,18 +2,16 @@
 const fs = require('fs')
 const path = require('path')
 
-const PARTNER_ID    = process.env.BOL_PARTNER_ID || '10065bba51d681361557'
+const PARTNER_ID    = process.env.BOL_PARTNER_ID || '1361557'
 const CLIENT_ID     = process.env.BOL_CLIENT_ID
 const CLIENT_SECRET = process.env.BOL_CLIENT_SECRET
 const BLOG_DIR      = path.join(process.cwd(), 'content', 'blog')
 const CACHE_FILE    = path.join(process.cwd(), 'scripts', 'affiliate-cache.json')
 const BOL_API       = 'https://api.bol.com'
 
+// Cache wissen zodat alle links opnieuw worden gegenereerd met correcte partner ID
 let cache = {}
-if (fs.existsSync(CACHE_FILE)) {
-  try { cache = JSON.parse(fs.readFileSync(CACHE_FILE, 'utf8')) } catch(e) {}
-}
-console.log(`Cache: ${Object.keys(cache).length} producten`)
+console.log('Cache geleegd — alle links opnieuw genereren met partner ID: ' + PARTNER_ID)
 
 async function getToken() {
   if (!CLIENT_ID || !CLIENT_SECRET) return null
@@ -57,7 +55,9 @@ async function findProduct(token, searchTerm) {
     productUrl = `https://www.bol.com/nl/nl/s/?searchtext=${encodeURIComponent(searchTerm)}`
     console.log(`  Fallback: "${searchTerm}"`)
   }
-  const affiliateUrl = `https://partner.bol.com/click/click?p=1&t=url&s=${PARTNER_ID}&url=${encodeURIComponent(productUrl)}`
+
+  // Correcte affiliate URL structuur: p=2, f=TXL, s=partner_id
+  const affiliateUrl = `https://partner.bol.com/click/click?p=2&t=url&s=${PARTNER_ID}&f=TXL&url=${encodeURIComponent(productUrl)}`
   cache[searchTerm] = affiliateUrl
   return affiliateUrl
 }
@@ -68,23 +68,36 @@ async function main() {
   const files = fs.readdirSync(BLOG_DIR).filter(f => f.endsWith('.mdx'))
   console.log(`${files.length} blogs verwerken...\n`)
   let total = 0
+
   for (const file of files) {
     const filepath = path.join(BLOG_DIR, file)
     let content = fs.readFileSync(filepath, 'utf8')
     let updated = false
-    const regex = /<BolBtn\s+search="([^"]+)"\s+label="([^"]+)"\s*\/>/g
-    const matches = [...content.matchAll(regex)].filter(m => !m[0].includes('url='))
-    if (!matches.length) continue
-    console.log(`${file}: ${matches.length} links`)
-    for (const [fullMatch, searchTerm, label] of matches) {
+
+    // Match ALLE BolBtn — ook die al een url hebben (om oude foute links te vervangen)
+    const regexWithUrl = /<BolBtn\s+search="([^"]+)"\s+label="([^"]+)"\s+url="[^"]*"\s*\/>/g
+    const regexWithout = /<BolBtn\s+search="([^"]+)"\s+label="([^"]+)"\s*\/>/g
+
+    const matchesWithUrl = [...content.matchAll(regexWithUrl)]
+    const matchesWithout = [...content.matchAll(regexWithout)]
+    const allMatches = [...matchesWithUrl, ...matchesWithout]
+
+    if (!allMatches.length) continue
+    console.log(`${file}: ${allMatches.length} links`)
+
+    for (const match of allMatches) {
+      const [fullMatch, searchTerm, label] = match
       const url = await findProduct(token, searchTerm)
-      content = content.replace(fullMatch, `<BolBtn search="${searchTerm}" label="${label}" url="${url}" />`)
+      const replacement = `<BolBtn search="${searchTerm}" label="${label}" url="${url}" />`
+      content = content.replace(fullMatch, replacement)
       updated = true; total++
     }
+
     if (updated) fs.writeFileSync(filepath, content)
   }
+
   fs.writeFileSync(CACHE_FILE, JSON.stringify(cache, null, 2))
-  console.log(`\nKlaar: ${total} links bijgewerkt`)
+  console.log(`\nKlaar: ${total} links bijgewerkt met partner ID ${PARTNER_ID}`)
 }
 
 main().catch(e => { console.error(e); process.exit(1) })
