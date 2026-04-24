@@ -1,0 +1,36 @@
+name: Bol.com Affiliate Links
+
+on:
+  push:
+    paths:
+      - 'content/blog/**.mdx'
+  workflow_dispatch:
+  schedule:
+    - cron: '0 6 * * 1'
+
+jobs:
+  affiliate-links:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Verwerk bol.com affiliate links
+        env:
+          BOL_CLIENT_ID: ${{ secrets.BOL_CLIENT_ID }}
+          BOL_CLIENT_SECRET: ${{ secrets.BOL_CLIENT_SECRET }}
+          BOL_PARTNER_ID: ${{ secrets.BOL_PARTNER_ID }}
+        run: node scripts/affiliate-links.js
+
+      - name: Commit bijgewerkte links
+        run: |
+          git config --local user.email "affiliate-bot@fietsvoeter.nl"
+          git config --local user.name "Fietsvoeter Affiliate Bot"
+          git add content/blog/*.mdx scripts/affiliate-cache.json
+          git diff --staged --quiet || git commit -m "Auto: bol.com affiliate links bijgewerkt [skip ci]"
+          git push
