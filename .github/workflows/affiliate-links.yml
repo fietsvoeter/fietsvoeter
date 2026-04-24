@@ -17,6 +17,8 @@ jobs:
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - uses: actions/setup-node@v4
         with:
@@ -34,5 +36,6 @@ jobs:
           git config --local user.email "affiliate-bot@fietsvoeter.nl"
           git config --local user.name "Fietsvoeter Affiliate Bot"
           git add content/blog/*.mdx scripts/affiliate-cache.json
-          git diff --staged --quiet || git commit -m "Auto: bol.com affiliate links bijgewerkt [skip ci]"
-          git push
+          git diff --staged --quiet && exit 0
+          git pull --rebase origin main
+          git push origin main
