@@ -42,7 +42,7 @@ export default async function BlogPostPage({ params }: Props) {
     mdxContent = content
   } catch (e) {
     console.error('MDX error voor', slug, e)
-    mdxContent = <p style={{color:'red'}}>Artikel tijdelijk niet beschikbaar.</p>
+    mdxContent = <p>Artikel tijdelijk niet beschikbaar.</p>
   }
 
   const cat = CATEGORIES[post.category] || { label: post.category, color: '#E2001A', description: '' }
@@ -58,37 +58,65 @@ export default async function BlogPostPage({ params }: Props) {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(bc) }} />
-      <div className="max-w-6xl mx-auto px-4 py-8">
-        <div className="grid lg:grid-cols-[1fr_300px] gap-10">
+
+      <div className="max-w-6xl mx-auto px-4 py-6 lg:py-8">
+
+        {/* Breadcrumb */}
+        <nav className="text-xs text-gray-400 py-2 mb-4" aria-label="Breadcrumb">
+          <a href="/" className="text-blue-600 hover:underline">Home</a>
+          <span className="mx-1">›</span>
+          <a href={`/categorie/${post.category}/`} className="text-blue-600 hover:underline">{cat.label}</a>
+          <span className="mx-1">›</span>
+          <span className="text-gray-500">{post.title}</span>
+        </nav>
+
+        {/* Hoofd grid: artikel + sidebar */}
+        <div className="lg:grid lg:grid-cols-[1fr_280px] lg:gap-10">
+
+          {/* Artikel */}
           <article>
-            <nav className="text-xs text-gray-400 py-2 mb-5">
-              <a href="/" className="text-blue-600 hover:underline">Home</a>
-              <span className="mx-1">›</span>
-              <a href={`/categorie/${post.category}/`} className="text-blue-600 hover:underline">{cat.label}</a>
-              <span className="mx-1">›</span>
-              <span>{post.title}</span>
-            </nav>
-            <header className="mb-6">
-              <div className="flex items-center gap-2 mb-3">
-                <span className="text-xs font-bold uppercase tracking-widest" style={{ color: cat.color }}>{cat.label}</span>
+            <header className="mb-5">
+              <div className="flex items-center gap-2 mb-2 flex-wrap">
+                <span className="text-xs font-bold uppercase tracking-widest" style={{ color: cat.color }}>
+                  {cat.label}
+                </span>
                 {post.rating && <Score value={post.rating} />}
                 <span className="text-xs text-gray-400">{post.readingTime}</span>
               </div>
-              <h1 className="font-display font-black leading-tight mb-3">{post.title}</h1>
+              <h1 className="font-display font-black leading-tight mb-2">{post.title}</h1>
               <p className="text-xs text-gray-400">
-                Gepubliceerd: {new Date(post.date).toLocaleDateString('nl-NL', { day: 'numeric', month: 'long', year: 'numeric' })}
+                Gepubliceerd:{' '}
+                {new Date(post.date).toLocaleDateString('nl-NL', { day: 'numeric', month: 'long', year: 'numeric' })}
+                {post.lastmod && post.lastmod !== post.date && (
+                  <span className="ml-2">
+                    · Bijgewerkt:{' '}
+                    {new Date(post.lastmod).toLocaleDateString('nl-NL', { day: 'numeric', month: 'long', year: 'numeric' })}
+                  </span>
+                )}
               </p>
             </header>
+
             {post.featuredImage && (
-              <img src={post.featuredImage} alt={post.imageAlt || post.title} width={1200} height={630} className="w-full h-auto rounded-md mb-6" loading="eager" />
+              <img
+                src={post.featuredImage}
+                alt={post.imageAlt || post.title}
+                width={1200}
+                height={630}
+                className="w-full h-auto rounded-md mb-6"
+                loading="eager"
+                decoding="async"
+                style={{ aspectRatio: '1200/630' }}
+              />
             )}
+
             <div className="prose-fietsvoeter prose prose-lg max-w-none">
               {mdxContent}
             </div>
+
             {post.affiliate && post.affiliate.length > 0 && (
-              <div className="mt-8 p-5 bg-gray-50 rounded border border-gray-200">
-                <h3 className="text-base font-bold mb-4 mt-0">Besproken producten op bol.com</h3>
-                <div className="flex flex-col gap-2">
+              <div className="mt-8 p-4 bg-gray-50 rounded border border-gray-200">
+                <h3 className="text-base font-bold mb-3 mt-0">Besproken producten op bol.com</h3>
+                <div className="flex flex-col gap-1">
                   {post.affiliate.map(({ product, bolSearch, label }) => (
                     <BolBtn key={product} search={bolSearch} label={label || product} />
                   ))}
@@ -96,35 +124,62 @@ export default async function BlogPostPage({ params }: Props) {
               </div>
             )}
           </article>
-          <aside className="space-y-6">
-            <div className="bg-gray-50 border border-gray-200 rounded p-5">
+
+          {/* Sidebar — op mobiel ONDER het artikel */}
+          <aside className="mt-10 lg:mt-0 space-y-5">
+            <div className="bg-gray-50 border border-gray-200 rounded p-4">
               <h4 className="font-display font-bold text-base mt-0 mb-2">Wekelijkse tips</h4>
               <p className="text-xs text-gray-500 mb-3">Reviews en deals direct in je inbox.</p>
-              <input type="email" placeholder="jouw@email.nl" className="w-full border border-gray-200 rounded px-3 py-2 text-sm mb-2" />
-              <button className="w-full bg-brand-red text-white font-semibold text-sm py-2 rounded hover:opacity-90">Aanmelden</button>
+              <input
+                type="email"
+                placeholder="jouw@email.nl"
+                aria-label="E-mailadres"
+                className="w-full border border-gray-200 rounded px-3 py-2 text-sm mb-2 focus:outline-none focus:border-brand-red"
+                style={{ minHeight: '44px' }}
+              />
+              <button
+                className="w-full bg-brand-red text-white font-semibold text-sm py-2 rounded hover:opacity-90 transition-opacity"
+                style={{ minHeight: '44px' }}
+              >
+                Gratis aanmelden
+              </button>
             </div>
+
             {related.length > 0 && (
-              <div className="border border-gray-200 rounded p-5">
+              <div className="border border-gray-200 rounded p-4">
                 <h4 className="font-display font-bold text-base mt-0 mb-3">Meer {cat.label}</h4>
                 <ul className="space-y-2">
-                  {related.map(r => <li key={r.slug}><a href={`/blog/${r.slug}/`} className="text-sm text-gray-600 no-underline hover:text-brand-red">→ {r.title}</a></li>)}
+                  {related.map(r => (
+                    <li key={r.slug}>
+                      <a
+                        href={`/blog/${r.slug}/`}
+                        className="text-sm text-gray-600 no-underline hover:text-brand-red transition-colors block py-1"
+                      >
+                        → {r.title}
+                      </a>
+                    </li>
+                  ))}
                 </ul>
               </div>
             )}
-            <div className="border border-gray-200 rounded p-5">
+
+            <div className="border border-gray-200 rounded p-4">
               <h4 className="font-display font-bold text-base mt-0 mb-3">Alle rubrieken</h4>
               <div className="flex flex-wrap gap-2">
-                {Object.entries(CATEGORIES).map(([s, { label }]) => (
-                  <a key={s} href={`/categorie/${s}/`} className="cat-pill text-xs">{label}</a>
+                {Object.entries(CATEGORIES).map(([slug, { label }]) => (
+                  <a key={slug} href={`/categorie/${slug}/`} className="cat-pill text-xs">
+                    {label}
+                  </a>
                 ))}
               </div>
             </div>
           </aside>
         </div>
+
         {related.length > 0 && (
-          <section className="mt-12 pt-8 border-t border-gray-200">
-            <h2 className="font-display font-bold text-2xl mb-6">Meer {cat.label} artikelen</h2>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          <section className="mt-10 pt-8 border-t border-gray-200">
+            <h2 className="font-display font-bold text-2xl mb-5">Meer {cat.label} artikelen</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {related.map(p => <BlogCard key={p.slug} post={p} />)}
             </div>
           </section>
