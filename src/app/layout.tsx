@@ -1,10 +1,13 @@
 import type { Metadata } from 'next'
+import Script from 'next/script'
 import { Barlow, Barlow_Condensed } from 'next/font/google'
 import '../styles/globals.css'
 import { Header } from '@/components/Header'
 import { Footer } from '@/components/Footer'
 import { schemaWebSite, schemaOrganization } from '@/lib/seo'
 import { SITE_URL, SITE_NAME, YEAR } from '@/lib/mdx'
+
+const GA_ID = 'G-6MTGD8V0JL'
 
 const barlow = Barlow({
   subsets: ['latin'],
@@ -27,7 +30,7 @@ export const metadata: Metadata = {
     template: `%s | ${SITE_NAME}`,
   },
   description: `De eerlijkste fietsreviews van Nederland. Onafhankelijk getest in ${YEAR}. Wielrennen, MTB, gravel en e-bike — inclusief actuele bol.com prijzen.`,
-  keywords: ['fietsreviews', 'wielrennen', 'mountainbike', 'gravel fiets', 'e-bike', 'fietskopen'],
+  keywords: ['fietsreviews', 'wielrennen', 'mountainbike', 'gravel fiets', 'e-bike'],
   authors: [{ name: 'Fietsvoeter.nl Redactie', url: SITE_URL }],
   creator: 'Fietsvoeter.nl',
   publisher: 'Fietsvoeter.nl',
@@ -56,7 +59,6 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    site: '@fietsvoeter',
     images: [`${SITE_URL}/images/og-default.png`],
   },
   alternates: {
@@ -68,19 +70,12 @@ export const metadata: Metadata = {
       { url: '/favicon-32.png', sizes: '32x32', type: 'image/png' },
       { url: '/favicon-64.png', sizes: '64x64', type: 'image/png' },
     ],
-    apple: [
-      { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
-    ],
+    apple: [{ url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' }],
     shortcut: '/favicon-32.png',
   },
   manifest: '/manifest.json',
-  other: {
-    'theme-color': '#E2001A',
-    'msapplication-TileColor': '#E2001A',
-  },
-  verification: {
-    google: process.env.GOOGLE_VERIFICATION || '',
-  },
+  other: { 'theme-color': '#E2001A' },
+  verification: { google: process.env.GOOGLE_VERIFICATION || '' },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -97,6 +92,21 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaOrganization()) }} />
       </head>
       <body className="bg-white text-gray-800 antialiased">
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
+          strategy="afterInteractive"
+        />
+        <Script id="ga4-init" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${GA_ID}', {
+              page_path: window.location.pathname,
+              anonymize_ip: true
+            });
+          `}
+        </Script>
         <Header />
         <main>{children}</main>
         <Footer />
