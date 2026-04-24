@@ -1,15 +1,29 @@
 'use client'
 import Link from 'next/link'
-import { bolLink, YEAR, PARTNER_ID } from '@/lib/categories'
+import { YEAR } from '@/lib/mdx'
+import { bolLink, PARTNER_ID } from '@/lib/categories'
 
-export function BolBtn({ search, label, partner = PARTNER_ID }: {
+// ─── BolBtn ─────────────────────────────────────────────────────────────────
+// url prop wordt ingevuld door de GitHub Action via de Marketing API
+// Als url ontbreekt (nieuwe blog nog niet verwerkt): fallback naar zoeklink
+export function BolBtn({
+  search,
+  label,
+  url,
+  partner = PARTNER_ID,
+}: {
   search: string
   label: string
+  url?: string
   partner?: string
 }) {
+  const href = url && url.startsWith('https://partner.bol.com')
+    ? url
+    : bolLink(search, partner)
+
   return (
     <a
-      href={bolLink(search, partner)}
+      href={href}
       target="_blank"
       rel="noopener sponsored nofollow"
       className="bol-btn"
@@ -20,6 +34,7 @@ export function BolBtn({ search, label, partner = PARTNER_ID }: {
   )
 }
 
+// ─── Disclaimer ─────────────────────────────────────────────────────────────
 export function Disclaimer() {
   return (
     <div className="disclaimer">
@@ -30,6 +45,7 @@ export function Disclaimer() {
   )
 }
 
+// ─── UpdateBadge ─────────────────────────────────────────────────────────────
 export function UpdateBadge({ date, changes }: { date: string; changes: string }) {
   return (
     <div className="update-badge">
@@ -38,6 +54,7 @@ export function UpdateBadge({ date, changes }: { date: string; changes: string }
   )
 }
 
+// ─── GeoBlock ────────────────────────────────────────────────────────────────
 export function GeoBlock({ region, text }: { region: string; text: string }) {
   return (
     <div className="geo-block">
@@ -46,6 +63,7 @@ export function GeoBlock({ region, text }: { region: string; text: string }) {
   )
 }
 
+// ─── ExpertQuote ─────────────────────────────────────────────────────────────
 export function ExpertQuote({ quote, name, role }: {
   quote: string
   name: string
@@ -59,6 +77,7 @@ export function ExpertQuote({ quote, name, role }: {
   )
 }
 
+// ─── FAQ ─────────────────────────────────────────────────────────────────────
 export function FAQ({ items }: { items?: { question: string; answer: string }[] }) {
   if (!items || !Array.isArray(items)) return null
   return (
@@ -74,10 +93,12 @@ export function FAQ({ items }: { items?: { question: string; answer: string }[] 
   )
 }
 
+// ─── Score ───────────────────────────────────────────────────────────────────
 export function Score({ value }: { value: number }) {
   return <span className="score-badge">{value}/10</span>
 }
 
+// ─── CompareTable ─────────────────────────────────────────────────────────────
 export function CompareTable({
   headers,
   rows,
@@ -112,6 +133,7 @@ export function CompareTable({
   )
 }
 
+// ─── RelatedLinks ─────────────────────────────────────────────────────────────
 export function RelatedLinks({ pairs }: { pairs?: { slug: string; label: string }[] }) {
   if (!Array.isArray(pairs)) return null
   return (
@@ -132,6 +154,7 @@ export function RelatedLinks({ pairs }: { pairs?: { slug: string; label: string 
   )
 }
 
+// ─── PostImage ────────────────────────────────────────────────────────────────
 export function PostImage({
   src,
   alt,
