@@ -1,4 +1,10 @@
 #!/usr/bin/env node
+/**
+ * scripts/affiliate-links.js
+ * Genereert affiliate links met subId voor betere tracking in bol.com rapportage.
+ * SubId = productnaam → zichtbaar als aparte kolom in bol.com dashboard.
+ */
+
 const fs = require('fs')
 const path = require('path')
 
@@ -9,9 +15,28 @@ const BLOG_DIR      = path.join(process.cwd(), 'content', 'blog')
 const CACHE_FILE    = path.join(process.cwd(), 'scripts', 'affiliate-cache.json')
 const BOL_API       = 'https://api.bol.com'
 
-// Cache wissen zodat alle links opnieuw worden gegenereerd met correcte partner ID
 let cache = {}
-console.log('Cache geleegd — alle links opnieuw genereren met partner ID: ' + PARTNER_ID)
+if (fs.existsSync(CACHE_FILE)) {
+  try { cache = JSON.parse(fs.readFileSync(CACHE_FILE, 'utf8')) } catch(e) {}
+}
+console.log(`Cache: ${Object.keys(cache).length} items | Partner ID: ${PARTNER_ID}`)
+
+// Maak subId van label: alleen alfanumeriek en koppelteken
+function makeSubId(label) {
+  return label
+    .replace(/[^a-zA-Z0-9\s-]/g, '')
+    .trim()
+    .replace(/\s+/g, '-')
+    .substring(0, 40)
+}
+
+// Bouw affiliate link MET subId voor tracking
+function buildAffiliateLink(searchTerm, label, productUrl = null) {
+  const targetUrl = productUrl ||
+    `https://www.bol.com/nl/nl/s/?searchtext=${encodeURIComponent(searchTerm)}`
+  const subId = makeSubId(label)
+  return `https://partner.bol.com/click/click?p=2&t=url&s=${PARTNER_ID}&f=TXL&subId=${encodeURIComponent(subId)}&url=${encodeURIComponent(targetUrl)}`
+}
 
 async function getToken() {
   if (!CLIENT_ID || !CLIENT_SECRET) return null
@@ -24,42 +49,52 @@ async function getToken() {
         'Content-Type': 'application/x-www-form-urlencoded'
       }
     })
-    if (!res.ok) { console.log(`Token fout: ${res.status}`); return null }
+    if (!res.ok) return null
     const data = await res.json()
-    console.log('API verbonden')
+    console.log('Marketing API verbonden')
     return data.access_token
-  } catch(e) { console.log(`Token error: ${e.message}`); return null }
+  } catch(e) { return null }
 }
 
-async function findProduct(token, searchTerm) {
-  if (cache[searchTerm]) return cache[searchTerm]
+async function findProductUrl(token, searchTerm) {
+  const cacheKey = `${PARTNER_ID}:${searchTerm}`
+  if (cache[cacheKey]) return cache[cacheKey]
+
   await new Promise(r => setTimeout(r, 400))
+
   let productUrl = null
+
   if (token) {
     try {
       const res = await fetch(
         `${BOL_API}/marketing/search?q=${encodeURIComponent(searchTerm)}&limit=1&countryCode=NL`,
-        { headers: { 'Authorization': `Bearer ${token}`, 'Accept': 'application/vnd.catalogapi.v1+json' } }
+        { headers: {
+          'Authorization': `Bearer ${token}`,
+          'Accept': 'application/vnd.catalogapi.v1+json'
+        }}
       )
       if (res.ok) {
         const data = await res.json()
         if (data.products && data.products.length > 0) {
           const p = data.products[0]
-          productUrl = (p.urls && p.urls[0]) || `https://www.bol.com/nl/nl/p/-/${p.id}/`
-          console.log(`  Gevonden: "${searchTerm}"`)
+          productUrl = (p.urls && p.urls[0]) ||
+            `https://www.bol.com/nl/nl/p/-/${p.id}/`
+          console.log(`  API hit: "${searchTerm}" → ${productUrl}`)
         }
       }
-    } catch(e) { console.log(`  Fout: ${e.message}`) }
-  }
-  if (!productUrl) {
-    productUrl = `https://www.bol.com/nl/nl/s/?searchtext=${encodeURIComponent(searchTerm)}`
-    console.log(`  Fallback: "${searchTerm}"`)
+    } catch(e) {
+      console.log(`  API fout: ${e.message}`)
+    }
   }
 
-  // Correcte affiliate URL structuur: p=2, f=TXL, s=partner_id
-  const affiliateUrl = `https://partner.bol.com/click/click?p=2&t=url&s=${PARTNER_ID}&f=TXL&url=${encodeURIComponent(productUrl)}`
-  cache[searchTerm] = affiliateUrl
-  return affiliateUrl
+  // Fallback: zoeklink (werkt altijd)
+  if (!productUrl) {
+    productUrl = `https://www.bol.com/nl/nl/s/?searchtext=${encodeURIComponent(searchTerm)}`
+    console.log(`  Zoeklink: "${searchTerm}"`)
+  }
+
+  cache[cacheKey] = productUrl
+  return productUrl
 }
 
 async function main() {
@@ -74,30 +109,37 @@ async function main() {
     let content = fs.readFileSync(filepath, 'utf8')
     let updated = false
 
-    // Match ALLE BolBtn — ook die al een url hebben (om oude foute links te vervangen)
-    const regexWithUrl = /<BolBtn\s+search="([^"]+)"\s+label="([^"]+)"\s+url="[^"]*"\s*\/>/g
-    const regexWithout = /<BolBtn\s+search="([^"]+)"\s+label="([^"]+)"\s*\/>/g
+    // Match ALLE BolBtn — ook bestaande — om subId en partner ID te updaten
+    const regex = /<BolBtn\s+search="([^"]+)"\s+label="([^"]+)"(?:\s+url="[^"]*")?\s*\/>/g
+    const matches = [...content.matchAll(regex)]
+    if (!matches.length) continue
 
-    const matchesWithUrl = [...content.matchAll(regexWithUrl)]
-    const matchesWithout = [...content.matchAll(regexWithout)]
-    const allMatches = [...matchesWithUrl, ...matchesWithout]
+    console.log(`${file}: ${matches.length} BolBtn`)
 
-    if (!allMatches.length) continue
-    console.log(`${file}: ${allMatches.length} links`)
-
-    for (const match of allMatches) {
+    for (const match of matches) {
       const [fullMatch, searchTerm, label] = match
-      const url = await findProduct(token, searchTerm)
-      const replacement = `<BolBtn search="${searchTerm}" label="${label}" url="${url}" />`
-      content = content.replace(fullMatch, replacement)
-      updated = true; total++
+      const productUrl = await findProductUrl(token, searchTerm)
+      const affiliateUrl = buildAffiliateLink(searchTerm, label, productUrl)
+      const replacement = `<BolBtn search="${searchTerm}" label="${label}" url="${affiliateUrl}" />`
+
+      // Alleen vervangen als de url veranderd is
+      if (fullMatch !== replacement) {
+        content = content.replace(fullMatch, replacement)
+        updated = true
+        total++
+      }
     }
 
-    if (updated) fs.writeFileSync(filepath, content)
+    if (updated) {
+      fs.writeFileSync(filepath, content)
+      console.log(`  ✓ bijgewerkt\n`)
+    }
   }
 
+  // Cache opslaan (met partner ID in key zodat wisseling partner ID alles hergenereert)
   fs.writeFileSync(CACHE_FILE, JSON.stringify(cache, null, 2))
-  console.log(`\nKlaar: ${total} links bijgewerkt met partner ID ${PARTNER_ID}`)
+  console.log(`\nKlaar: ${total} links bijgewerkt`)
+  console.log(`SubId tracking actief — zichtbaar in bol.com rapportage kolom "SubId"\n`)
 }
 
 main().catch(e => { console.error(e); process.exit(1) })
