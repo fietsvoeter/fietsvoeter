@@ -9,18 +9,22 @@ import { SITE_URL, SITE_NAME, YEAR } from '@/lib/mdx'
 
 const GA_ID = 'G-6MTGD8V0JL'
 
+// display: swap voorkomt FOIT (Flash of Invisible Text)
+// preload: true laadt het font prioriteit — minder render blocking
 const barlow = Barlow({
   subsets: ['latin'],
-  weight: ['400','500','600'],
+  weight: ['400', '500', '600'],
   variable: '--font-barlow',
   display: 'swap',
+  preload: true,
 })
 
 const barlowCondensed = Barlow_Condensed({
   subsets: ['latin'],
-  weight: ['600','700','900'],
+  weight: ['600', '700', '900'],
   variable: '--font-barlow-condensed',
   display: 'swap',
+  preload: true,
 })
 
 export const metadata: Metadata = {
@@ -82,30 +86,31 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="nl" className={`${barlow.variable} ${barlowCondensed.variable}`}>
       <head>
+        {/* preconnect voor snellere font-load */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://partner.bol.com" />
+        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
         <meta name="geo.region" content="NL" />
         <meta name="geo.placename" content="Nederland" />
         <meta name="language" content="nl" />
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaWebSite()) }} />
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaOrganization()) }} />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaWebSite()) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaOrganization()) }}
+        />
       </head>
       <body className="bg-white text-gray-800 antialiased">
+        {/* GA4 — afterInteractive zorgt dat het laadt NA de pagina */}
         <Script
           src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
           strategy="afterInteractive"
         />
         <Script id="ga4-init" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', '${GA_ID}', {
-              page_path: window.location.pathname,
-              anonymize_ip: true
-            });
-          `}
+          {`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','${GA_ID}',{anonymize_ip:true});`}
         </Script>
         <Header />
         <main>{children}</main>
