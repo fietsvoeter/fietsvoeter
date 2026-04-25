@@ -1,0 +1,55 @@
+# Fietsvoeter.nl
+
+> Fietsvoeter.nl is een Nederlandse affiliate website met onafhankelijke fietsreviews, koopgidsen en onderhoudstips voor wielrenners, MTB-rijders, gravel- en e-bikerijders.
+
+Alle content is gebaseerd op eigen testervaring. Producten worden getest op echte ritten in Nederland en omliggende landen. Via bol.com affiliate links ontvangen wij commissie — zonder extra kosten voor de lezer.
+
+## Categorieën
+
+- [Wielrennen](/categorie/wielrennen/) — racefietsen, helmen, schoenen, computers, kleding
+- [MTB](/categorie/mtb/) — mountainbikes, helmen, banden, schoenen
+- [Gravel](/categorie/gravel/) — gravel fietsen, banden, accessoires
+- [E-bike](/categorie/e-bike/) — speed pedelecs, accu-onderhoud, koopgidsen
+- [Training](/categorie/training/) — FTP, trainingsschema, vermogensmeters
+- [Kleding](/categorie/kleding/) — wielrenschoenen, fietsbroeken, brillen
+- [Voeding](/categorie/voeding/) — sportvoeding, energiegels, hydratatie
+
+## Populaire koopgidsen
+
+- [Beste fietshelm 2026](/blog/beste-fietshelm/)
+- [Beste racefiets 2026](/blog/beste-racefiets/)
+- [Beste wielrenschoenen 2026](/blog/beste-wielrenschoenen/)
+- [Beste mountainbike 2026](/blog/beste-mountainbike/)
+- [Beste e-bike speed pedelec 2026](/blog/beste-e-bike-speed-pedelec/)
+- [Beste vermogensmeter 2026](/blog/beste-vermogensmeter/)
+- [Beste gravel banden 2026](/blog/beste-gravel-banden/)
+- [Beste MTB helm 2026](/blog/beste-mtb-helm/)
+
+## Onderhoudsgidsen
+
+- [Fiets onderhoud gids 2026](/blog/fiets-onderhoud-gids/)
+- [Piepende remmen oplossen](/blog/piepende-remmen-fiets-oplossen/)
+- [Ketting smeren racefiets](/blog/ketting-smeren-racefiets/)
+- [Schijfrem reinigen](/blog/schijfrem-reinigen/)
+- [Versnelling afstellen Shimano](/blog/versnelling-afstellen-shimano/)
+- [E-bike accu onderhoud](/blog/e-bike-accu-onderhoud/)
+- [Tubeless installeren](/blog/tubeless-installeren/)
+
+## Vergelijkingen
+
+- [Garmin vs Wahoo fietscomputer](/blog/garmin-vs-wahoo/)
+- [Carbon vs aluminium racefiets](/blog/carbon-vs-aluminium-racefiets/)
+- [Hardtail vs fully MTB](/blog/hardtail-vs-fully-mtb/)
+- [FTP-test uitleg](/blog/ftp-test-uitleg/)
+
+## Over deze site
+
+- Taal: Nederlands
+- Doelgroep: Nederlandse en Belgische fietsers
+- Affiliate partner: bol.com (partner ID: 1361557)
+- Alle reviews: gebaseerd op eigen testkilometers
+- Geen gesponsorde content zonder vermelding
+
+## Sitemap
+
+[XML sitemap](/sitemap.xml)
