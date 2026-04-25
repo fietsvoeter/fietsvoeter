@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 
-interface BlogCardProps {
+export interface PostMeta {
   slug: string
   title: string
   excerpt: string
@@ -10,18 +10,25 @@ interface BlogCardProps {
   imageAlt?: string
   date?: string
   rating?: number
+  contentType?: string
 }
 
-export function BlogCard({
-  slug,
-  title,
-  excerpt,
-  category,
-  featuredImage,
-  imageAlt,
-  date,
-  rating,
-}: BlogCardProps) {
+interface BlogCardProps {
+  post: PostMeta
+}
+
+export function BlogCard({ post }: BlogCardProps) {
+  const {
+    slug,
+    title,
+    excerpt,
+    category,
+    featuredImage,
+    imageAlt,
+    date,
+    rating,
+  } = post
+
   return (
     <Link href={`/blog/${slug}/`} className="group block">
       <article className="border border-gray-200 rounded-lg overflow-hidden hover:shadow-md transition-shadow duration-200">
