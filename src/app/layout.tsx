@@ -9,8 +9,6 @@ import { SITE_URL, SITE_NAME, YEAR } from '@/lib/mdx'
 
 const GA_ID = 'G-6MTGD8V0JL'
 
-// display: swap voorkomt FOIT (Flash of Invisible Text)
-// preload: true laadt het font prioriteit — minder render blocking
 const barlow = Barlow({
   subsets: ['latin'],
   weight: ['400', '500', '600'],
@@ -33,8 +31,8 @@ export const metadata: Metadata = {
     default: `${SITE_NAME} — Eerlijke Fietsreviews & Koopgidsen ${YEAR}`,
     template: `%s | ${SITE_NAME}`,
   },
-  description: `De eerlijkste fietsreviews van Nederland. Onafhankelijk getest in ${YEAR}. Wielrennen, MTB, gravel en e-bike — inclusief actuele bol.com prijzen.`,
-  keywords: ['fietsreviews', 'wielrennen', 'mountainbike', 'gravel fiets', 'e-bike'],
+  description: `Onafhankelijke fietsreviews getest op echte ritten in Nederland. Wielrennen, MTB, gravel en e-bike — actuele koopgidsen en onderhoudstips voor ${YEAR}.`,
+  keywords: ['fietsreviews nederland', 'beste fietshelm', 'beste racefiets', 'wielrennen tips', 'mtb koopgids'],
   authors: [{ name: 'Fietsvoeter.nl Redactie', url: SITE_URL }],
   creator: 'Fietsvoeter.nl',
   publisher: 'Fietsvoeter.nl',
@@ -79,21 +77,28 @@ export const metadata: Metadata = {
   },
   manifest: '/manifest.json',
   other: { 'theme-color': '#E2001A' },
-  verification: { google: process.env.GOOGLE_VERIFICATION || '' },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="nl" className={`${barlow.variable} ${barlowCondensed.variable}`}>
       <head>
-        {/* preconnect voor snellere font-load */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://partner.bol.com" />
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+
+        {/* GEO meta tags — Nederland */}
         <meta name="geo.region" content="NL" />
         <meta name="geo.placename" content="Nederland" />
+        <meta name="geo.country" content="NL" />
         <meta name="language" content="nl" />
+        <meta name="content-language" content="nl-NL" />
+        <meta name="DC.language" content="nl" />
+
+        {/* Snippet controle — Google mag snippets genereren maar niet uit nosnippet elementen */}
+        <meta name="robots" content="max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaWebSite()) }}
@@ -104,7 +109,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body className="bg-white text-gray-800 antialiased">
-        {/* GA4 — afterInteractive zorgt dat het laadt NA de pagina */}
         <Script
           src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
           strategy="afterInteractive"
