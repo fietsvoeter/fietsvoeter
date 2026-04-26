@@ -1,8 +1,7 @@
 #!/usr/bin/env node
 /**
  * scripts/affiliate-links.js
- * Genereert affiliate links met subId voor betere tracking in bol.com rapportage.
- * SubId = productnaam → zichtbaar als aparte kolom in bol.com dashboard.
+ * Gebruikt name= parameter zodat productnaam zichtbaar is in bol.com rapportage.
  */
 
 const fs = require('fs')
@@ -21,21 +20,22 @@ if (fs.existsSync(CACHE_FILE)) {
 }
 console.log(`Cache: ${Object.keys(cache).length} items | Partner ID: ${PARTNER_ID}`)
 
-// Maak subId van label: alleen alfanumeriek en koppelteken
-function makeSubId(label) {
+// Maak productnaam geschikt voor name= parameter
+function makeName(label) {
   return label
-    .replace(/[^a-zA-Z0-9\s-]/g, '')
+    .replace(/[^a-zA-Z0-9\s\-]/g, '')
     .trim()
-    .replace(/\s+/g, '-')
-    .substring(0, 40)
+    .substring(0, 60)
 }
 
-// Bouw affiliate link MET subId voor tracking
+// Bouw affiliate link met name= voor rapportage en subId= als extra tracking
 function buildAffiliateLink(searchTerm, label, productUrl = null) {
   const targetUrl = productUrl ||
     `https://www.bol.com/nl/nl/s/?searchtext=${encodeURIComponent(searchTerm)}`
-  const subId = makeSubId(label)
-  return `https://partner.bol.com/click/click?p=2&t=url&s=${PARTNER_ID}&f=TXL&subId=${encodeURIComponent(subId)}&url=${encodeURIComponent(targetUrl)}`
+  const name = makeName(label)
+  // name= is zichtbaar in bol.com rapportage kolom "Name"
+  // subId= is zichtbaar in kolom "SubId"
+  return `https://partner.bol.com/click/click?p=2&t=url&s=${PARTNER_ID}&f=TXL&name=${encodeURIComponent(name)}&subId=${encodeURIComponent(name)}&url=${encodeURIComponent(targetUrl)}`
 }
 
 async function getToken() {
@@ -61,7 +61,6 @@ async function findProductUrl(token, searchTerm) {
   if (cache[cacheKey]) return cache[cacheKey]
 
   await new Promise(r => setTimeout(r, 400))
-
   let productUrl = null
 
   if (token) {
@@ -79,7 +78,7 @@ async function findProductUrl(token, searchTerm) {
           const p = data.products[0]
           productUrl = (p.urls && p.urls[0]) ||
             `https://www.bol.com/nl/nl/p/-/${p.id}/`
-          console.log(`  API hit: "${searchTerm}" → ${productUrl}`)
+          console.log(`  API hit: "${searchTerm}"`)
         }
       }
     } catch(e) {
@@ -87,7 +86,6 @@ async function findProductUrl(token, searchTerm) {
     }
   }
 
-  // Fallback: zoeklink (werkt altijd)
   if (!productUrl) {
     productUrl = `https://www.bol.com/nl/nl/s/?searchtext=${encodeURIComponent(searchTerm)}`
     console.log(`  Zoeklink: "${searchTerm}"`)
@@ -109,7 +107,7 @@ async function main() {
     let content = fs.readFileSync(filepath, 'utf8')
     let updated = false
 
-    // Match ALLE BolBtn — ook bestaande — om subId en partner ID te updaten
+    // Match ALLE BolBtn — ook bestaande — om name= toe te voegen
     const regex = /<BolBtn\s+search="([^"]+)"\s+label="([^"]+)"(?:\s+url="[^"]*")?\s*\/>/g
     const matches = [...content.matchAll(regex)]
     if (!matches.length) continue
@@ -122,7 +120,6 @@ async function main() {
       const affiliateUrl = buildAffiliateLink(searchTerm, label, productUrl)
       const replacement = `<BolBtn search="${searchTerm}" label="${label}" url="${affiliateUrl}" />`
 
-      // Alleen vervangen als de url veranderd is
       if (fullMatch !== replacement) {
         content = content.replace(fullMatch, replacement)
         updated = true
@@ -136,10 +133,9 @@ async function main() {
     }
   }
 
-  // Cache opslaan (met partner ID in key zodat wisseling partner ID alles hergenereert)
   fs.writeFileSync(CACHE_FILE, JSON.stringify(cache, null, 2))
   console.log(`\nKlaar: ${total} links bijgewerkt`)
-  console.log(`SubId tracking actief — zichtbaar in bol.com rapportage kolom "SubId"\n`)
+  console.log(`name= en subId= actief — beide zichtbaar in bol.com rapportage\n`)
 }
 
 main().catch(e => { console.error(e); process.exit(1) })
