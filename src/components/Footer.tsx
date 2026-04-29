@@ -44,6 +44,8 @@ export function Footer() {
           <div>
             <h4 className="text-xs font-bold uppercase tracking-widest text-gray-500 mb-4">Juridisch</h4>
             <ul className="space-y-2">
+              <Link href="/over-ons/" className="hover:text-white transition-colors">Over ons</Link>
+              <Link href="/hoe-wij-testen/" className="hover:text-white transition-colors">Hoe wij testen</Link>
               <li><Link href="/privacybeleid/" className="text-sm text-gray-500 hover:text-white no-underline transition-colors">Privacybeleid</Link></li>
               <li><Link href="/affiliate-disclosure/" className="text-sm text-gray-500 hover:text-white no-underline transition-colors">Affiliate disclosure</Link></li>
             </ul>
