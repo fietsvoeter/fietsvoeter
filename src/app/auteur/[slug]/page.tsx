@@ -6,6 +6,7 @@ import { getAllPosts, SITE_NAME } from '@/lib/mdx'
 
 const AUTEURS: Record<string, {
   naam: string
+  voornaam: string
   titel: string
   ervaring: string
   specialisatie: string
@@ -16,6 +17,7 @@ const AUTEURS: Record<string, {
 }> = {
   'olivier-kremer': {
     naam: 'Olivier Kremer',
+    voornaam: 'Olivier',
     titel: 'Performance Specialist',
     ervaring: '8 jaar rijervaring',
     specialisatie: 'Snelheid, aerodynamica, technische uitrusting',
@@ -33,12 +35,13 @@ const AUTEURS: Record<string, {
   },
   'senne-de-jong': {
     naam: 'Senne de Jong',
+    voornaam: 'Senne',
     titel: 'Allround Specialist',
     ervaring: '5 jaar rijervaring',
     specialisatie: 'Comfort, duurritten, veelzijdig gebruik',
     bio: [
       'Senne heeft vijf jaar geleden de fiets ontdekt en sindsdien is er geen weg terug. Hij wisselt moeiteloos tussen zijn racefiets en zijn mountainbike, en dat is ook terug te zien in hoe hij naar materiaal kijkt.',
-      'Voor hem moet een fiets of accessoire gewoon werken — bij een lange duurrit over Nederlands asfalt, maar ook als hij een technische afdaling op de Posbank neerzet. Zijn veelzijdigheid zorgt ervoor dat hij in elke groep en op elk terrein zijn draai vindt.',
+      'Voor hem moet een fiets of accessoire gewoon werken — bij een lange duurrit over Nederlands asfalt, maar ook als hij een technische afdaling op de Posbank neerzet.',
       'Zijn focus ligt op rijgemak en veelzijdigheid. Hij test producten vanuit het perspectief van de rijder die wil genieten van de rit, niet van degene die elke gram wegweegt.',
     ],
     fietsen: [
@@ -50,8 +53,11 @@ const AUTEURS: Record<string, {
   },
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-  const auteur = AUTEURS[params.slug]
+export async function generateMetadata(
+  { params }: { params: Promise<{ slug: string }> }
+): Promise<Metadata> {
+  const { slug } = await params
+  const auteur = AUTEURS[slug]
   if (!auteur) return {}
   return {
     title: `${auteur.naam} — ${auteur.titel} | ${SITE_NAME}`,
@@ -63,8 +69,11 @@ export function generateStaticParams() {
   return Object.keys(AUTEURS).map(slug => ({ slug }))
 }
 
-export default async function AuteurPage({ params }: { params: { slug: string } }) {
-  const auteur = AUTEURS[params.slug]
+export default async function AuteurPage(
+  { params }: { params: Promise<{ slug: string }> }
+) {
+  const { slug } = await params
+  const auteur = AUTEURS[slug]
   if (!auteur) notFound()
 
   const allePosts = await getAllPosts()
@@ -105,7 +114,9 @@ export default async function AuteurPage({ params }: { params: { slug: string } 
       {/* Methodologie link */}
       <div className="bg-gray-50 border border-gray-100 rounded-xl p-5 mb-10">
         <p className="text-gray-700 text-sm">
-          <strong className="text-gray-900">Hoe beoordeelt {auteur.naam.split(' ')[0]} producten?</strong>{' '}
+          <strong className="text-gray-900">
+            Hoe beoordeelt {auteur.voornaam} producten?
+          </strong>{' '}
           We werken met een vaste testmethode gebaseerd op eigen rijervaring, technische data en externe bronnen.{' '}
           <Link href="/hoe-wij-testen/" className="text-red-600 hover:underline font-medium">
             Lees onze volledige methodologie →
@@ -113,23 +124,22 @@ export default async function AuteurPage({ params }: { params: { slug: string } 
         </p>
       </div>
 
-      {/* Alle blogs van deze site */}
+      {/* Recente blogs */}
       <div>
-        <h2 className="text-2xl font-bold text-gray-900 mb-6">Alle reviews & gidsen</h2>
+        <h2 className="text-2xl font-bold text-gray-900 mb-2">Alle reviews &amp; gidsen</h2>
         <p className="text-gray-500 text-sm mb-6">
-          Fietsvoeter.nl publiceert onafhankelijke fietsreviews en koopgidsen.
           Bekijk{' '}
-          <Link href="/blog/" className="text-red-600 hover:underline">alle artikelen</Link>.
+          <Link href="/blog/" className="text-red-600 hover:underline">alle artikelen van Fietsvoeter.nl</Link>.
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          {allePosts.slice(0, 6).map((post: any) => {
-            const slug = post.slug || post.frontmatter?.slug
+          {(allePosts as any[]).slice(0, 8).map((post: any) => {
+            const slug2 = post.slug || post.frontmatter?.slug
             const title = post.title || post.frontmatter?.title
             const cat = post.category || post.frontmatter?.category
             return (
               <Link
-                key={slug}
-                href={'/blog/' + slug + '/'}
+                key={slug2}
+                href={`/blog/${slug2}/`}
                 className="block p-4 bg-white border border-gray-100 rounded-xl hover:border-gray-200 hover:shadow-sm transition-all"
               >
                 <span className="text-xs text-red-600 font-medium uppercase tracking-wide">{cat}</span>
