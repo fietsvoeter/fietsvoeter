@@ -1,5 +1,6 @@
 'use client'
 import Link from 'next/link'
+import { BandendruKCalculator } from '@/components/BandendruKCalculator'
 
 const PARTNER_ID = '1361557'
 const YEAR = new Date().getFullYear()
@@ -118,3 +119,5 @@ export function PostImage({ src, alt, caption, width = 1200, height = 630 }: {
     </figure>
   )
 }
+
+export { BandendruKCalculator };
