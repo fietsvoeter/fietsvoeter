@@ -27,6 +27,19 @@ const nextConfig = {
       },
     ]
   },
+
+  async redirects() {
+    return [
+      { source: '/blog/beste-wielrenbanden-2026/', destination: '/blog/beste-wielrenbanden/', permanent: true },
+      { source: '/blog/beste-fietscomputer-2026/', destination: '/blog/beste-fietscomputer/', permanent: true },
+      { source: '/blog/beste-fietstrainer-2026/', destination: '/blog/beste-fietstrainer/', permanent: true },
+      { source: '/blog/beste-mtb-helm-2026/', destination: '/blog/beste-mtb-helm/', permanent: true },
+      { source: '/blog/beste-gravel-schoenen-2026/', destination: '/blog/beste-gravel-schoenen/', permanent: true },
+      { source: '/blog/beste-fietskleding-2026/', destination: '/blog/beste-fietskleding/', permanent: true },
+      { source: '/blog/mtb-banden-vergelijking-2026/', destination: '/blog/mtb-banden-vergelijking/', permanent: true },
+      { source: '/blog/beste-mtb-schoenen-2026/', destination: '/blog/beste-mtb-schoenen/', permanent: true },
+    ];
+  },
 }
 
 module.exports = nextConfig
