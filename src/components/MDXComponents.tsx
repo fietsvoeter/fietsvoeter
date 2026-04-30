@@ -40,11 +40,17 @@ export function GeoBlock({ region, text }: { region: string; text: string }) {
   return <div className="geo-block"><strong>📍 In {region}?</strong> {text}</div>
 }
 
-export function ExpertQuote({ quote, name, role }: { quote: string; name: string; role: string }) {
+export function 
+function parseExpertName(name: string) {
+  const m = name.match(/^\[(.+?)\]\((.+?)\)$/)
+  if (m) return <a href={m[2]} className="font-semibold text-gray-900 hover:text-red-600 transition-colors">{m[1]}</a>
+  return <span className="font-semibold text-gray-900">{parseExpertName(name)}</span>
+}
+ExpertQuote({ quote, name, role }: { quote: string; name: string; role: string }) {
   return (
     <blockquote className="expert-quote">
       <p>"{quote}"</p>
-      <footer><strong>{name}</strong> — {role}</footer>
+      <footer><strong>{parseExpertName(name)}</strong> — {role}</footer>
     </blockquote>
   )
 }
