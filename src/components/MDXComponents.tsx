@@ -41,12 +41,16 @@ export function GeoBlock({ region, text }: { region: string; text: string }) {
   return <div className="geo-block"><strong>📍 In {region}?</strong> {text}</div>
 }
 
-export function 
-ExpertQuote({ quote, name, role }: { quote: string; name: string; role: string }) {
+export function ExpertQuote({ quote, name, role }: { quote: string; name: string; role: string }) {
+  const parseLink = (n: string) => {
+    const m = n.match(/^\[(.+?)\]\((.+?)\)$/)
+    if (m) return <a href={m[2]} className="hover:text-red-600 transition-colors font-semibold">{m[1]}</a>
+    return <strong>{n}</strong>
+  }
   return (
     <blockquote className="expert-quote">
       <p>"{quote}"</p>
-      <footer><strong>{name}</strong> — {role}</footer>
+      <footer>{parseLink(name)} — {role}</footer>
     </blockquote>
   )
 }
@@ -120,4 +124,4 @@ export function PostImage({ src, alt, caption, width = 1200, height = 630 }: {
   )
 }
 
-export { BandendruKCalculator };
+export { BandendruKCalculator }
