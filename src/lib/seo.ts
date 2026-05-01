@@ -40,6 +40,10 @@ export function schemaReview(post: Post) {
   return {
     '@context': 'https://schema.org', '@type': 'Review',
     name: post.title,
+    itemReviewed: {
+      '@type': 'Product',
+      name: post.title,
+    },
     author: { '@type': 'Organization', name: SITE_NAME, url: SITE_URL },
     publisher: { '@type': 'Organization', name: SITE_NAME },
     datePublished: post.date, dateModified: post.lastmod || post.date,
