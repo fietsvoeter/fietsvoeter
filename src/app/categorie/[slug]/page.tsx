@@ -15,8 +15,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const cat = CATEGORIES[slug as keyof typeof CATEGORIES]
   if (!cat) return {}
   return {
-    title: `${cat.label} Reviews & Koopgidsen ${YEAR}`,
-    description: `${cat.description} Onafhankelijk getest in ${YEAR}.`,
+    title: `${cat.label} Reviews & Koopgidsen ${YEAR} | Fietsvoeter`,
+    description: cat.metaDesc,
     alternates: { canonical: `${SITE_URL}/categorie/${slug}/` },
   }
 }
@@ -36,6 +36,7 @@ export default async function CategoryPage({ params }: Props) {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }} />
 
+      {/* Header banner */}
       <div className="border-b-4 py-10 px-4" style={{ borderColor: cat.color, background: `${cat.color}10` }}>
         <div className="max-w-6xl mx-auto">
           <nav className="text-xs text-gray-500 mb-4">
@@ -46,13 +47,14 @@ export default async function CategoryPage({ params }: Props) {
           <h1 className="font-display font-black text-5xl mb-3" style={{ color: cat.color }}>
             {cat.label}
           </h1>
-          <p className="text-gray-600 max-w-2xl">{cat.description}</p>
-          <p className="text-sm text-gray-400 mt-2">
+          <p className="text-gray-600 max-w-2xl text-base leading-relaxed">{cat.intro}</p>
+          <p className="text-sm text-gray-400 mt-4">
             {posts.length} artikel{posts.length !== 1 ? 'en' : ''} — bijgewerkt {YEAR}
           </p>
         </div>
       </div>
 
+      {/* Blog grid */}
       <div className="max-w-6xl mx-auto px-4 py-10">
         {posts.length > 0 ? (
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -65,6 +67,30 @@ export default async function CategoryPage({ params }: Props) {
           </div>
         )}
       </div>
+
+      {/* SEO footer tekst — oriënterend, geen overlap met pillar blogs */}
+      {cat.footer && (
+        <div className="border-t border-gray-100 bg-gray-50">
+          <div className="max-w-6xl mx-auto px-4 py-8">
+            <p className="text-sm text-gray-500 max-w-3xl leading-relaxed">{cat.footer}</p>
+            {cat.pillars && cat.pillars.length > 0 && (
+              <div className="mt-4 flex flex-wrap gap-3">
+                <span className="text-xs text-gray-400 self-center">Beginnen met:</span>
+                {cat.pillars.map((slug: string) => (
+                  <a
+                    key={slug}
+                    href={`/blog/${slug}/`}
+                    className="text-xs px-3 py-1.5 rounded-full border border-gray-200 text-gray-600 hover:border-current hover:text-current transition-colors"
+                    style={{ ['--tw-ring-color' as string]: cat.color }}
+                  >
+                    {slug.replace(/-/g, ' ')}
+                  </a>
+                ))}
+              </div>
+            )}
+          </div>
+        </div>
+      )}
     </>
   )
 }
