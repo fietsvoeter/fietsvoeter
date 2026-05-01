@@ -1,6 +1,9 @@
 'use client'
 import Link from 'next/link'
 import { BandendruKCalculator } from '@/components/BandendruKCalculator'
+import { Score } from '@/components/Score'
+
+export { Score }
 
 const PARTNER_ID = '1361557'
 const YEAR = new Date().getFullYear()
@@ -68,10 +71,6 @@ export function FAQ({ items }: { items?: { question: string; answer: string }[] 
       ))}
     </div>
   )
-}
-
-export function Score({ value }: { value: number }) {
-  return <span className="score-badge">{value}/10</span>
 }
 
 export function CompareTable({ headers, rows, scoreCol }: {
