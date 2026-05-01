@@ -1,9 +1,6 @@
 'use client'
 import Link from 'next/link'
 import { BandendruKCalculator } from '@/components/BandendruKCalculator'
-import { Score } from '@/components/Score'
-
-export { Score }
 
 const PARTNER_ID = '1361557'
 const YEAR = new Date().getFullYear()
@@ -69,6 +66,53 @@ export function FAQ({ items }: { items?: { question: string; answer: string }[] 
           <p className="text-gray-600 leading-relaxed">{item.answer}</p>
         </div>
       ))}
+    </div>
+  )
+}
+
+export function Score({ score, label, value }: {
+  score?: number | string
+  label?: string
+  value?: number | string
+}) {
+  const raw = score ?? value ?? 0
+  const num = typeof raw === 'string' ? parseFloat(raw) : (raw as number)
+  const safe = isNaN(num) ? 0 : num
+  const pct = Math.round((safe / 10) * 100)
+
+  const color =
+    safe >= 9.0 ? '#16a34a' :
+    safe >= 8.0 ? '#2563eb' :
+    safe >= 7.0 ? '#d97706' :
+                  '#dc2626'
+
+  return (
+    <div style={{
+      display: 'flex', alignItems: 'center', gap: '12px',
+      padding: '12px 16px', margin: '12px 0',
+      background: '#f8fafc', border: '1px solid #e2e8f0',
+      borderLeft: `4px solid ${color}`, borderRadius: '6px',
+    }}>
+      <div style={{
+        flexShrink: 0, width: '52px', height: '52px', borderRadius: '50%',
+        background: color, display: 'flex', flexDirection: 'column',
+        alignItems: 'center', justifyContent: 'center', color: '#fff',
+      }}>
+        <span style={{ fontSize: '15px', fontWeight: 700, lineHeight: 1 }}>{safe.toFixed(1)}</span>
+        <span style={{ fontSize: '9px', opacity: 0.85, lineHeight: 1 }}>/10</span>
+      </div>
+      <div style={{ flex: 1, minWidth: 0 }}>
+        {label && (
+          <div style={{
+            fontSize: '14px', fontWeight: 600, color: '#1e293b',
+            marginBottom: '6px', whiteSpace: 'nowrap',
+            overflow: 'hidden', textOverflow: 'ellipsis',
+          }}>{label}</div>
+        )}
+        <div style={{ height: '6px', background: '#e2e8f0', borderRadius: '3px', overflow: 'hidden' }}>
+          <div style={{ height: '100%', width: `${pct}%`, background: color, borderRadius: '3px' }} />
+        </div>
+      </div>
     </div>
   )
 }

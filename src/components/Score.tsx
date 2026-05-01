@@ -1,23 +1,23 @@
 'use client'
 
 interface ScoreProps {
-  // Nieuwe interface: score + optioneel label
-  score?: number
+  score?: number | string
   label?: string
-  // Backwards compat met oude value prop
-  value?: number
+  value?: number | string
 }
 
 export function Score({ score, label, value }: ScoreProps) {
-  const num = score ?? value ?? 0
-  const pct = Math.round((num / 10) * 100)
+  // Coerceer altijd naar number — MDX geeft JSX-expressies soms als string door
+  const raw = score ?? value ?? 0
+  const num = typeof raw === 'string' ? parseFloat(raw) : raw
+  const safe = isNaN(num) ? 0 : num
+  const pct = Math.round((safe / 10) * 100)
 
-  // Kleur op basis van score
   const color =
-    num >= 9.0 ? '#16a34a' :  // groen
-    num >= 8.0 ? '#2563eb' :  // blauw
-    num >= 7.0 ? '#d97706' :  // oranje
-                 '#dc2626'    // rood
+    safe >= 9.0 ? '#16a34a' :
+    safe >= 8.0 ? '#2563eb' :
+    safe >= 7.0 ? '#d97706' :
+                  '#dc2626'
 
   return (
     <div
@@ -34,7 +34,6 @@ export function Score({ score, label, value }: ScoreProps) {
         fontFamily: 'inherit',
       }}
     >
-      {/* Score cirkel */}
       <div
         style={{
           flexShrink: 0,
@@ -50,12 +49,11 @@ export function Score({ score, label, value }: ScoreProps) {
         }}
       >
         <span style={{ fontSize: '15px', fontWeight: 700, lineHeight: 1 }}>
-          {num.toFixed(1)}
+          {safe.toFixed(1)}
         </span>
         <span style={{ fontSize: '9px', opacity: 0.85, lineHeight: 1 }}>/10</span>
       </div>
 
-      {/* Label + voortgangsbalk */}
       <div style={{ flex: 1, minWidth: 0 }}>
         {label && (
           <div
@@ -72,7 +70,6 @@ export function Score({ score, label, value }: ScoreProps) {
             {label}
           </div>
         )}
-        {/* Voortgangsbalk */}
         <div
           style={{
             height: '6px',
@@ -87,7 +84,6 @@ export function Score({ score, label, value }: ScoreProps) {
               width: `${pct}%`,
               background: color,
               borderRadius: '3px',
-              transition: 'width 0.6s ease',
             }}
           />
         </div>
