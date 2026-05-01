@@ -43,6 +43,15 @@ export function schemaReview(post: Post) {
     itemReviewed: {
       '@type': 'Product',
       name: post.title,
+      ...(post.rating && {
+        aggregateRating: {
+          '@type': 'AggregateRating',
+          ratingValue: post.rating.toString(),
+          bestRating: '10',
+          worstRating: '1',
+          ratingCount: '1',
+        },
+      }),
     },
     author: { '@type': 'Organization', name: SITE_NAME, url: SITE_URL },
     publisher: { '@type': 'Organization', name: SITE_NAME },
