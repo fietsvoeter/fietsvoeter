@@ -6,11 +6,9 @@ export const SITE_URL   = 'https://www.fietsvoeter.nl'
 export const SITE_NAME  = 'Fietsvoeter.nl'
 export const YEAR       = new Date().getFullYear()
 
-export function bolLink(search: string, partnerId = PARTNER_ID, subid?: string): string {
+export function bolLink(search: string, partnerId = PARTNER_ID): string {
   const productUrl = `https://www.bol.com/nl/nl/s/?searchtext=${encodeURIComponent(search)}`
-  const su1 = subid ? `&su1=${encodeURIComponent(subid.slice(0, 50))}` : ''
-  const su2 = search ? `&su2=${encodeURIComponent(search.slice(0, 50))}` : ''
-  return `https://partner.bol.com/click/click?p=2&t=url&s=${partnerId}&f=TXL&url=${encodeURIComponent(productUrl)}${su1}${su2}`
+  return `https://partner.bol.com/click/click?p=2&t=url&s=${partnerId}&f=TXL&url=${encodeURIComponent(productUrl)}`
 }
 
 export interface CategoryData {
