@@ -58,7 +58,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // Blog pagina's
   const blog_pages: MetadataRoute.Sitemap = posts.map(post => ({
     url: `${SITE_URL}/blog/${post.slug}/`,
-    lastModified: new Date(post.lastmod || post.date),
+    lastModified: (post.lastmod || post.date) ? new Date(post.lastmod || post.date) : new Date(),
     changeFrequency: 'monthly' as const,
     priority: post.schema === 'review' ? 0.9 : 0.7,
   }))
