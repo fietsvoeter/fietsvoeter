@@ -77,6 +77,7 @@ export const metadata: Metadata = {
   },
   manifest: '/manifest.json',
   other: { 'theme-color': '#E2001A' },
+  verification: { google: "N_D_e6LAzOe2VMtZaVbu_d6B7GpKeiQuByjGOVFSLVo" },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
