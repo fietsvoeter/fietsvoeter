@@ -6,7 +6,7 @@ import { BandendruKCalculator } from '@/components/BandendruKCalculator'
 const PARTNER_ID = '1361557'
 const YEAR = new Date().getFullYear()
 
-function bolLink(search: string, partnerId = PARTNER_ID, typeof window !== 'undefined' ? window.location.pathname.split('/').filter(Boolean).pop() || '' : ''): string {
+function bolLink(search: string, partnerId = PARTNER_ID).filter(Boolean).pop() || '' : ''): string {
   const productUrl = `https://www.bol.com/nl/nl/s/?searchtext=${encodeURIComponent(search)}`
   return `https://partner.bol.com/click/click?p=2&t=url&s=${partnerId}&f=TXL&url=${encodeURIComponent(productUrl)}`
 }
@@ -16,7 +16,7 @@ export function BolBtn({
 }: {
   search: string; label: string; url?: string; partner?: string
 }) {
-  const href = url && url.startsWith('https://partner.bol.com') ? url : bolLink(search, partner, typeof window !== 'undefined' ? window.location.pathname.split('/').filter(Boolean).pop() || '' : '')
+  const href = url && url.startsWith('https://partner.bol.com') ? url : bolLink(search, partner).filter(Boolean).pop() || '' : '')
   return (
     <a href={href} target="_blank" rel="noopener sponsored nofollow" className="bol-btn">
       <span className="bol-dot">●</span>{label} op bol.com
