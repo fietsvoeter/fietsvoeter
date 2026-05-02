@@ -4,9 +4,10 @@ import { compileMDX } from 'next-mdx-remote/rsc'
 import { getPostBySlug, getAllSlugs, getRelatedPosts, CATEGORIES, SITE_URL } from '@/lib/mdx'
 import { schemaArticle, schemaReview, schemaBreadcrumb, buildOpenGraph } from '@/lib/seo'
 import { BolBtn, Disclaimer, UpdateBadge, GeoBlock, ExpertQuote, FAQ, CompareTable, RelatedLinks, PostImage, Score, BandendruKCalculator } from '@/components/MDXComponents'
+import { TableOfContents } from '@/components/TableOfContents'
 import { BlogCard } from '@/components/BlogCard'
 
-const components = { BolBtn, Disclaimer, UpdateBadge, GeoBlock, ExpertQuote, FAQ, CompareTable, RelatedLinks, PostImage, Score, BandendruKCalculator }
+const components = { BolBtn, Disclaimer, UpdateBadge, GeoBlock, ExpertQuote, FAQ, CompareTable, RelatedLinks, PostImage, Score, BandendruKCalculator, TableOfContents }
 
 interface Props { params: Promise<{ slug: string }> }
 
