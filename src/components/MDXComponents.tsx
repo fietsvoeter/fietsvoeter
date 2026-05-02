@@ -1,4 +1,5 @@
 'use client'
+import { TableOfContents } from '@/components/TableOfContents'
 import Link from 'next/link'
 import { BandendruKCalculator } from '@/components/BandendruKCalculator'
 
