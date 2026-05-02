@@ -4,15 +4,21 @@ slug: "beste-elleboogbeschermers-mtb"
 date: "2026-04-01"
 lastmod: "2026-04-01"
 description: "Beste MTB elleboogbeschermers getest op trail en enduro. Eerlijke vergelijking van Fox, POC, Leatt en Troy Lee Designs op veiligheid, pasvorm en comfort."
-featuredImage: "/images/blog/beste-elleboogbeschermers-mtb-header.png"
+featuredImage: "/images/beste-elleboogbeschermers-mtb-header.png"
 featuredImageAlt: "Beste MTB elleboogbeschermers 2026 vergelijking Fox POC Leatt Troy Lee"
 author: "senne-de-jong"
 category: "MTB bescherming"
 tags: ["mtb", "bescherming", "elleboogbeschermers", "enduro", "trail"]
 ---
 
-import { BolBtn, PostImage, GeoBlock, ExpertQuote, RelatedLinks, ScoreCard } from '@/components/blog'
+import { BolBtn } from '@/components/BolBtn'
+import { GeoBlock } from '@/components/GeoBlock'
+import { ExpertQuote } from '@/components/ExpertQuote'
+import { CompareTable } from '@/components/CompareTable'
+import { FAQ } from '@/components/FAQ'
+import { RelatedLinks } from '@/components/RelatedLinks'
 
+<Disclaimer />
 # Beste MTB elleboogbeschermers 2026: top 5 eerlijk getest op trail en enduro
 
 Vorig jaar augustus sloeg ik met 28 km/u over de stuur op een rotsige trail in de Ardennen. Mijn elleboog raakte een scherpe kei. Ik droeg geen bescherming. Resultaat: 6 hechingen, 3 weken geen fietsen en een littekenweefsel dat me nog steeds af en toe herinnert aan die keuze.
@@ -20,7 +26,7 @@ Vorig jaar augustus sloeg ik met 28 km/u over de stuur op een rotsige trail in d
 Sindsdien test ik elleboogbeschermers serieus. In de afgelopen 8 maanden heb ik 7 modellen getest op trails in Nederland, Duitsland en de Ardennen — in totaal meer dan 2.400 km met bescherming. Dit is wat ik geleerd heb.
 
 <PostImage
-  src="/images/blog/beste-elleboogbeschermers-mtb-header.png"
+  src="/images/beste-elleboogbeschermers-mtb-header.png"
   alt="Beste MTB elleboogbeschermers 2026 vergelijking"
   caption="Top 5 elleboogbeschermers getest op trail en enduro"
 />
@@ -51,7 +57,7 @@ Wat hem onderscheidt: de pasvorm is anatomisch gevormd, wat betekent dat hij nie
 
 Nadeel: €120 is niet goedkoop. En hij is iets minder goed bij extreme downhill door de lichtere hard-shell categorie vergeleken met de Leatt.
 
-<BolBtn label="Fox Defend Elbow Guard bekijken" keywords="Fox Defend elbow guard MTB" />
+<BolBtn label="Fox Defend Elbow Guard bekijken" search="Fox Defend elbow guard MTB" />
 
 ### 2. POC Resistance Enduro Elbow — lichtste keuze (€95)
 
@@ -59,7 +65,7 @@ Nadeel: €120 is niet goedkoop. En hij is iets minder goed bij extreme downhill
 
 Perfecte keuze voor trail en XC rijders die willen beschermen zonder het rijgevoel te verliezen. Niet geschikt voor enduro of DH: de bescherming is goed maar niet zo hard als Level 2 vereist.
 
-<BolBtn label="POC Resistance Enduro Elbow bekijken" keywords="POC Resistance Enduro elbow pad" />
+<BolBtn label="POC Resistance Enduro Elbow bekijken" search="POC Resistance Enduro elbow pad" />
 
 ### 3. Leatt Elbow Guard DBX 3DF — hardste bescherming (€85)
 
@@ -69,7 +75,7 @@ Ik heb de Leatt DBX 3DF meegegeven aan een bevriende enduro-rijder die op compet
 
 Het nadeel: ze voelen stijver aan bij warm weer. Op een zomerdag boven 25°C kunnen ze klam worden.
 
-<BolBtn label="Leatt DBX 3DF Elbow Guard bekijken" keywords="Leatt DBX 3DF elbow guard" />
+<BolBtn label="Leatt DBX 3DF Elbow Guard bekijken" search="Leatt DBX 3DF elbow guard" />
 
 ### 4. Troy Lee Designs Speed Elbow Guard — beste prijs/kwaliteit (€69)
 
@@ -77,7 +83,7 @@ Voor wie niet €120 wil uitgeven maar toch serieuze bescherming wil: de TLD Spe
 
 De ventilatie is bovengemiddeld voor een harde schaal: het geperforeerde panel zorgt voor merkbare luchtdoorstroming. Niet zo premium als Fox of POC, maar voor €69 een buitengewoon eerlijke deal.
 
-<BolBtn label="Troy Lee Designs Speed Elbow bekijken" keywords="Troy Lee Designs Speed elbow guard" />
+<BolBtn label="Troy Lee Designs Speed Elbow bekijken" search="Troy Lee Designs Speed elbow guard" />
 
 ### 5. Alpinestars Paragon Elbow Pad — beste all-day comfort (€79)
 
@@ -86,7 +92,7 @@ Voor lange toertochten of multi-day bikepacking is de Alpinestars Paragon mijn k
 Hij zit minder strak dan de Fox of Leatt, wat sommigen als nadeel zien. Maar voor een 6-uur durende enduro-tocht is dit juist een voordeel: geen knelplekken, geen afgekneld gevoel.
 
 <PostImage
-  src="/images/blog/beste-elleboogbeschermers-mtb-vergelijking.png"
+  src="/images/beste-elleboogbeschermers-mtb-vergelijking.png"
   alt="MTB elleboogbeschermers vergelijking gewicht CE-certificering prijs"
   caption="Vergelijking: gewicht, CE-level en prijs van de top 5"
 />
@@ -117,19 +123,14 @@ Elk model heeft zijn compromis:
 
 ## GeoBlock: de beste MTB-bescherming in Nederland
 
-<GeoBlock region="Nederland">
-Bij Dutch Cycling Shop (Utrecht en online) heeft men een van de grootste selecties MTB-bescherming van Nederland. Fox en Leatt altijd op voorraad. Fietsenwinkel.nl biedt gratis retour — handig voor pasvormproblemen. Wiggle.nl levert snel en heeft regelmatig 15-20% korting op beschermers.
-
-Voor montage-advies of als je twijfelt over maat: het team bij Specialized Concept Store Amsterdam heeft enduro-specifieke expertise.
-</GeoBlock>
+<GeoBlock region="Nederland" text="Bij Dutch Cycling Shop (Utrecht en online) heeft men een van de grootste selecties MTB-bescherming van Nederland. Fox en Leatt altijd op voorraad. Fietsenwinkel.nl biedt gratis retour — handig voor pasvormproblemen. Wiggle.nl levert snel en heeft regelmatig 15-20% korting op beschermers. Voor montage-advies of als je twijfelt over maat: het team bij Specialized Concept Store Amsterdam heeft enduro-specifieke expertise." />
 
 ## ExpertQuote
 
 <ExpertQuote
   quote="Ik rijd al 12 jaar enduro-races. Mijn regel: knie- en elleboogbeschermers zijn verplicht, ook op trainingsritten. De Fox Defend is mijn dagelijkse keuze - hij zit zo comfortabel dat je hem vergeet, maar je bent blij dat je hem hebt bij een val."
-  author="Bram Janssen"
+  name="[Bram](/auteur/bram-janssen/)"
   role="Enduro-rijder, 3x Nederlands kampioen enduro masters"
-  image="/images/auteurs/senne-de-jong-wielrenner.jpg"
 />
 
 ## Veelgestelde vragen over MTB elleboogbeschermers
@@ -158,14 +159,12 @@ Als ik opnieuw moest beginnen na mijn val in de Ardennen, zou ik direct de **Fox
 
 Het mooiste: zelfs het goedkoopste model op deze lijst — de Troy Lee Designs Speed voor €69 — is significant beter dan geen bescherming. Na mijn val van vorig jaar is dat geen discussie meer.
 
-<RelatedLinks
-  links={[
-    { href: "/blog/beste-mtb-helm", label: "Beste MTB helmen 2026" },
-    { href: "/blog/beste-kniebeschermers-mtb", label: "Beste MTB kniebeschermers" },
-    { href: "/blog/beste-mtb-handschoenen", label: "Beste MTB handschoenen 2026" },
-    { href: "/blog/beste-mtb-jack", label: "Beste MTB jas 2026" },
-  ]}
-/>
+<RelatedLinks pairs={[
+  {slug: "beste-mtb-helm", label: "Beste MTB helmen 2026"},
+  {slug: "beste-kniebeschermers-mtb", label: "Beste MTB kniebeschermers"},
+  {slug: "beste-mtb-handschoenen", label: "Beste MTB handschoenen 2026"},
+  {slug: "beste-mtb-jack", label: "Beste MTB jas 2026"}
+]} />
 
 ---
 *Senne de Jong test fietsuitrusting vanuit zijn thuisbasis in Gent. Hij rijdt trail en enduro, en schrijft over alles wat je beschermt, draagt en drijft op het mountainbike. [Over de auteur](/auteur/senne-de-jong)*
