@@ -1,4 +1,5 @@
 'use client'
+import React from 'react'
 import { TableOfContents } from '@/components/TableOfContents'
 import Link from 'next/link'
 import { BandendruKCalculator } from '@/components/BandendruKCalculator'
@@ -12,6 +13,30 @@ function bolLink(search: string, partnerId = PARTNER_ID): string {
 }
 
 export function BolBtn({
+  search, label, url, partner = PARTNER_ID,
+}: {
+  search: string; label: string; url?: string; partner?: string
+}) {
+  const baseHref = url && url.startsWith('https://partner.bol.com') ? url : bolLink(search, partner)
+  const [href, setHref] = React.useState(baseHref)
+
+  React.useEffect(() => {
+    // Voeg subid toe client-side zodat we per blog kunnen tracken
+    const slug = window.location.pathname
+      .replace(/\/$/, '')
+      .split('/')
+      .pop() || ''
+    const su1 = encodeURIComponent(slug.slice(0, 50))
+    const su2 = encodeURIComponent(search.slice(0, 50))
+    setHref(baseHref + '&su1=' + su1 + '&su2=' + su2)
+  }, [baseHref, search])
+
+  return (
+    <a href={href} target="_blank" rel="noopener sponsored nofollow" className="bol-btn">
+      <span className="bol-dot">●</span>{label} op bol.com
+    </a>
+  )
+}port function BolBtn({
   search, label, url, partner = PARTNER_ID,
 }: {
   search: string; label: string; url?: string; partner?: string
