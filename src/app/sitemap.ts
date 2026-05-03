@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next'
-import { allPosts } from 'contentlayer/generated'
+import { getAllPosts } from '@/lib/mdx'
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://www.fietsvoeter.nl'
   const currentDate = new Date().toISOString()
 
@@ -54,16 +54,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }))
 
-  // Blog posts - only include published posts WITHOUT noindex
+  // Blog posts - get all posts using your existing function
+  const allPosts = await getAllPosts()
+  
+  // Filter: only published posts WITHOUT noindex
   const blogPages: MetadataRoute.Sitemap = allPosts
     .filter((post) => {
+      // Check if post has noindex in robots meta
+      const hasNoindex = post.robots && post.robots.toLowerCase().includes('noindex')
       // Only include if published AND not noindex
-      const hasNoindex = post.robots?.toLowerCase().includes('noindex')
       return post.published && !hasNoindex
     })
     .map((post) => ({
       url: `${baseUrl}/blog/${post.slug}`,
-      lastModified: post.lastmod || post.date,
+      lastModified: post.lastmod || post.date || currentDate,
       changeFrequency: 'weekly',
       priority: 0.7,
     }))
