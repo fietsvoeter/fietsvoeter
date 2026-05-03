@@ -1,67 +1,73 @@
-import type { MetadataRoute } from 'next'
-import { getAllPosts } from '@/lib/mdx'
-import { CATEGORIES } from '@/lib/categories'
-
-const SITE_URL = 'https://www.fietsvoeter.nl'
+import { MetadataRoute } from 'next'
+import { allPosts } from 'contentlayer/generated'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const posts = getAllPosts()
+  const baseUrl = 'https://www.fietsvoeter.nl'
+  const currentDate = new Date().toISOString()
 
-  // Statische pagina's
-  const static_pages: MetadataRoute.Sitemap = [
+  // Static pages
+  const staticPages: MetadataRoute.Sitemap = [
     {
-      url: `${SITE_URL}/`,
-      lastModified: new Date(),
+      url: baseUrl,
+      lastModified: currentDate,
       changeFrequency: 'daily',
-      priority: 1.0,
+      priority: 1,
     },
     {
-      url: `${SITE_URL}/blog/`,
-      lastModified: new Date(),
+      url: `${baseUrl}/blog`,
+      lastModified: currentDate,
       changeFrequency: 'daily',
       priority: 0.9,
     },
     {
-      url: `${SITE_URL}/over-ons/`,
-      lastModified: new Date(),
+      url: `${baseUrl}/over-ons`,
+      lastModified: currentDate,
       changeFrequency: 'monthly',
       priority: 0.4,
     },
     {
-      url: `${SITE_URL}/contact/`,
-      lastModified: new Date(),
+      url: `${baseUrl}/contact`,
+      lastModified: currentDate,
       changeFrequency: 'monthly',
       priority: 0.3,
     },
     {
-      url: `${SITE_URL}/privacybeleid/`,
-      lastModified: new Date(),
+      url: `${baseUrl}/privacybeleid`,
+      lastModified: currentDate,
       changeFrequency: 'yearly',
       priority: 0.2,
     },
     {
-      url: `${SITE_URL}/affiliate-disclosure/`,
-      lastModified: new Date(),
+      url: `${baseUrl}/affiliate-disclosure`,
+      lastModified: currentDate,
       changeFrequency: 'yearly',
       priority: 0.2,
     },
   ]
 
-  // Categorie pagina's
-  const category_pages: MetadataRoute.Sitemap = Object.keys(CATEGORIES).map(slug => ({
-    url: `${SITE_URL}/categorie/${slug}/`,
-    lastModified: new Date(),
-    changeFrequency: 'weekly' as const,
+  // Category pages
+  const categories = ['wielrennen', 'mtb', 'gravel', 'e-bike', 'training', 'kleding', 'voeding']
+  const categoryPages: MetadataRoute.Sitemap = categories.map((cat) => ({
+    url: `${baseUrl}/categorie/${cat}`,
+    lastModified: currentDate,
+    changeFrequency: 'weekly',
     priority: 0.8,
   }))
 
-  // Blog pagina's
-  const blog_pages: MetadataRoute.Sitemap = posts.map(post => ({
-    url: `${SITE_URL}/blog/${post.slug}/`,
-    lastModified: (post.lastmod || post.date) ? new Date(post.lastmod || post.date) : new Date(),
-    changeFrequency: 'monthly' as const,
-    priority: post.schema === 'review' ? 0.9 : 0.7,
-  }))
+  // Blog posts - only include published posts WITHOUT noindex
+  const blogPages: MetadataRoute.Sitemap = allPosts
+    .filter((post) => {
+      // Only include if published AND not noindex
+      const hasNoindex = post.robots?.toLowerCase().includes('noindex')
+      return post.published && !hasNoindex
+    })
+    .map((post) => ({
+      url: `${baseUrl}/blog/${post.slug}`,
+      lastModified: post.lastmod || post.date,
+      changeFrequency: 'weekly',
+      priority: 0.7,
+    }))
 
-  return [...static_pages, ...category_pages, ...blog_pages]
+  // Combine all pages
+  return [...staticPages, ...categoryPages, ...blogPages]
 }
