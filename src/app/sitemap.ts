@@ -54,21 +54,23 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.8,
   }))
 
-  // Blog posts - get all posts using your existing function
+  // Blog posts - get all posts
   const allPosts = await getAllPosts()
   
   // Filter: only published posts WITHOUT noindex
+  // Using optional chaining to handle cases where robots might not exist
   const blogPages: MetadataRoute.Sitemap = allPosts
     .filter((post) => {
-      // Check if post has noindex in robots meta
-      const hasNoindex = post.robots && post.robots.toLowerCase().includes('noindex')
+      // Type-safe check: only if robots exists and contains noindex
+      const robotsMeta = (post as any).robots as string | undefined
+      const hasNoindex = robotsMeta?.toLowerCase().includes('noindex') ?? false
       // Only include if published AND not noindex
       return post.published && !hasNoindex
     })
     .map((post) => ({
       url: `${baseUrl}/blog/${post.slug}`,
-      lastModified: post.lastmod || post.date || currentDate,
-      changeFrequency: 'weekly',
+      lastModified: (post as any).lastmod || post.date || currentDate,
+      changeFrequency: 'weekly' as const,
       priority: 0.7,
     }))
 
