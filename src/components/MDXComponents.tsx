@@ -1,7 +1,7 @@
 'use client'
 import React from 'react'
-import { TableOfContents } from '@/components/TableOfContents'
 import Link from 'next/link'
+import { TableOfContents } from '@/components/TableOfContents'
 import { BandendruKCalculator } from '@/components/BandendruKCalculator'
 
 const PARTNER_ID = '1361557'
@@ -21,27 +21,12 @@ export function BolBtn({
   const [href, setHref] = React.useState(baseHref)
 
   React.useEffect(() => {
-    // Voeg subid toe client-side zodat we per blog kunnen tracken
-    const slug = window.location.pathname
-      .replace(/\/$/, '')
-      .split('/')
-      .pop() || ''
+    const slug = window.location.pathname.replace(/\/$/, '').split('/').pop() || ''
     const su1 = encodeURIComponent(slug.slice(0, 50))
     const su2 = encodeURIComponent(search.slice(0, 50))
     setHref(baseHref + '&su1=' + su1 + '&su2=' + su2)
   }, [baseHref, search])
 
-  return (
-    <a href={href} target="_blank" rel="noopener sponsored nofollow" className="bol-btn">
-      <span className="bol-dot">●</span>{label} op bol.com
-    </a>
-  )
-}port function BolBtn({
-  search, label, url, partner = PARTNER_ID,
-}: {
-  search: string; label: string; url?: string; partner?: string
-}) {
-  const href = url && url.startsWith('https://partner.bol.com') ? url : bolLink(search, partner)
   return (
     <a href={href} target="_blank" rel="noopener sponsored nofollow" className="bol-btn">
       <span className="bol-dot">●</span>{label} op bol.com
@@ -105,36 +90,18 @@ export function Score({ score, label, value }: {
   const num = typeof raw === 'string' ? parseFloat(raw) : (raw as number)
   const safe = isNaN(num) ? 0 : num
   const pct = Math.round((safe / 10) * 100)
-
   const color =
     safe >= 9.0 ? '#16a34a' :
     safe >= 8.0 ? '#2563eb' :
-    safe >= 7.0 ? '#d97706' :
-                  '#dc2626'
-
+    safe >= 7.0 ? '#d97706' : '#dc2626'
   return (
-    <div style={{
-      display: 'flex', alignItems: 'center', gap: '12px',
-      padding: '12px 16px', margin: '12px 0',
-      background: '#f8fafc', border: '1px solid #e2e8f0',
-      borderLeft: `4px solid ${color}`, borderRadius: '6px',
-    }}>
-      <div style={{
-        flexShrink: 0, width: '52px', height: '52px', borderRadius: '50%',
-        background: color, display: 'flex', flexDirection: 'column',
-        alignItems: 'center', justifyContent: 'center', color: '#fff',
-      }}>
+    <div style={{ display: 'flex', alignItems: 'center', gap: '12px', padding: '12px 16px', margin: '12px 0', background: '#f8fafc', border: '1px solid #e2e8f0', borderLeft: `4px solid ${color}`, borderRadius: '6px' }}>
+      <div style={{ flexShrink: 0, width: '52px', height: '52px', borderRadius: '50%', background: color, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', color: '#fff' }}>
         <span style={{ fontSize: '15px', fontWeight: 700, lineHeight: 1 }}>{safe.toFixed(1)}</span>
         <span style={{ fontSize: '9px', opacity: 0.85, lineHeight: 1 }}>/10</span>
       </div>
       <div style={{ flex: 1, minWidth: 0 }}>
-        {label && (
-          <div style={{
-            fontSize: '14px', fontWeight: 600, color: '#1e293b',
-            marginBottom: '6px', whiteSpace: 'nowrap',
-            overflow: 'hidden', textOverflow: 'ellipsis',
-          }}>{label}</div>
-        )}
+        {label && <div style={{ fontSize: '14px', fontWeight: 600, color: '#1e293b', marginBottom: '6px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{label}</div>}
         <div style={{ height: '6px', background: '#e2e8f0', borderRadius: '3px', overflow: 'hidden' }}>
           <div style={{ height: '100%', width: `${pct}%`, background: color, borderRadius: '3px' }} />
         </div>
@@ -193,4 +160,4 @@ export function PostImage({ src, alt, caption, width = 1200, height = 630 }: {
   )
 }
 
-export { BandendruKCalculator }
+export { BandendruKCalculator, TableOfContents }
