@@ -1,4 +1,5 @@
 import { notFound } from 'next/navigation'
+import Image from 'next/image'
 import type { Metadata } from 'next'
 import { compileMDX } from 'next-mdx-remote/rsc'
 import { getPostBySlug, getAllSlugs, getRelatedPosts, CATEGORIES, SITE_URL } from '@/lib/mdx'
@@ -7,7 +8,16 @@ import { BolBtn, Disclaimer, UpdateBadge, GeoBlock, ExpertQuote, FAQ, CompareTab
 import { TableOfContents } from '@/components/TableOfContents'
 import { BlogCard } from '@/components/BlogCard'
 
-const components = { BolBtn, Disclaimer, UpdateBadge, GeoBlock, ExpertQuote, FAQ, CompareTable, RelatedLinks, PostImage, Score, BandendruKCalculator, TableOfContents }
+const components = {
+  img: (props: any) => (
+    <Image
+      {...props}
+      width={1200}
+      height={630}
+      priority
+      alt={props.alt || ''}
+    />
+  ), BolBtn, Disclaimer, UpdateBadge, GeoBlock, ExpertQuote, FAQ, CompareTable, RelatedLinks, PostImage, Score, BandendruKCalculator, TableOfContents }
 
 interface Props { params: Promise<{ slug: string }> }
 
@@ -65,9 +75,9 @@ export default async function BlogPostPage({ params }: Props) {
         {/* Breadcrumb */}
         <nav className="text-xs text-gray-400 py-2 mb-4" aria-label="Breadcrumb">
           <a href="/" className="text-blue-600 hover:underline">Home</a>
-          <span className="mx-1">›</span>
+          <span className="mx-1">âº</span>
           <a href={`/categorie/${post.category}/`} className="text-blue-600 hover:underline">{cat.label}</a>
-          <span className="mx-1">›</span>
+          <span className="mx-1">âº</span>
           <span className="text-gray-500">{post.title}</span>
         </nav>
 
@@ -90,7 +100,7 @@ export default async function BlogPostPage({ params }: Props) {
                 {new Date(post.date).toLocaleDateString('nl-NL', { day: 'numeric', month: 'long', year: 'numeric' })}
                 {post.lastmod && post.lastmod !== post.date && (
                   <span className="ml-2">
-                    · Bijgewerkt:{' '}
+                    Â· Bijgewerkt:{' '}
                     {new Date(post.lastmod).toLocaleDateString('nl-NL', { day: 'numeric', month: 'long', year: 'numeric' })}
                   </span>
                 )}
@@ -126,7 +136,7 @@ export default async function BlogPostPage({ params }: Props) {
             )}
           </article>
 
-          {/* Sidebar — op mobiel ONDER het artikel */}
+          {/* Sidebar â op mobiel ONDER het artikel */}
           <aside className="mt-10 lg:mt-0 space-y-5">
             <div className="bg-gray-50 border border-gray-200 rounded p-4">
               <h4 className="font-display font-bold text-base mt-0 mb-2">Wekelijkse tips</h4>
@@ -156,7 +166,7 @@ export default async function BlogPostPage({ params }: Props) {
                         href={`/blog/${r.slug}/`}
                         className="text-sm text-gray-600 no-underline hover:text-brand-red transition-colors block py-1"
                       >
-                        → {r.title}
+                        â {r.title}
                       </a>
                     </li>
                   ))}
