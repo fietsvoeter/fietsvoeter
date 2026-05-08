@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      - name: Checkout repository
+      - name: Checkout
         uses: actions/checkout@v3
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -18,70 +18,44 @@ jobs:
         with:
           python-version: '3.11'
       
-      - name: Fix ALL encoding errors (comprehensive)
+      - name: Fix encoding with EXACT source bytes
         run: |
           python3 << 'ENDOFPYTHON'
           from pathlib import Path
           
-          # COMPREHENSIVE pattern list from scan results
-          # Format: (corrupted_bytes, correct_bytes)
+          # EXACT patterns from raw byte analysis of source files
           patterns = [
-              # TOP PRIORITY - Most common (100+ occurrences)
+              # Pattern 1: "é" → cafés, België, etc.
+              (b'\\xc3\\xa0\\xc2\\x83\\xc3\\x82\\xc2\\xa9', b'\\xc3\\xa9'),
               
-              # Pattern 1: Euro sign € (729x)
-              (b'\\xc3\\xa0\\xc2\\xa2\\xc3\\x82\\xc2\\xac', b'\\xe2\\x82\\xac'),  # à¢ÂÂ¬ → €
+              # Pattern 2: "ë" → Sportdiëtist, categorieën
+              (b'\\xc3\\xa0\\xc2\\x83\\xc3\\x82\\xc2\\xab', b'\\xc3\\xab'),
               
-              # Pattern 2: Middenpunt · (268x)
-              (b'\\xc3\\xa0\\xc3\\x82\\xc2\\xb7', b'\\xc2\\xb7'),  # àÂ· → ·
+              # Pattern 3: "ï" → Cafeïne, proteïne
+              (b'\\xc3\\xa0\\xc2\x83\\xc3\\x82\\xc2\\xaf', b'\\xc3\\xaf'),
               
-              # Pattern 3-4: "één" word (121x + 106x = 227x total)
-              (b'\\xc3\\xa0\\xc3\\x82\\xc2\\xa9\\xc3\\xa0\\xc3\\x82\\xc2\\xa9n', b'\\xc3\\xa9\\xc3\\xa9n'),  # àÂ©àÂ©n → één
+              # Pattern 4: Middenpunt ·
+              (b'\\xc3\\xa0\\xc2\\x82\\xc3\\x82\\xc2\\xb7', b'\\xc2\\xb7'),
               
-              # Pattern 5: "ï" in proteïne, cafeïne (100x)
-              (b'\\xc3\\xa0\\xc3\\x82\\xc2\\xafne', b'\\xc3\\xafne'),  # àÂ¯ne → ïne
-              (b'\\xc3\\xa0\\xc3\\x82\\xc2\\xaf', b'\\xc3\\xaf'),      # àÂ¯ → ï
+              # Pattern 5: Euro €
+              (b'\\xc3\\xa0\\xc2\\xa2\\xc3\\x82\\xc2\\x82\\xc3\\x82\\xc2\\xac', b'\\xe2\\x82\\xac'),
               
-              # Pattern 6: "ë" in categorieën (73x)
-              (b'\\xc3\\xa0\\xc3\\x82\\xc2\\xabn', b'\\xc3\\xabn'),    # àÂ«n → ën
-              (b'\\xc3\\xa0\\xc3\\x82\\xc2\\xab', b'\\xc3\\xab'),      # àÂ« → ë
+              # Pattern 6: Em-dash —
+              (b'\\xc3\\xa0\\xc2\\xa2\\xc3\\x82\\xc2\\x80\\xc3\\x82\\xc2\\x94', b'\\xe2\\x80\\x94'),
               
-              # MEDIUM PRIORITY (10-99 occurrences)
-              
-              # Pattern 7: Em-dash — 
-              (b'\\xc3\\xa0\\xc2\\xa2\\xc3\\x82\\xc2\\x80\\xc3\\x82\\xc2\\x94', b'\\xe2\\x80\\x94'),  # à¢ÂÂ → —
-              
-              # Pattern 8: "é" standalone (14x)
-              (b'\\xc3\\xa0\\xc3\\x82\\xc2\\xa9', b'\\xc3\\xa9'),      # àÂ© → é
-              
-              # Pattern 9: "ël" in reëel (9x)
-              (b'\\xc3\\xa0\\xc3\\x82\\xc2\\xabel', b'\\xc3\\xabel'),  # àÂ«el → ël
-              
-              # Pattern 10: "ën" in variëren (8x)
-              (b'\\xc3\\xa0\\xc3\\x82\\xc2\\xabren', b'\\xc3\\xabren'), # àÂ«ren → ëren
-              
-              # Pattern 11: "ën" in nutriënten (7x)
-              (b'\\xc3\\xa0\\xc3\\x82\\xc2\\xabnten', b'\\xc3\\xabnten'), # àÂ«nten → ënten
-              
-              # Pattern 12: "ë" in België (7x)
-              (b'\\xc3\\xa0\\xc3\\x82\\xc2\\xab', b'\\xc3\\xab'),      # àÂ« → ë
-              
-              # Pattern 13: "él" in wél (5x)
-              (b'\\xc3\\xa0\\xc3\\x82\\xc2\\xa9l', b'\\xc3\\xa9l'),    # àÂ©l → él
-              
-              # FALLBACK - Catch remaining single char corruptions
-              (b'\\xc3\\xa0\\xc3\\x82\\xc2\\xa9', b'\\xc3\\xa9'),      # àÂ© → é (any remaining)
-              (b'\\xc3\\xa0\\xc3\\x82\\xc2\\xaf', b'\\xc3\\xaf'),      # àÂ¯ → ï (any remaining)
-              (b'\\xc3\\xa0\\xc3\\x82\\xc2\\xab', b'\\xc3\\xab'),      # àÂ« → ë (any remaining)
+              # SHORTER VARIANTS (fallbacks for partial matches)
+              (b'\\xc2\\x83\\xc3\\x82\\xc2\\xa9', b'\\xc3\\xa9'),  # Short é
+              (b'\\xc2\\x83\\xc3\\x82\\xc2\\xab', b'\\xc3\\xab'),  # Short ë
+              (b'\\xc2\\x83\\xc3\\x82\\xc2\\xaf', b'\\xc3\\xaf'),  # Short ï
           ]
           
           blog_dir = Path('content/blog')
           if not blog_dir.exists():
-              print("ERROR: content/blog directory not found!")
+              print("ERROR: content/blog not found!")
               exit(1)
           
           fixed_files = 0
           total_replacements = 0
-          pattern_stats = {}
           
           for mdx_file in sorted(blog_dir.glob('*.mdx')):
               with open(mdx_file, 'rb') as f:
@@ -90,17 +64,11 @@ jobs:
               original = content
               file_changes = 0
               
-              for i, (pattern, replacement) in enumerate(patterns):
+              for pattern, replacement in patterns:
                   count = content.count(pattern)
                   if count > 0:
                       content = content.replace(pattern, replacement)
                       file_changes += count
-                      
-                      # Track stats
-                      if i not in pattern_stats:
-                          pattern_stats[i] = {'count': 0, 'files': 0}
-                      pattern_stats[i]['count'] += count
-                      pattern_stats[i]['files'] += 1
               
               if content != original:
                   with open(mdx_file, 'wb') as f:
@@ -110,24 +78,19 @@ jobs:
                   print(f"✓ {mdx_file.name}: {file_changes} fixes")
           
           print(f"\\n{'='*60}")
-          print(f"SUMMARY:")
-          print(f"  Files fixed: {fixed_files}")
-          print(f"  Total replacements: {total_replacements}")
+          print(f"SUMMARY: {fixed_files} files fixed, {total_replacements} replacements")
           print(f"{'='*60}")
           
-          if pattern_stats:
-              print(f"\\nPATTERN STATISTICS:")
-              for i, stats in sorted(pattern_stats.items()):
-                  print(f"  Pattern {i+1}: {stats['count']} replacements in {stats['files']} files")
-          
           if fixed_files == 0:
-              print("\\n⚠️  No files were fixed!")
-              print("Files might already be clean or patterns don't match.")
+              print("\\n⚠️  No files were changed!")
+              print("Possible reasons:")
+              print("  - Files already fixed")
+              print("  - Patterns don't match (check byte analysis)")
           else:
               print(f"\\n✅ Successfully fixed {fixed_files} files!")
           ENDOFPYTHON
       
-      - name: Commit and push changes
+      - name: Commit changes
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
@@ -136,7 +99,7 @@ jobs:
           if git diff --staged --quiet; then
             echo "No changes to commit"
           else
-            git commit -m "Fix: comprehensive encoding error correction (all patterns)"
+            git commit -m "Fix: encoding errors (exact source bytes)"
             git push
-            echo "✅ Changes committed and pushed successfully"
+            echo "✅ Pushed successfully"
           fi
