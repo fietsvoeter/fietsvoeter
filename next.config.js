@@ -41,7 +41,7 @@ const nextConfig = {
 
   async redirects() {
     return [
-      // SEO Cannibalization Fixes (5 redirects)
+      // SEO Cannibalization Fixes
       {
         source: '/blog/beste-fietsbril-goedkoop',
         destination: '/blog/beste-fietsbril',
@@ -68,7 +68,7 @@ const nextConfig = {
         permanent: true,
       },
 
-      // ââ Jahrloos-redirects (slug zonder 2026) ââââââââââââââââââââââ
+      // Yearless redirects (slug zonder 2026)
       { source: '/blog/beste-e-bike-heren-2026/', destination: '/blog/beste-e-bike-heren/', permanent: true },
       { source: '/blog/beste-e-bike-stad-2026/', destination: '/blog/beste-e-bike-stad/', permanent: true },
       { source: '/blog/beste-e-bike-trekking-2026/', destination: '/blog/beste-e-bike-trekking/', permanent: true },
@@ -94,18 +94,13 @@ const nextConfig = {
       { source: '/blog/e-bike-subsidie-nederland-2026/', destination: '/blog/e-bike-subsidie-nederland/', permanent: true },
       { source: '/blog/fiets-gps-tracker-2026/', destination: '/blog/fiets-gps-tracker/', permanent: true },
       { source: '/blog/mtb-banden-vergelijking-2026/', destination: '/blog/mtb-banden-vergelijking/', permanent: true },
-
-      // ââ Interne blog duplicaten ââââââââââââââââââââââââââââââââââââ
-      { source: '/blog/beste-wielrenbanden-2026/', destination: '/blog/beste-wielrenbanden/', permanent: true },
       { source: '/blog/beste-fietscomputer-2026/', destination: '/blog/beste-fietscomputer/', permanent: true },
-      { source: '/blog/beste-fietstrainer-2026/', destination: '/blog/beste-fietstrainer/', permanent: true },
-      { source: '/blog/beste-mtb-helm-2026/', destination: '/blog/beste-mtb-helm/', permanent: true },
-      { source: '/blog/beste-gravel-schoenen-2026/', destination: '/blog/beste-gravel-schoenen/', permanent: true },
-      { source: '/blog/beste-fietskleding-2026/', destination: '/blog/beste-fietskleding/', permanent: true },
-      { source: '/blog/mtb-banden-vergelijking-2026/', destination: '/blog/mtb-banden-vergelijking/', permanent: true },
-      { source: '/blog/beste-mtb-schoenen-2026/', destination: '/blog/beste-mtb-schoenen/', permanent: true },
 
-      // ââ Oude URL-structuur (Google Search Console 404s) âââââââââââ
+      // Internal blog duplicates
+      { source: '/blog/beste-wielrenbanden-2026/', destination: '/blog/beste-wielrenbanden/', permanent: true },
+      { source: '/blog/beste-fietstrainer-2026/', destination: '/blog/beste-fietstrainer/', permanent: true },
+
+      // Old URL structure (Google Search Console 404s)
       { source: '/fiets-accessoires/wahoo-vs-garmin/', destination: '/blog/garmin-vs-wahoo/', permanent: true },
       { source: '/fiets-accessoires/beste-garmin-fietscomputer/', destination: '/blog/garmin-edge-540-review/', permanent: true },
       { source: '/fietskleding/fietsschoenen-voor-racefiets/', destination: '/blog/beste-fietsschoenen-heren/', permanent: true },
@@ -115,7 +110,7 @@ const nextConfig = {
       { source: '/tips/zwift-abonnement/', destination: '/blog/zwift-abonnement-kosten/', permanent: true },
       { source: '/fiets-accessoires/racefiets-zadeltas/', destination: '/blog/beste-racefiets-zadeltas/', permanent: true },
 
-      // ââ Wildcard fallbacks âââââââââââââââââââââââââââââââââââââââââ
+      // Wildcard fallbacks
       { source: '/fiets-accessoires/:slug*', destination: '/blog/', permanent: true },
       { source: '/fietskleding/:slug*', destination: '/categorie/kleding/', permanent: true },
       { source: '/tips/:slug*', destination: '/blog/', permanent: true },
