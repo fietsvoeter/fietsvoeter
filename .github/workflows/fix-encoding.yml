@@ -1,0 +1,66 @@
+name: Fix Encoding Errors
+
+on:
+  workflow_dispatch:
+
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+      
+      - name: Fix encoding errors in all MDX files
+        run: |
+          python3 << 'ENDOFPYTHON'
+          import os
+          from pathlib import Path
+          
+          patterns = [
+              (b'\\xc3\\xa0\\xc3\\x82\\xc2\\xa9', b'\\xc3\\xa9'),
+              (b'\\xc3\\xa0\\xc3\\x82\\xc2\\xaf', b'\\xc3\\xaf'),
+              (b'\\xc3\\xa0\\xc3\\x82\\xc2\\xab', b'\\xc3\\xab'),
+              (b'\\xc3\\xa0\\xc2\\xa2\\xc3\\x82\\xc2\\x80\\xc3\\x82\\xc2\\x94', b'\\xe2\\x80\\x94'),
+              (b'\\xc3\\xa0\\xc3\\x82\\xc2\\xb7', b'\\xc2\\xb7'),
+          ]
+          
+          blog_dir = Path('content/blog')
+          fixed_count = 0
+          total_replacements = 0
+          
+          for mdx_file in blog_dir.glob('*.mdx'):
+              with open(mdx_file, 'rb') as f:
+                  content = f.read()
+              
+              original = content
+              changes = 0
+              
+              for pattern, replacement in patterns:
+                  count = content.count(pattern)
+                  if count > 0:
+                      content = content.replace(pattern, replacement)
+                      changes += count
+              
+              if content != original:
+                  with open(mdx_file, 'wb') as f:
+                      f.write(content)
+                  fixed_count += 1
+                  total_replacements += changes
+                  print(f"✓ Fixed {mdx_file.name}: {changes} replacements")
+          
+          print(f"\\nSUMMARY: {fixed_count} files fixed, {total_replacements} total replacements")
+          ENDOFPYTHON
+      
+      - name: Commit changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add content/blog/*.mdx
+          git commit -m "Fix: encoding errors in all MDX files" || echo "No changes to commit"
+          git push
