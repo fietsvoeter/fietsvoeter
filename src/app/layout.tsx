@@ -28,10 +28,10 @@ const barlowCondensed = Barlow_Condensed({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: `${SITE_NAME} — Eerlijke Fietsreviews & Koopgidsen ${YEAR}`,
+    default: `${SITE_NAME} â Eerlijke Fietsreviews & Koopgidsen ${YEAR}`,
     template: `%s | ${SITE_NAME}`,
   },
-  description: `Onafhankelijke fietsreviews getest op echte ritten in Nederland. Wielrennen, MTB, gravel en e-bike — actuele koopgidsen en onderhoudstips voor ${YEAR}.`,
+  description: `Onafhankelijke fietsreviews getest op echte ritten in Nederland. Wielrennen, MTB, gravel en e-bike â actuele koopgidsen en onderhoudstips voor ${YEAR}.`,
   keywords: ['fietsreviews nederland', 'beste fietshelm', 'beste racefiets', 'wielrennen tips', 'mtb koopgids'],
   authors: [{ name: 'Fietsvoeter.nl Redactie', url: SITE_URL }],
   creator: 'Fietsvoeter.nl',
@@ -56,7 +56,7 @@ export const metadata: Metadata = {
       url: `${SITE_URL}/images/og-default.png`,
       width: 1200,
       height: 630,
-      alt: `${SITE_NAME} — Eerlijke Fietsreviews Nederland`,
+      alt: `${SITE_NAME} â Eerlijke Fietsreviews Nederland`,
     }],
   },
   twitter: {
@@ -84,12 +84,23 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="nl" className={`${barlow.variable} ${barlowCondensed.variable}`}>
       <head>
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+      <link
+        rel="preload"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap"
+        as="style"
+      />
+      <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap"
+        rel="stylesheet"
+      />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://partner.bol.com" />
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
 
-        {/* GEO meta tags — Nederland */}
+        {/* GEO meta tags â Nederland */}
         <meta name="geo.region" content="NL" />
         <meta name="geo.placename" content="Nederland" />
         <meta name="geo.country" content="NL" />
@@ -97,7 +108,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <meta name="content-language" content="nl-NL" />
         <meta name="DC.language" content="nl" />
 
-        {/* Snippet controle — Google mag snippets genereren maar niet uit nosnippet elementen */}
+        {/* Snippet controle â Google mag snippets genereren maar niet uit nosnippet elementen */}
         <meta name="robots" content="max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
 
         <script
