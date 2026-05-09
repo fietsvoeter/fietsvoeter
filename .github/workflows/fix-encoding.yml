@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v3
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -18,79 +18,84 @@ jobs:
         with:
           python-version: '3.11'
       
-      - name: Fix encoding with EXACT source bytes
+      - name: Fix encoding errors in all MDX files
         run: |
           python3 << 'ENDOFPYTHON'
           from pathlib import Path
           
-          # EXACT patterns from raw byte analysis of source files
+          # ALLE encoding patterns als byte sequences
           patterns = [
-              # Pattern 1: "é" → cafés, België, etc.
-              (b'\\xc3\\xa0\\xc2\\x83\\xc3\\x82\\xc2\\xa9', b'\\xc3\\xa9'),
+              # Pattern 1: Plus-minus (Â±)
+              (b'\xc3\x82\xc2\xb1', b'\xc2\xb1'),
               
-              # Pattern 2: "ë" → Sportdiëtist, categorieën
-              (b'\\xc3\\xa0\\xc2\\x83\\xc3\\x82\\xc2\\xab', b'\\xc3\\xab'),
+              # Pattern 2: Euro corruption (€¬)
+              (b'\xe2\x82\xac\xc2\xac', b'\xe2\x82\xac'),
               
-              # Pattern 3: "ï" → Cafeïne, proteïne
-              (b'\\xc3\\xa0\\xc2\x83\\xc3\\x82\\xc2\\xaf', b'\\xc3\\xaf'),
+              # Pattern 3: Middenpunt (ÃÂ·)
+              (b'\xc3\x83\xc3\x82\xc2\xb7', b'\xc2\xb7'),
               
-              # Pattern 4: Middenpunt ·
-              (b'\\xc3\\xa0\\xc2\\x82\\xc3\\x82\\xc2\\xb7', b'\\xc2\\xb7'),
+              # Pattern 4: Em-dash (à¢ÂÂ)
+              (b'\xc3\xa0\xc2\xa2\xc3\x82\xc2\x80\xc3\x82\xc2\x94', b'\xe2\x80\x94'),
               
-              # Pattern 5: Euro €
-              (b'\\xc3\\xa0\\xc2\\xa2\\xc3\\x82\\xc2\\x82\\xc3\\x82\\xc2\\xac', b'\\xe2\\x82\\xac'),
+              # Pattern 5: Multiplication (àÂ)
+              (b'\xc3\xa0\xc3\x82', b'\xc3\x97'),
               
-              # Pattern 6: Em-dash —
-              (b'\\xc3\\xa0\\xc2\\xa2\\xc3\\x82\\xc2\\x80\\xc3\\x82\\xc2\\x94', b'\\xe2\\x80\\x94'),
+              # Pattern 6: Degrees (Â°)
+              (b'\xc3\x82\xc2\xb0', b'\xc2\xb0'),
               
-              # SHORTER VARIANTS (fallbacks for partial matches)
-              (b'\\xc2\\x83\\xc3\\x82\\xc2\\xa9', b'\\xc3\\xa9'),  # Short é
-              (b'\\xc2\\x83\\xc3\\x82\\xc2\\xab', b'\\xc3\\xab'),  # Short ë
-              (b'\\xc2\\x83\\xc3\\x82\\xc2\\xaf', b'\\xc3\\xaf'),  # Short ï
+              # Pattern 7-9: Accented characters
+              (b'\xc3\xa0\xc3\x82\xc2\xa9', b'\xc3\xa9'),  # é
+              (b'\xc3\xa0\xc3\x82\xc2\xaf', b'\xc3\xaf'),  # ï
+              (b'\xc3\xa0\xc3\x82\xc2\xab', b'\xc3\xab'),  # ë
           ]
           
           blog_dir = Path('content/blog')
+          
           if not blog_dir.exists():
-              print("ERROR: content/blog not found!")
+              print("❌ ERROR: content/blog directory not found!")
               exit(1)
           
-          fixed_files = 0
+          fixed_count = 0
           total_replacements = 0
           
+          print("Scanning all MDX files...")
+          print("=" * 60)
+          
           for mdx_file in sorted(blog_dir.glob('*.mdx')):
+              # Read file in BINARY mode
               with open(mdx_file, 'rb') as f:
                   content = f.read()
               
               original = content
-              file_changes = 0
+              changes = 0
               
+              # Apply all patterns
               for pattern, replacement in patterns:
                   count = content.count(pattern)
                   if count > 0:
                       content = content.replace(pattern, replacement)
-                      file_changes += count
+                      changes += count
               
+              # Write back if changed
               if content != original:
                   with open(mdx_file, 'wb') as f:
                       f.write(content)
-                  fixed_files += 1
-                  total_replacements += file_changes
-                  print(f"✓ {mdx_file.name}: {file_changes} fixes")
+                  fixed_count += 1
+                  total_replacements += changes
+                  print(f"✓ {mdx_file.name}: {changes} replacements")
           
-          print(f"\\n{'='*60}")
-          print(f"SUMMARY: {fixed_files} files fixed, {total_replacements} replacements")
-          print(f"{'='*60}")
+          print("=" * 60)
+          print(f"SUMMARY:")
+          print(f"  Files fixed: {fixed_count}")
+          print(f"  Total replacements: {total_replacements}")
+          print("=" * 60)
           
-          if fixed_files == 0:
-              print("\\n⚠️  No files were changed!")
-              print("Possible reasons:")
-              print("  - Files already fixed")
-              print("  - Patterns don't match (check byte analysis)")
-          else:
-              print(f"\\n✅ Successfully fixed {fixed_files} files!")
+          if fixed_count == 0:
+              print("⚠️  No files needed fixing (already clean)")
+          
           ENDOFPYTHON
       
-      - name: Commit changes
+      - name: Commit and push changes
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
@@ -99,7 +104,7 @@ jobs:
           if git diff --staged --quiet; then
             echo "No changes to commit"
           else
-            git commit -m "Fix: encoding errors (exact source bytes)"
+            git commit -m "Fix: encoding errors in MDX files"
             git push
-            echo "✅ Pushed successfully"
+            echo "✓ Changes committed and pushed"
           fi
