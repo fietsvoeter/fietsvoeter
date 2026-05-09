@@ -1,0 +1,108 @@
+name: Fix Encoding Errors - REAL PATTERNS
+
+on:
+  workflow_dispatch:
+
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+      
+      - name: Fix encoding errors with REAL byte patterns
+        run: |
+          python3 << 'ENDOFPYTHON'
+          from pathlib import Path
+          
+          # ECHTE byte patterns uit hex dump!
+          patterns = [
+              # Pattern gevonden in hex dump (bytes 004398-004409)
+              # c3 a0 c2 a2 c3 82 c2 86 c3 82 c2 92 → em-dash
+              (b'\xc3\xa0\xc2\xa2\xc3\x82\xc2\x86\xc3\x82\xc2\x92', b'\xe2\x80\x94'),
+              
+              # Variatie met andere bytes (origineel gezocht)
+              (b'\xc3\xa0\xc2\xa2\xc3\x82\xc2\x80\xc3\x82\xc2\x94', b'\xe2\x80\x94'),
+              
+              # Plus-minus: Â± → ±
+              (b'\xc3\x82\xc2\xb1', b'\xc2\xb1'),
+              
+              # Degrees: Â° → °
+              (b'\xc3\x82\xc2\xb0', b'\xc2\xb0'),
+              
+              # Euro: €¬ → €
+              (b'\xe2\x82\xac\xc2\xac', b'\xe2\x82\xac'),
+              
+              # Multiply sign variations
+              (b'\xc3\xa0\xc3\x82', b'\xc3\x97'),
+              (b'\xc3\xa0\xc2', b'\xc3\x97'),
+          ]
+          
+          blog_dir = Path('content/blog')
+          
+          if not blog_dir.exists():
+              print("❌ ERROR: content/blog directory not found!")
+              exit(1)
+          
+          fixed_count = 0
+          total_replacements = 0
+          
+          print("Scanning all MDX files with REAL patterns...")
+          print("=" * 60)
+          
+          for mdx_file in sorted(blog_dir.glob('*.mdx')):
+              # Read file in BINARY mode
+              with open(mdx_file, 'rb') as f:
+                  content = f.read()
+              
+              original = content
+              changes = 0
+              
+              # Apply all patterns
+              for pattern, replacement in patterns:
+                  count = content.count(pattern)
+                  if count > 0:
+                      content = content.replace(pattern, replacement)
+                      changes += count
+                      print(f"  Pattern {pattern.hex()} → {replacement.hex()}: {count} matches")
+              
+              # Write back if changed
+              if content != original:
+                  with open(mdx_file, 'wb') as f:
+                      f.write(content)
+                  fixed_count += 1
+                  total_replacements += changes
+                  print(f"✓ {mdx_file.name}: {changes} replacements")
+          
+          print("=" * 60)
+          print(f"SUMMARY:")
+          print(f"  Files fixed: {fixed_count}")
+          print(f"  Total replacements: {total_replacements}")
+          print("=" * 60)
+          
+          if fixed_count == 0:
+              print("⚠️  No files needed fixing")
+          
+          ENDOFPYTHON
+      
+      - name: Commit and push changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add content/blog/*.mdx
+          
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Fix: encoding errors (REAL byte patterns from hex dump)"
+            git push
+            echo "✓ Changes committed and pushed"
+          fi
