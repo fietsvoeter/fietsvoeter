@@ -1,0 +1,64 @@
+name: FIX ENCODING VIA GIT
+
+on:
+  workflow_dispatch:
+
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+      
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+      
+      - run: |
+          python3 << 'ENDPY'
+          from pathlib import Path
+          
+          # Corruption mappings
+          fixes = {
+              'à¢ÂÂ': '—',  # em-dash
+              'àÂ': '×',    # multiply
+              'ÃÂ·': '·',   # middot
+              'Â°': '°',    # degree
+              'Â±': '±',    # plusmn
+          }
+          
+          fixed = 0
+          total = 0
+          
+          for f in Path('content/blog').glob('*.mdx'):
+              with open(f, 'r', encoding='utf-8', errors='replace') as file:
+                  content = file.read()
+              
+              original = content
+              changes = 0
+              
+              for bad, good in fixes.items():
+                  if bad in content:
+                      changes += content.count(bad)
+                      content = content.replace(bad, good)
+              
+              if content != original:
+                  with open(f, 'w', encoding='utf-8') as file:
+                      file.write(content)
+                  fixed += 1
+                  total += changes
+                  print(f'✓ {f.name}: {changes} fixes')
+          
+          print(f'\nFixed {fixed} files, {total} replacements')
+          ENDPY
+      
+      - run: |
+          git config user.name "GitHub Action"
+          git config user.email "action@github.com"
+          git add content/blog/*.mdx
+          if ! git diff --staged --quiet; then
+            git commit -m "Fix: UTF-8 encoding via git"
+            git push
+            echo "✓ Pushed"
+          fi
