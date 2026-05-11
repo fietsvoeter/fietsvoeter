@@ -47,7 +47,7 @@ export default function HomePage() {
         </div>
       </section>
       <div className="grid grid-cols-2 md:grid-cols-4 border-b border-gray-200">
-        {[{num:'200+',label:'Productreviews'},{num:'7',label:'Categorieën'},{num:'4.8Ã¢ÂÂ',label:'Gemiddeld oordeel'},{num:YEAR.toString(),label:'Bijgewerkt'}].map(({num,label})=>(
+        {[{num:'200+',label:'Productreviews'},{num:'7',label:'Categorieën'},{num:'4.8',label:'Gemiddeld oordeel'},{num:YEAR.toString(),label:'Bijgewerkt'}].map(({num,label})=>(
           <div key={label} className="py-5 text-center border-r border-gray-200 last:border-r-0">
             <span className="font-display font-black text-3xl text-brand-red block">{num}</span>
             <span className="text-xs uppercase tracking-wide text-gray-400 mt-1 block">{label}</span>
