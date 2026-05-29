@@ -41,34 +41,18 @@ const nextConfig = {
 
   async redirects() {
     return [
-      // SEO Cannibalization Fixes
-      {
-        source: '/blog/beste-fietsbril-goedkoop',
-        destination: '/blog/beste-fietsbril',
-        permanent: true,
-      },
-      {
-        source: '/blog/michelin-power-cup-vs-continental-gp5000',
-        destination: '/blog/michelin-power-cup-vs-gp5000',
-        permanent: true,
-      },
-      {
-        source: '/blog/garmin-vs-wahoo-fietscomputer',
-        destination: '/blog/garmin-vs-wahoo',
-        permanent: true,
-      },
-      {
-        source: '/blog/garmin-vs-wahoo-elemnt',
-        destination: '/blog/garmin-vs-wahoo',
-        permanent: true,
-      },
-      {
-        source: '/blog/fietscomputer-met-navigatie',
-        destination: '/blog/beste-fietscomputer-navigatie',
-        permanent: true,
-      },
+      // ============================================
+      // SEO CANNIBALIZATION FIXES
+      // ============================================
+      { source: '/blog/beste-fietsbril-goedkoop', destination: '/blog/beste-fietsbril', permanent: true },
+      { source: '/blog/michelin-power-cup-vs-continental-gp5000', destination: '/blog/michelin-power-cup-vs-gp5000', permanent: true },
+      { source: '/blog/garmin-vs-wahoo-fietscomputer', destination: '/blog/garmin-vs-wahoo', permanent: true },
+      { source: '/blog/garmin-vs-wahoo-elemnt', destination: '/blog/garmin-vs-wahoo', permanent: true },
+      { source: '/blog/fietscomputer-met-navigatie', destination: '/blog/beste-fietscomputer-navigatie', permanent: true },
 
-      // Yearless redirects (slug zonder 2026)
+      // ============================================
+      // YEARLESS REDIRECTS (slug zonder 2026)
+      // ============================================
       { source: '/blog/beste-e-bike-heren-2026/', destination: '/blog/beste-e-bike-heren/', permanent: true },
       { source: '/blog/beste-e-bike-stad-2026/', destination: '/blog/beste-e-bike-stad/', permanent: true },
       { source: '/blog/beste-e-bike-trekking-2026/', destination: '/blog/beste-e-bike-trekking/', permanent: true },
@@ -96,24 +80,59 @@ const nextConfig = {
       { source: '/blog/mtb-banden-vergelijking-2026/', destination: '/blog/mtb-banden-vergelijking/', permanent: true },
       { source: '/blog/beste-fietscomputer-2026/', destination: '/blog/beste-fietscomputer/', permanent: true },
 
-      // Internal blog duplicates
-      { source: '/blog/beste-wielrenbanden-2026/', destination: '/blog/beste-wielrenbanden/', permanent: true },
-      { source: '/blog/beste-fietstrainer-2026/', destination: '/blog/beste-fietstrainer/', permanent: true },
+      // ============================================
+      // OLD URL STRUCTURE - SPECIFIC MATCHES
+      // ============================================
 
-      // Old URL structure (Google Search Console 404s)
+      // /fiets-accessoires/
       { source: '/fiets-accessoires/wahoo-vs-garmin/', destination: '/blog/garmin-vs-wahoo/', permanent: true },
       { source: '/fiets-accessoires/beste-garmin-fietscomputer/', destination: '/blog/garmin-edge-540-review/', permanent: true },
-      { source: '/fietskleding/fietsschoenen-voor-racefiets/', destination: '/blog/beste-fietsschoenen-heren/', permanent: true },
+      { source: '/fiets-accessoires/beste-wahoo-fietscomputers/', destination: '/blog/wahoo-elemnt-bolt-review/', permanent: true },
       { source: '/fiets-accessoires/vermogensmeter-racefiets/', destination: '/blog/beste-vermogensmeter/', permanent: true },
-      { source: '/fiets-accessoires/alarm-voor-fiets/', destination: '/blog/wielrennen-accessoires/', permanent: true },
+      { source: '/fiets-accessoires/alarm-voor-fiets/', destination: '/blog/fiets-gps-tracker/', permanent: true },
       { source: '/fiets-accessoires/top-5-fiets-montagestandaarden/', destination: '/blog/fiets-montagestandaard/', permanent: true },
-      { source: '/tips/zwift-abonnement/', destination: '/blog/zwift-abonnement-kosten/', permanent: true },
       { source: '/fiets-accessoires/racefiets-zadeltas/', destination: '/blog/beste-racefiets-zadeltas/', permanent: true },
+      { source: '/fiets-accessoires/fietsnavigatie-voor-racefietsen/', destination: '/blog/beste-fietscomputer-navigatie/', permanent: true },
+      { source: '/fiets-accessoires/beste-indoor-fietstrainer/', destination: '/blog/beste-fietstrainer/', permanent: true },
+      { source: '/fiets-accessoires/tacx-fietstrainers/', destination: '/blog/tacx-neo-3m-review/', permanent: true },
+      { source: '/fiets-accessoires/wahoo-kickr/', destination: '/blog/wahoo-kickr-core-review/', permanent: true },
+      { source: '/fiets-accessoires/wahoo-kickr-move/', destination: '/blog/wahoo-kickr-core-review/', permanent: true },
+      { source: '/fiets-accessoires/speedplay-pedalen/', destination: '/blog/beste-fietspedalen/', permanent: true },
+      { source: '/fiets-accessoires/zwift-ride/', destination: '/blog/zwift-abonnement-kosten/', permanent: true },
+      { source: '/fiets-accessoires/wat-zijn-sks-spatborden/', destination: '/blog/wielrennen-accessoires/', permanent: true },
 
-      // Wildcard fallbacks
+      // /fietsonderdelen/
+      { source: '/fietsonderdelen/tubeless-band/', destination: '/blog/tubeless-vs-clincher/', permanent: true },
+      { source: '/fietsonderdelen/shimano-groepen/', destination: '/blog/shimano-105-vs-ultegra/', permanent: true },
+
+      // /fietskleding/
+      { source: '/fietskleding/fietsschoenen-voor-racefiets/', destination: '/blog/beste-fietsschoenen-heren/', permanent: true },
+      { source: '/fietskleding/abus-airbreaker/', destination: '/blog/beste-fietshelm/', permanent: true },
+      { source: '/fietskleding/beste-fietsshirt/', destination: '/blog/beste-wielrenshirt-zomer/', permanent: true },
+
+      // /tips/
+      { source: '/tips/zwift-abonnement/', destination: '/blog/zwift-abonnement-kosten/', permanent: true },
+      { source: '/tips/binnen-fietsen/', destination: '/blog/beste-fietstrainer/', permanent: true },
+      { source: '/tips/goedkope-fietsdragers/', destination: '/blog/beste-fietsendrager-auto/', permanent: true },
+      { source: '/tips/fietsendragen-voor-racefiets/', destination: '/blog/beste-fietsendrager-auto/', permanent: true },
+      { source: '/tips/schoenendroger/', destination: '/blog/wielrennen-accessoires/', permanent: true },
+
+      // /category/
+      { source: '/category/fietsonderdelen/', destination: '/blog/', permanent: true },
+
+      // Pagination old style
+      { source: '/page/2/', destination: '/blog/', permanent: true },
+      { source: '/page/3/', destination: '/blog/', permanent: true },
+      { source: '/page/:num/', destination: '/blog/', permanent: true },
+
+      // ============================================
+      // WILDCARD FALLBACKS - MUST BE LAST!
+      // ============================================
       { source: '/fiets-accessoires/:slug*', destination: '/blog/', permanent: true },
+      { source: '/fietsonderdelen/:slug*', destination: '/blog/', permanent: true },
       { source: '/fietskleding/:slug*', destination: '/categorie/kleding/', permanent: true },
       { source: '/tips/:slug*', destination: '/blog/', permanent: true },
+      { source: '/category/:slug*', destination: '/blog/', permanent: true },
     ];
   },
 }
