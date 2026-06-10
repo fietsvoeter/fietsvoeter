@@ -58,6 +58,29 @@ const nextConfig = {
       { source: "/blog/garmin-vs-wahoo-fietscomputer", destination: "/blog/garmin-vs-wahoo", permanent: true },
       { source: "/blog/garmin-vs-wahoo-elemnt", destination: "/blog/garmin-vs-wahoo", permanent: true },
       { source: "/blog/fietscomputer-met-navigatie", destination: "/blog/beste-fietscomputer-navigatie", permanent: true },
+      // ============================================
+      // SEO CANNIBALIZATION FIXES - AANVULLING
+      // ============================================
+      // Wielrenschoenen = fietsschoenen (zelfde product, andere naam)
+      { source: "/blog/beste-wielrenschoenen/", destination: "/blog/beste-fietsschoenen-heren/", permanent: true },
+      { source: "/blog/beste-wielrenschoenen-heren/", destination: "/blog/beste-fietsschoenen-heren/", permanent: true },
+      { source: "/blog/beste-wielrenschoenen-dames/", destination: "/blog/beste-fietsschoenen-dames/", permanent: true },
+      // Hartslagmeter
+      { source: "/blog/beste-hartslagmeter-wielrennen/", destination: "/blog/beste-hartslagmeter/", permanent: true },
+      // Sporthorloge
+      { source: "/blog/beste-sporthorloge-garmin/", destination: "/blog/beste-sporthorloge-wielrennen/", permanent: true },
+      // Afvallen
+      { source: "/blog/fietsen-afvallen-beginners/", destination: "/blog/afvallen-wielrennen/", permanent: true },
+      // Voeding duplicaten
+      { source: "/blog/wielrennen-voeding-lange-rit/", destination: "/blog/voeding-voor-lange-rit/", permanent: true },
+      { source: "/blog/voeding-herstel-lange-rit/", destination: "/blog/voeding-voor-lange-rit/", permanent: true },
+      // Onderhoud
+      { source: "/blog/fiets-onderhoud-gids/", destination: "/blog/racefiets-onderhoud-gids/", permanent: true },
+      // Regenjas
+      { source: "/blog/beste-fietsregenjas/", destination: "/blog/beste-wielrenjack-regen/", permanent: true },
+      // Gravel kopen gids
+      { source: "/blog/gravel-fiets-kopen-gids/", destination: "/blog/beste-gravel-fiets/", permanent: true },
+
 
       // ============================================
       // YEARLESS REDIRECTS
