@@ -1,4 +1,5 @@
 /** @type {import('next').NextConfig} */
+// Cache bust: 2026-06-10
 const nextConfig = {
   trailingSlash: true,
 
